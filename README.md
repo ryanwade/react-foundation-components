@@ -7,6 +7,7 @@ A collection of Foundation components for react
 -	Divider
 -	NumberField
 -	TextField
+-	TextArea
 
 # FeatureSet
 - ClassNames (props.className: string)

@@ -3,9 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.TextField = exports.NumberField = exports.Divider = exports.Title = exports.Button = undefined;
+exports.TextArea = exports.TextField = exports.NumberField = exports.Divider = exports.Title = exports.Button = undefined;
 
-var _ref, _ref2, _ref3, _ref4, _ref5;
+var _ref, _ref2, _ref3, _ref4, _ref5, _ref6;
 
 var _FeatureSet = require('./FeatureSet');
 
@@ -20,3 +20,5 @@ var Divider = exports.Divider = new _FeatureSet.FeatureSet((_ref3 = {}, _defineP
 var NumberField = exports.NumberField = new _FeatureSet.FeatureSet((_ref4 = {}, _defineProperty(_ref4, _FeatureSet.Features.ClassNames, true), _defineProperty(_ref4, _FeatureSet.Features.Visibility, true), _defineProperty(_ref4, _FeatureSet.Features.Disabled, true), _defineProperty(_ref4, _FeatureSet.Features.DataEvents, true), _ref4));
 
 var TextField = exports.TextField = new _FeatureSet.FeatureSet((_ref5 = {}, _defineProperty(_ref5, _FeatureSet.Features.ClassNames, true), _defineProperty(_ref5, _FeatureSet.Features.Visibility, true), _defineProperty(_ref5, _FeatureSet.Features.Disabled, true), _defineProperty(_ref5, _FeatureSet.Features.DataEvents, true), _ref5));
+
+var TextArea = exports.TextArea = new _FeatureSet.FeatureSet((_ref6 = {}, _defineProperty(_ref6, _FeatureSet.Features.ClassNames, true), _defineProperty(_ref6, _FeatureSet.Features.Visibility, true), _defineProperty(_ref6, _FeatureSet.Features.Disabled, true), _defineProperty(_ref6, _FeatureSet.Features.DataEvents, true), _ref6));
