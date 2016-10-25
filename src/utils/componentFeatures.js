@@ -12,3 +12,8 @@ export const Title = new FeatureSet({
     [Features.ClassNames]: true,
     [Features.Visibility]: true
 });
+
+export const Divider = new FeatureSet({
+    [Features.ClassNames]: true,
+    [Features.Visibility]: true
+});

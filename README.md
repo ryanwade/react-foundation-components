@@ -4,6 +4,7 @@ A collection of Foundation components for react
 # Components
 -	Button
 -	Title
+-	Divider
 
 # FeatureSet
 - ClassNames (props.className: string)
