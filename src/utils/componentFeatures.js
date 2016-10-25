@@ -24,3 +24,10 @@ export const NumberField = new FeatureSet({
     [Features.Disabled]: true,
     [Features.DataEvents]: true
 });
+
+export const TextField = new FeatureSet({
+    [Features.ClassNames]: true,
+    [Features.Visibility]: true,
+    [Features.Disabled]: true,
+    [Features.DataEvents]: true
+});

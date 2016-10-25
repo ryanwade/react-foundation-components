@@ -6,6 +6,7 @@ A collection of Foundation components for react
 -	Title
 -	Divider
 -	NumberField
+-	TextField
 
 # FeatureSet
 - ClassNames (props.className: string)
