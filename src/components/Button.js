@@ -3,7 +3,9 @@ import FeatureSet from '../utils/FeatureSet';
 
 let featureSet = new FeatureSet({
     Visibility: true,
-    Float: true
+    Float: true,
+    Disabled: true,
+    MouseEvents: true
 });
 
 class Button extends React.Component {
@@ -11,15 +13,14 @@ class Button extends React.Component {
         super(props);
     }
     render() {
-        let { disabled, label, children, onClick } = this.props;
+        let { label, children } = this.props;
         return (
             <div className={featureSet.getClassNames(this)}>
                 <button type="button"
                         className="button"
-                        disabled={disabled}
-                        onClick={onClick}>
+                        {...featureSet.getAttrs(this)}>
                         {label || children}
-                        </button>
+                </button>
             </div>
         );
     }

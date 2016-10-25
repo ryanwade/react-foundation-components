@@ -27,6 +27,7 @@ var FeatureSet = function () {
         this.features = features;
 
         this.getClassNames = this.getClassNames.bind(this);
+        this.getAttrs = this.getAttrs.bind(this);
         this.getDefaultProps = this.getDefaultProps.bind(this);
         this.getPropTypes = this.getPropTypes.bind(this);
     }
@@ -47,6 +48,18 @@ var FeatureSet = function () {
             return myClassNames;
         }
     }, {
+        key: 'getAttrs',
+        value: function getAttrs(ref) {
+            var attrs = {};
+            if (this.feature.Disabled) {
+                attrs.disabled = ref.props.disabled;
+            }
+            if (this.feature.MouseEvents) {
+                attrs.onClick = ref.props.onClick;
+            }
+            return attrs;
+        }
+    }, {
         key: 'getPropTypes',
         value: function getPropTypes(propTypes) {
             propTypes.ClassNames = _react.PropTypes.string;
@@ -55,6 +68,12 @@ var FeatureSet = function () {
             }
             if (this.features.Float) {
                 propTypes.float = _react.PropTypes.string;
+            }
+            if (this.features.Disabled) {
+                propTypes.disabled = _react.PropTypes.bool;
+            }
+            if (this.features.MouseEvents) {
+                propTypes.onClick = _react.PropTypes.func;
             }
             return propTypes;
         }
@@ -67,6 +86,9 @@ var FeatureSet = function () {
             }
             if (this.features.Float) {
                 defaultProps.float = null;
+            }
+            if (this.features.disabled) {
+                defaultProps.disabled = false;
             }
             return defaultProps;
         }
