@@ -41,10 +41,10 @@ export class FeatureSet {
     }
     getAttrs(ref) {
         let attrs = {};
-        if(this.feature[Features.Disabled]) {
+        if(this.set[Features.Disabled]) {
             attrs.disabled = ref.props.disabled;
         }
-        if(this.feature[Features.MouseEvents]) {
+        if(this.set[Features.MouseEvents]) {
             attrs.onClick = ref.props.onClick;
         }
         return attrs;
