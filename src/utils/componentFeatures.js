@@ -17,3 +17,10 @@ export const Divider = new FeatureSet({
     [Features.ClassNames]: true,
     [Features.Visibility]: true
 });
+
+export const NumberField = new FeatureSet({
+    [Features.ClassNames]: true,
+    [Features.Visibility]: true,
+    [Features.Disabled]: true,
+    [Features.DataEvents]: true
+});
