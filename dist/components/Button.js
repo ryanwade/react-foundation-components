@@ -12,6 +12,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
 var _componentFeatures = require('../utils/componentFeatures');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -35,6 +39,7 @@ var Button = function (_React$Component) {
         key: 'render',
         value: function render() {
             var _props = this.props;
+            var color = _props.color;
             var label = _props.label;
             var children = _props.children;
 
@@ -44,7 +49,7 @@ var Button = function (_React$Component) {
                 _react2.default.createElement(
                     'button',
                     _extends({ type: 'button',
-                        className: 'button'
+                        className: (0, _classnames2.default)("button", color)
                     }, _componentFeatures.Button.getAttrs(this)),
                     label || children
                 )
@@ -56,6 +61,7 @@ var Button = function (_React$Component) {
 }(_react2.default.Component);
 
 Button.propTypes = _componentFeatures.Button.getPropTypes({
+    color: _react.PropTypes.string,
     label: _react.PropTypes.string,
     children: _react.PropTypes.node
 });

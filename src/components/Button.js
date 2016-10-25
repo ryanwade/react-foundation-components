@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import classNames from 'classnames';
 import { Button as featureSet } from '../utils/componentFeatures';
 
 class Button extends React.Component {
@@ -6,11 +7,11 @@ class Button extends React.Component {
         super(props);
     }
     render() {
-        let { label, children } = this.props;
+        let { color, label, children } = this.props;
         return (
             <div className={featureSet.getClassNames(this)}>
                 <button type="button"
-                        className="button"
+                        className={classNames("button", color)}
                         {...featureSet.getAttrs(this)}>
                         {label || children}
                 </button>
@@ -19,6 +20,7 @@ class Button extends React.Component {
     }
 }
 Button.propTypes = featureSet.getPropTypes({
+    color: PropTypes.string,
     label: PropTypes.string,
     children: PropTypes.node
 });
