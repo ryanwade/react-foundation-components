@@ -19,13 +19,10 @@ class Button extends React.Component {
     }
 }
 Button.propTypes = featureSet.getPropTypes({
-    disabled: PropTypes.bool,
     label: PropTypes.string,
-    children: PropTypes.node,
-    onClick: PropTypes.func.isRequired
+    children: PropTypes.node
 });
 Button.defaultProps = featureSet.getDefaultProps({
-    disabled: false
 });
 
 export default Button;

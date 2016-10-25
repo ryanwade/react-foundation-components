@@ -56,13 +56,9 @@ var Button = function (_React$Component) {
 }(_react2.default.Component);
 
 Button.propTypes = _componentFeatures.Button.getPropTypes({
-    disabled: _react.PropTypes.bool,
     label: _react.PropTypes.string,
-    children: _react.PropTypes.node,
-    onClick: _react.PropTypes.func.isRequired
+    children: _react.PropTypes.node
 });
-Button.defaultProps = _componentFeatures.Button.getDefaultProps({
-    disabled: false
-});
+Button.defaultProps = _componentFeatures.Button.getDefaultProps({});
 
 exports.default = Button;
