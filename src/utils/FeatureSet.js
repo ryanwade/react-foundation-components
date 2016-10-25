@@ -6,6 +6,7 @@ export const Features = {
     Visibility: "Visibility",
     Disabled: "Disabled",
     MouseEvents: "MouseEvents",
+    DataEvents: "DataEvents",
     Float: "Float"
 };
 
@@ -47,6 +48,9 @@ export class FeatureSet {
         if(this.set[Features.MouseEvents]) {
             attrs.onClick = ref.props.onClick;
         }
+        if(this.set[Features.DataEvents]) {
+            attrs.onChange = ref.props.onChange;
+        }
         return attrs;
     }
     getPropTypes(propTypes = {}) {
@@ -64,6 +68,9 @@ export class FeatureSet {
         }
         if(this.set[Features.MouseEvents]) {
             propTypes.onClick = PropTypes.func;
+        }
+        if(this.set[Features.DataEvents]) {
+            propTypes.onChange = PropTypes.func;
         }
         return propTypes;
     }

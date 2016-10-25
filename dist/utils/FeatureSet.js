@@ -24,6 +24,7 @@ var Features = exports.Features = {
     Visibility: "Visibility",
     Disabled: "Disabled",
     MouseEvents: "MouseEvents",
+    DataEvents: "DataEvents",
     Float: "Float"
 };
 
@@ -69,6 +70,9 @@ var FeatureSet = exports.FeatureSet = function () {
             if (this.set[Features.MouseEvents]) {
                 attrs.onClick = ref.props.onClick;
             }
+            if (this.set[Features.DataEvents]) {
+                attrs.onChange = ref.props.onChange;
+            }
             return attrs;
         }
     }, {
@@ -90,6 +94,9 @@ var FeatureSet = exports.FeatureSet = function () {
             }
             if (this.set[Features.MouseEvents]) {
                 propTypes.onClick = _react.PropTypes.func;
+            }
+            if (this.set[Features.DataEvents]) {
+                propTypes.onChange = _react.PropTypes.func;
             }
             return propTypes;
         }

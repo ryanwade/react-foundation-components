@@ -11,6 +11,7 @@ A collection of Foundation components for react
 - Visibility (props.show: bool)
 - Disabled (props.disabled: bool)
 - MouseEvents (props.onClick: func)
+- DataEvents (props.onChange: func)
 - Float (props.float: string)
 
 # Attributions
