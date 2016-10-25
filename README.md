@@ -6,6 +6,7 @@ A collection of Foundation components for react
 -	Title
 
 # FeatureSet
+- ClassNames (props.className: string)
 - Visibility (props.show: bool)
 - Disabled (props.disabled: bool)
 - MouseEvents (props.onClick: func)
