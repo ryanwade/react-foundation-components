@@ -1,12 +1,5 @@
 import React, { PropTypes } from 'react';
-import FeatureSet from '../utils/FeatureSet';
-
-let featureSet = new FeatureSet({
-    Visibility: true,
-    Float: true,
-    Disabled: true,
-    MouseEvents: true
-});
+import { Button as featureSet } from '../utils/componentFeatures';
 
 class Button extends React.Component {
     constructor(props) {

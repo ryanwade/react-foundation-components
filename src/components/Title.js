@@ -1,9 +1,5 @@
 import React, { PropTypes } from 'react';
-import FeatureSet from '../utils/FeatureSet';
-
-let featureSet = new FeatureSet({
-    Visibility: true
-});
+import { Title as featureSet } from '../utils/componentFeatures';
 
 class Title extends React.Component {
     constructor(props) {

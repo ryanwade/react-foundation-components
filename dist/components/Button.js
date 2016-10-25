@@ -12,9 +12,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _FeatureSet = require('../utils/FeatureSet');
-
-var _FeatureSet2 = _interopRequireDefault(_FeatureSet);
+var _componentFeatures = require('../utils/componentFeatures');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23,13 +21,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var featureSet = new _FeatureSet2.default({
-    Visibility: true,
-    Float: true,
-    Disabled: true,
-    MouseEvents: true
-});
 
 var Button = function (_React$Component) {
     _inherits(Button, _React$Component);
@@ -49,12 +40,12 @@ var Button = function (_React$Component) {
 
             return _react2.default.createElement(
                 'div',
-                { className: featureSet.getClassNames(this) },
+                { className: _componentFeatures.Button.getClassNames(this) },
                 _react2.default.createElement(
                     'button',
                     _extends({ type: 'button',
                         className: 'button'
-                    }, featureSet.getAttrs(this)),
+                    }, _componentFeatures.Button.getAttrs(this)),
                     label || children
                 )
             );
@@ -64,13 +55,13 @@ var Button = function (_React$Component) {
     return Button;
 }(_react2.default.Component);
 
-Button.propTypes = featureSet.getPropTypes({
+Button.propTypes = _componentFeatures.Button.getPropTypes({
     disabled: _react.PropTypes.bool,
     label: _react.PropTypes.string,
     children: _react.PropTypes.node,
     onClick: _react.PropTypes.func.isRequired
 });
-Button.defaultProps = featureSet.getDefaultProps({
+Button.defaultProps = _componentFeatures.Button.getDefaultProps({
     disabled: false
 });
 

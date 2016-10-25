@@ -10,9 +10,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _FeatureSet = require('../utils/FeatureSet');
-
-var _FeatureSet2 = _interopRequireDefault(_FeatureSet);
+var _componentFeatures = require('../utils/componentFeatures');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21,10 +19,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var featureSet = new _FeatureSet2.default({
-    Visibility: true
-});
 
 var Title = function (_React$Component) {
     _inherits(Title, _React$Component);
@@ -42,7 +36,7 @@ var Title = function (_React$Component) {
 
             return _react2.default.createElement(
                 'div',
-                { className: featureSet.getClassNames(this) },
+                { className: _componentFeatures.Title.getClassNames(this) },
                 _react2.default.createElement(
                     'h3',
                     { className: 'rock-salt' },
@@ -55,9 +49,9 @@ var Title = function (_React$Component) {
     return Title;
 }(_react2.default.Component);
 
-Title.propTypes = featureSet.getPropTypes({
+Title.propTypes = _componentFeatures.Title.getPropTypes({
     text: _react.PropTypes.string.isRequired
 });
-Title.defaultProps = featureSet.getDefaultProps({});
+Title.defaultProps = _componentFeatures.Title.getDefaultProps({});
 
 exports.default = Title;
