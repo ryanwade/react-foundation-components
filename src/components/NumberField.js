@@ -6,17 +6,17 @@ class NumberField extends React.Component {
         super(props);
     }
     render() {
-        let { label, value, max } = this.props;
+        let { label, value, max, ...props } = this.props;
         return (
-            <div className={featureSet.getOuterClassNames(this)}>
+            <div className={featureSet.getOuterClassNames(props)}>
                 <label>
                     {label}
-                    <input  className={featureSet.getInnerClassNames(this, "input-group-field")}
+                    <input  className={featureSet.getInnerClassNames(props, "input-group-field")}
                             type="number"
                             value={value}
                             min={1}
                             max={max}
-                            {...featureSet.getAttrs(this)}/>
+                            {...featureSet.getAttrs(props)}/>
                 </label>
             </div>
         );

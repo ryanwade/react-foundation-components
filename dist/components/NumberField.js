@@ -16,6 +16,8 @@ var _componentFeatures = require('../utils/componentFeatures');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -39,19 +41,21 @@ var NumberField = function (_React$Component) {
             var value = _props.value;
             var max = _props.max;
 
+            var props = _objectWithoutProperties(_props, ['label', 'value', 'max']);
+
             return _react2.default.createElement(
                 'div',
-                { className: _componentFeatures.NumberField.getOuterClassNames(this) },
+                { className: _componentFeatures.NumberField.getOuterClassNames(props) },
                 _react2.default.createElement(
                     'label',
                     null,
                     label,
-                    _react2.default.createElement('input', _extends({ className: _componentFeatures.NumberField.getInnerClassNames(this, "input-group-field"),
+                    _react2.default.createElement('input', _extends({ className: _componentFeatures.NumberField.getInnerClassNames(props, "input-group-field"),
                         type: 'number',
                         value: value,
                         min: 1,
                         max: max
-                    }, _componentFeatures.NumberField.getAttrs(this)))
+                    }, _componentFeatures.NumberField.getAttrs(props)))
                 )
             );
         }

@@ -45,43 +45,43 @@ var FeatureSet = exports.FeatureSet = function () {
 
     _createClass(FeatureSet, [{
         key: 'getOuterClassNames',
-        value: function getOuterClassNames(ref, extraClasses) {
+        value: function getOuterClassNames(props, extraClasses) {
             var outerClassNames = extraClasses;
             if (this.set[Features.ClassNames]) {
-                outerClassNames = (0, _classnames2.default)(outerClassNames, ref.props.outerClassName, ref.props.className);
+                outerClassNames = (0, _classnames2.default)(outerClassNames, props.outerClassName, props.className);
             }
             if (this.set[Features.Visibility]) {
                 outerClassNames = (0, _classnames2.default)(outerClassNames, {
-                    "show": ref.props.show,
-                    "hide": !ref.props.show
+                    "show": props.show,
+                    "hide": !props.show
                 });
             }
             if (this.set[Features.Float]) {
-                outerClassNames = (0, _classnames2.default)(outerClassNames, _defineProperty({}, "float-" + ref.props.float, ref.props.float));
+                outerClassNames = (0, _classnames2.default)(outerClassNames, _defineProperty({}, "float-" + props.float, props.float));
             }
             return outerClassNames;
         }
     }, {
         key: 'getInnerClassNames',
-        value: function getInnerClassNames(ref, extraClasses) {
+        value: function getInnerClassNames(props, extraClasses) {
             var innerClassNames = extraClasses;
             if (this.set[Features.ClassNames]) {
-                innerClassNames = (0, _classnames2.default)(innerClassNames, ref.props.innerClassName);
+                innerClassNames = (0, _classnames2.default)(innerClassNames, props.innerClassName);
             }
             return innerClassNames;
         }
     }, {
         key: 'getAttrs',
-        value: function getAttrs(ref) {
+        value: function getAttrs(props) {
             var attrs = {};
             if (this.set[Features.Disabled]) {
-                attrs.disabled = ref.props.disabled;
+                attrs.disabled = props.disabled;
             }
             if (this.set[Features.MouseEvents]) {
-                attrs.onClick = ref.props.onClick;
+                attrs.onClick = props.onClick;
             }
             if (this.set[Features.DataEvents]) {
-                attrs.onChange = ref.props.onChange;
+                attrs.onChange = props.onChange;
             }
             return attrs;
         }

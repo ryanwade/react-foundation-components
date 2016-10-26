@@ -6,15 +6,15 @@ class TextArea extends React.Component {
         super(props);
     }
     render() {
-        let { label, value } = this.props;
+        let { label, value, ...props } = this.props;
         return (
-            <div className={featureSet.getOuterClassNames(this)}>
+            <div className={featureSet.getOuterClassNames(props)}>
                 <label>
                     {label}
                     <textarea
-                        className={featureSet.getInnerClassNames(this)}
+                        className={featureSet.getInnerClassNames(props)}
                         value={value}
-                        {...featureSet.getAttrs(this)} />
+                        {...featureSet.getAttrs(props)} />
                 </label>
             </div>
         );

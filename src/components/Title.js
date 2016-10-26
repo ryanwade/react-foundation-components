@@ -6,10 +6,10 @@ class Title extends React.Component {
         super(props);
     }
     render() {
-        let { text } = this.props;
+        let { text, ...props } = props;
         return (
-            <div className={featureSet.getOuterClassNames(this)}>
-                <h3 className={featureSet.getInnerClassNames(this, "rock-salt")}>
+            <div className={featureSet.getOuterClassNames(props)}>
+                <h3 className={featureSet.getInnerClassNames(props, "rock-salt")}>
                     {text}</h3>
             </div>
         );

@@ -20,48 +20,48 @@ export class FeatureSet {
         this.getDefaultProps    = this.getDefaultProps.bind(this);
         this.getPropTypes       = this.getPropTypes.bind(this);
     }
-    getOuterClassNames(ref, extraClasses) {
+    getOuterClassNames(props, extraClasses) {
         let outerClassNames = extraClasses;
         if(this.set[Features.ClassNames]) {
             outerClassNames = classNames(
                 outerClassNames,
-                ref.props.outerClassName,
-                ref.props.className
+                props.outerClassName,
+                props.className
             );
         }
         if(this.set[Features.Visibility]) {
             outerClassNames = classNames(outerClassNames, {
-                "show": ref.props.show,
-                "hide": !ref.props.show
+                "show": props.show,
+                "hide": !props.show
             });
         }
         if(this.set[Features.Float]) {
             outerClassNames = classNames(outerClassNames, {
-                ["float-"+ref.props.float]: ref.props.float
+                ["float-"+props.float]: props.float
             });
         }
         return outerClassNames;
     }
-    getInnerClassNames(ref, extraClasses) {
+    getInnerClassNames(props, extraClasses) {
         let innerClassNames = extraClasses;
         if(this.set[Features.ClassNames]) {
             innerClassNames = classNames(
                 innerClassNames,
-                ref.props.innerClassName
+                props.innerClassName
             );
         }
         return innerClassNames;
     }
-    getAttrs(ref) {
+    getAttrs(props) {
         let attrs = {};
         if(this.set[Features.Disabled]) {
-            attrs.disabled = ref.props.disabled;
+            attrs.disabled = props.disabled;
         }
         if(this.set[Features.MouseEvents]) {
-            attrs.onClick = ref.props.onClick;
+            attrs.onClick = props.onClick;
         }
         if(this.set[Features.DataEvents]) {
-            attrs.onChange = ref.props.onChange;
+            attrs.onChange = props.onChange;
         }
         return attrs;
     }

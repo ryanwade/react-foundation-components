@@ -6,10 +6,10 @@ class Divider extends React.Component {
         super(props);
     }
     render() {
-        let { height, line } = this.props;
+        let { height, line, ...props } = this.props;
         if(line) {
             return (
-                <div className={featureSet.getOuterClassNames(this)}>
+                <div className={featureSet.getOuterClassNames(props)}>
                     <div style={{height: height + 'px'}}></div>
                     <hr/>
                     <div style={{height: height + 'px'}}></div>
@@ -17,7 +17,7 @@ class Divider extends React.Component {
             );
         }
         return (
-            <div className={featureSet.getOuterClassNames(this)}>
+            <div className={featureSet.getOuterClassNames(props)}>
                 <div style={{height: height + 'px'}}></div>
             </div>
         );

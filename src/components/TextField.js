@@ -6,14 +6,14 @@ class TextField extends React.Component {
         super(props);
     }
     render() {
-        let { label, value } = this.props;
+        let { label, value, ...props } = this.props;
         return (
-            <div className={featureSet.getOuterClassNames(this, 'input-group')}>
+            <div className={featureSet.getOuterClassNames(props, 'input-group')}>
                 <span   className="input-group-label">{label}</span>
-                <input  className={featureSet.getInnerClassNames(this, "input-group-field")}
+                <input  className={featureSet.getInnerClassNames(props, "input-group-field")}
                         type="text"
                         value={value}
-                        {...featureSet.getAttrs(this)}/>
+                        {...featureSet.getAttrs(props)}/>
             </div>
         );
     }
