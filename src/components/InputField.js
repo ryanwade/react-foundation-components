@@ -7,10 +7,11 @@ class InputField extends React.Component {
     render() {
         let { input, className, children } = this.props;
         if(input.isInline) {
+            //children.className="input-group-field" applied on Feature.InputField & props.isInline
             return (
                 <div className={classNames(className, 'input-group')}>
                     <span className="input-group-label">{input.label}</span>
-                    {children} //input-group-field applied on Feature.InputField & props.isInline
+                    {children}
                 </div>
             );
         }

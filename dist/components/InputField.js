@@ -40,6 +40,7 @@ var InputField = function (_React$Component) {
             var children = _props.children;
 
             if (input.isInline) {
+                //children.className="input-group-field" applied on Feature.InputField & props.isInline
                 return _react2.default.createElement(
                     'div',
                     { className: (0, _classnames2.default)(className, 'input-group') },
@@ -48,8 +49,7 @@ var InputField = function (_React$Component) {
                         { className: 'input-group-label' },
                         input.label
                     ),
-                    children,
-                    ' //input-group-field applied on Feature.InputField & props.isInline'
+                    children
                 );
             } else {
                 return _react2.default.createElement(
