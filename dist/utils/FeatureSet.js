@@ -125,7 +125,9 @@ var FeatureSet = exports.FeatureSet = function () {
         }
     }, {
         key: 'getDefaultProps',
-        value: function getDefaultProps(defaultProps) {
+        value: function getDefaultProps() {
+            var defaultProps = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
             if (this.set[Features.Visibility]) {
                 defaultProps.show = true;
             }

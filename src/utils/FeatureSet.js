@@ -102,7 +102,7 @@ export class FeatureSet {
         }
         return propTypes;
     }
-    getDefaultProps(defaultProps) {
+    getDefaultProps(defaultProps = {}) {
         if(this.set[Features.Visibility]) {
             defaultProps.show = true;
         }
