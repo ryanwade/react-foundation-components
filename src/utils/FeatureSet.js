@@ -98,7 +98,7 @@ export class FeatureSet {
         if(this.set[Features.InputField]) {
             propTypes.value = this.set[Features.InputField];
             propTypes.label = PropTypes.string.isRequired;
-            propTypes.isInline = PropTypes.boolean;
+            propTypes.isInline = PropTypes.bool;
         }
         return propTypes;
     }
