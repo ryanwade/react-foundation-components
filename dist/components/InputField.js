@@ -70,7 +70,7 @@ var InputField = function (_React$Component) {
 }(_react2.default.Component);
 
 InputField.propTypes = {
-    input: _react.PropTypes.obj.isRequired,
+    input: _react.PropTypes.object.isRequired,
     className: _react.PropTypes.string.isRequired,
     children: _react.PropTypes.node.isRequired
 };

@@ -27,7 +27,7 @@ class InputField extends React.Component {
     }
 }
 InputField.propTypes = {
-    input: PropTypes.obj.isRequired,
+    input: PropTypes.object.isRequired,
     className: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired
 };
