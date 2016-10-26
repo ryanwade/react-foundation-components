@@ -1,34 +1,27 @@
 import React, { PropTypes } from 'react';
 import { NumberField as featureSet } from '../utils/componentFeatures';
+import InputField from './InputField';
 
 class NumberField extends React.Component {
     constructor(props) {
         super(props);
     }
     render() {
-        let { label, value, max, ...props } = this.props;
+        let { max, ...props } = this.props;
         return (
-            <div className={featureSet.getOuterClassNames(props)}>
-                <label>
-                    {label}
-                    <input  className={featureSet.getInnerClassNames(props, "input-group-field")}
-                            type="number"
-                            value={value}
-                            min={1}
-                            max={max}
-                            {...featureSet.getAttrs(props)}/>
-                </label>
-            </div>
+            <InputField className={featureSet.getOuterClassNames(props)} input={props}>
+                <input  className={featureSet.getInnerClassNames(props)}
+                        type="number"
+                        min={1}
+                        max={max}
+                        {...featureSet.getAttrs(props)}/>
+            </InputField>
         );
     }
 }
 NumberField.propTypes = featureSet.getPropTypes({
-    label: PropTypes.string.isRequired,
-    value: PropTypes.number,
     max: PropTypes.number
 });
-NumberField.defaultProps = featureSet.getDefaultProps({
-    value: 0
-});
+NumberField.defaultProps = featureSet.getDefaultProps();
 
 export default NumberField;

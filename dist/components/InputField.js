@@ -4,19 +4,15 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _componentFeatures = require('../utils/componentFeatures');
+var _classnames = require('classnames');
 
-var _InputField = require('./InputField');
-
-var _InputField2 = _interopRequireDefault(_InputField);
+var _classnames2 = _interopRequireDefault(_classnames);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26,33 +22,57 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var TextField = function (_React$Component) {
-    _inherits(TextField, _React$Component);
+var InputField = function (_React$Component) {
+    _inherits(InputField, _React$Component);
 
-    function TextField(props) {
-        _classCallCheck(this, TextField);
+    function InputField(props) {
+        _classCallCheck(this, InputField);
 
-        return _possibleConstructorReturn(this, (TextField.__proto__ || Object.getPrototypeOf(TextField)).call(this, props));
+        return _possibleConstructorReturn(this, (InputField.__proto__ || Object.getPrototypeOf(InputField)).call(this, props));
     }
 
-    _createClass(TextField, [{
+    _createClass(InputField, [{
         key: 'render',
         value: function render() {
-            var props = this.props;
-            return _react2.default.createElement(
-                _InputField2.default,
-                { className: _componentFeatures.TextField.getOuterClassNames(props), input: props },
-                _react2.default.createElement('input', _extends({ className: _componentFeatures.TextField.getInnerClassNames(props),
-                    type: 'text'
-                }, _componentFeatures.TextField.getAttrs(props)))
-            );
+            var _props = this.props;
+            var input = _props.input;
+            var className = _props.className;
+            var children = _props.children;
+
+            if (input.isInline) {
+                return _react2.default.createElement(
+                    'div',
+                    { className: (0, _classnames2.default)(className, 'input-group') },
+                    _react2.default.createElement(
+                        'span',
+                        { className: 'input-group-label' },
+                        input.label
+                    ),
+                    children,
+                    ' //input-group-field applied on Feature.InputField & props.isInline'
+                );
+            } else {
+                return _react2.default.createElement(
+                    'div',
+                    { className: className },
+                    _react2.default.createElement(
+                        'label',
+                        null,
+                        input.label,
+                        children
+                    )
+                );
+            }
         }
     }]);
 
-    return TextField;
+    return InputField;
 }(_react2.default.Component);
 
-TextField.propTypes = _componentFeatures.TextField.getPropTypes();
-TextField.defaultProps = _componentFeatures.TextField.getDefaultProps();
+InputField.propTypes = {
+    input: _react.PropTypes.obj.isRequired,
+    className: _react.PropTypes.string.isRequired,
+    children: _react.PropTypes.node.isRequired
+};
 
-exports.default = TextField;
+exports.default = InputField;

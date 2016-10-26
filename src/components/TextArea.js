@@ -1,30 +1,22 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { TextArea as featureSet } from '../utils/componentFeatures';
+import InputField from './InputField';
 
 class TextArea extends React.Component {
     constructor(props) {
         super(props);
     }
     render() {
-        let { label, value, ...props } = this.props;
+        let props = this.props;
         return (
-            <div className={featureSet.getOuterClassNames(props)}>
-                <label>
-                    {label}
-                    <textarea
-                        className={featureSet.getInnerClassNames(props)}
-                        value={value}
-                        {...featureSet.getAttrs(props)} />
-                </label>
-            </div>
+            <InputField className={featureSet.getOuterClassNames(props)} input={props}>
+                <textarea   className={featureSet.getInnerClassNames(props)}
+                            {...featureSet.getAttrs(props)} />
+            </InputField>
         );
     }
 }
-TextArea.propTypes = featureSet.getPropTypes({
-    label: PropTypes.string.isRequired,
-    value: PropTypes.string
-});
-TextArea.defaultProps = featureSet.getDefaultProps({
-});
+TextArea.propTypes = featureSet.getPropTypes();
+TextArea.defaultProps = featureSet.getDefaultProps();
 
 export default TextArea;

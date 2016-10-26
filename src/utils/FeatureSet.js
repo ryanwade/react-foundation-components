@@ -7,7 +7,8 @@ export const Features = {
     Disabled: "Disabled",
     MouseEvents: "MouseEvents",
     DataEvents: "DataEvents",
-    Float: "Float"
+    Float: "Float",
+    InputField: "InputField"
 };
 
 export class FeatureSet {
@@ -50,6 +51,12 @@ export class FeatureSet {
                 props.innerClassName
             );
         }
+        if(this.set[Features.InputField] && props.isInline) {
+            innerClassNames = classNames(
+                innerClassNames,
+                "input-group-field"
+            );
+        }
         return innerClassNames;
     }
     getAttrs(props) {
@@ -62,6 +69,9 @@ export class FeatureSet {
         }
         if(this.set[Features.DataEvents]) {
             attrs.onChange = props.onChange;
+        }
+        if(this.set[Features.InputField]) {
+            attrs.value = props.value;
         }
         return attrs;
     }
@@ -85,6 +95,11 @@ export class FeatureSet {
         if(this.set[Features.DataEvents]) {
             propTypes.onChange = PropTypes.func;
         }
+        if(this.set[Features.InputField]) {
+            propTypes.value = this.set[Features.InputField];
+            propTypes.label = PropTypes.string.isRequired;
+            propTypes.isInline = PropTypes.boolean;
+        }
         return propTypes;
     }
     getDefaultProps(defaultProps) {
@@ -96,6 +111,9 @@ export class FeatureSet {
         }
         if(this.set[Features.Disabled]) {
             defaultProps.disabled = false;
+        }
+        if(this.set[Features.InputField]) {
+            defaultProps.isInline = false;
         }
         return defaultProps;
     }

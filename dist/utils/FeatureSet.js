@@ -25,7 +25,8 @@ var Features = exports.Features = {
     Disabled: "Disabled",
     MouseEvents: "MouseEvents",
     DataEvents: "DataEvents",
-    Float: "Float"
+    Float: "Float",
+    InputField: "InputField"
 };
 
 var FeatureSet = exports.FeatureSet = function () {
@@ -68,6 +69,9 @@ var FeatureSet = exports.FeatureSet = function () {
             if (this.set[Features.ClassNames]) {
                 innerClassNames = (0, _classnames2.default)(innerClassNames, props.innerClassName);
             }
+            if (this.set[Features.InputField] && props.isInline) {
+                innerClassNames = (0, _classnames2.default)(innerClassNames, "input-group-field");
+            }
             return innerClassNames;
         }
     }, {
@@ -82,6 +86,9 @@ var FeatureSet = exports.FeatureSet = function () {
             }
             if (this.set[Features.DataEvents]) {
                 attrs.onChange = props.onChange;
+            }
+            if (this.set[Features.InputField]) {
+                attrs.value = props.value;
             }
             return attrs;
         }
@@ -109,6 +116,11 @@ var FeatureSet = exports.FeatureSet = function () {
             if (this.set[Features.DataEvents]) {
                 propTypes.onChange = _react.PropTypes.func;
             }
+            if (this.set[Features.InputField]) {
+                propTypes.value = this.set[Features.InputField];
+                propTypes.label = _react.PropTypes.string.isRequired;
+                propTypes.isInline = _react.PropTypes.boolean;
+            }
             return propTypes;
         }
     }, {
@@ -122,6 +134,9 @@ var FeatureSet = exports.FeatureSet = function () {
             }
             if (this.set[Features.Disabled]) {
                 defaultProps.disabled = false;
+            }
+            if (this.set[Features.InputField]) {
+                defaultProps.isInline = false;
             }
             return defaultProps;
         }

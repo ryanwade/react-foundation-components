@@ -14,6 +14,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _componentFeatures = require('../utils/componentFeatures');
 
+var _InputField = require('./InputField');
+
+var _InputField2 = _interopRequireDefault(_InputField);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
@@ -37,26 +41,18 @@ var NumberField = function (_React$Component) {
         key: 'render',
         value: function render() {
             var _props = this.props;
-            var label = _props.label;
-            var value = _props.value;
             var max = _props.max;
 
-            var props = _objectWithoutProperties(_props, ['label', 'value', 'max']);
+            var props = _objectWithoutProperties(_props, ['max']);
 
             return _react2.default.createElement(
-                'div',
-                { className: _componentFeatures.NumberField.getOuterClassNames(props) },
-                _react2.default.createElement(
-                    'label',
-                    null,
-                    label,
-                    _react2.default.createElement('input', _extends({ className: _componentFeatures.NumberField.getInnerClassNames(props, "input-group-field"),
-                        type: 'number',
-                        value: value,
-                        min: 1,
-                        max: max
-                    }, _componentFeatures.NumberField.getAttrs(props)))
-                )
+                _InputField2.default,
+                { className: _componentFeatures.NumberField.getOuterClassNames(props), input: props },
+                _react2.default.createElement('input', _extends({ className: _componentFeatures.NumberField.getInnerClassNames(props),
+                    type: 'number',
+                    min: 1,
+                    max: max
+                }, _componentFeatures.NumberField.getAttrs(props)))
             );
         }
     }]);
@@ -65,12 +61,8 @@ var NumberField = function (_React$Component) {
 }(_react2.default.Component);
 
 NumberField.propTypes = _componentFeatures.NumberField.getPropTypes({
-    label: _react.PropTypes.string.isRequired,
-    value: _react.PropTypes.number,
     max: _react.PropTypes.number
 });
-NumberField.defaultProps = _componentFeatures.NumberField.getDefaultProps({
-    value: 0
-});
+NumberField.defaultProps = _componentFeatures.NumberField.getDefaultProps();
 
 exports.default = NumberField;

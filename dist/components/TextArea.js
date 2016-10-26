@@ -14,9 +14,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _componentFeatures = require('../utils/componentFeatures');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _InputField = require('./InputField');
 
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+var _InputField2 = _interopRequireDefault(_InputField);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -36,24 +38,12 @@ var TextArea = function (_React$Component) {
     _createClass(TextArea, [{
         key: 'render',
         value: function render() {
-            var _props = this.props;
-            var label = _props.label;
-            var value = _props.value;
-
-            var props = _objectWithoutProperties(_props, ['label', 'value']);
-
+            var props = this.props;
             return _react2.default.createElement(
-                'div',
-                { className: _componentFeatures.TextArea.getOuterClassNames(props) },
-                _react2.default.createElement(
-                    'label',
-                    null,
-                    label,
-                    _react2.default.createElement('textarea', _extends({
-                        className: _componentFeatures.TextArea.getInnerClassNames(props),
-                        value: value
-                    }, _componentFeatures.TextArea.getAttrs(props)))
-                )
+                _InputField2.default,
+                { className: _componentFeatures.TextArea.getOuterClassNames(props), input: props },
+                _react2.default.createElement('textarea', _extends({ className: _componentFeatures.TextArea.getInnerClassNames(props)
+                }, _componentFeatures.TextArea.getAttrs(props)))
             );
         }
     }]);
@@ -61,10 +51,7 @@ var TextArea = function (_React$Component) {
     return TextArea;
 }(_react2.default.Component);
 
-TextArea.propTypes = _componentFeatures.TextArea.getPropTypes({
-    label: _react.PropTypes.string.isRequired,
-    value: _react.PropTypes.string
-});
-TextArea.defaultProps = _componentFeatures.TextArea.getDefaultProps({});
+TextArea.propTypes = _componentFeatures.TextArea.getPropTypes();
+TextArea.defaultProps = _componentFeatures.TextArea.getDefaultProps();
 
 exports.default = TextArea;

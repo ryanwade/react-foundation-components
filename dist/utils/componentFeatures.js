@@ -7,6 +7,8 @@ exports.TextArea = exports.TextField = exports.NumberField = exports.Divider = e
 
 var _ref, _ref2, _ref3, _ref4, _ref5, _ref6;
 
+var _react = require('react');
+
 var _FeatureSet = require('./FeatureSet');
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -17,8 +19,8 @@ var Title = exports.Title = new _FeatureSet.FeatureSet((_ref2 = {}, _definePrope
 
 var Divider = exports.Divider = new _FeatureSet.FeatureSet((_ref3 = {}, _defineProperty(_ref3, _FeatureSet.Features.ClassNames, true), _defineProperty(_ref3, _FeatureSet.Features.Visibility, true), _ref3));
 
-var NumberField = exports.NumberField = new _FeatureSet.FeatureSet((_ref4 = {}, _defineProperty(_ref4, _FeatureSet.Features.ClassNames, true), _defineProperty(_ref4, _FeatureSet.Features.Visibility, true), _defineProperty(_ref4, _FeatureSet.Features.Disabled, true), _defineProperty(_ref4, _FeatureSet.Features.DataEvents, true), _ref4));
+var NumberField = exports.NumberField = new _FeatureSet.FeatureSet((_ref4 = {}, _defineProperty(_ref4, _FeatureSet.Features.ClassNames, true), _defineProperty(_ref4, _FeatureSet.Features.Visibility, true), _defineProperty(_ref4, _FeatureSet.Features.Disabled, true), _defineProperty(_ref4, _FeatureSet.Features.DataEvents, true), _defineProperty(_ref4, _FeatureSet.Features.InputField, _react.PropTypes.number.isRequired), _ref4));
 
-var TextField = exports.TextField = new _FeatureSet.FeatureSet((_ref5 = {}, _defineProperty(_ref5, _FeatureSet.Features.ClassNames, true), _defineProperty(_ref5, _FeatureSet.Features.Visibility, true), _defineProperty(_ref5, _FeatureSet.Features.Disabled, true), _defineProperty(_ref5, _FeatureSet.Features.DataEvents, true), _ref5));
+var TextField = exports.TextField = new _FeatureSet.FeatureSet((_ref5 = {}, _defineProperty(_ref5, _FeatureSet.Features.ClassNames, true), _defineProperty(_ref5, _FeatureSet.Features.Visibility, true), _defineProperty(_ref5, _FeatureSet.Features.Disabled, true), _defineProperty(_ref5, _FeatureSet.Features.DataEvents, true), _defineProperty(_ref5, _FeatureSet.Features.InputField, _react.PropTypes.string.isRequired), _ref5));
 
-var TextArea = exports.TextArea = new _FeatureSet.FeatureSet((_ref6 = {}, _defineProperty(_ref6, _FeatureSet.Features.ClassNames, true), _defineProperty(_ref6, _FeatureSet.Features.Visibility, true), _defineProperty(_ref6, _FeatureSet.Features.Disabled, true), _defineProperty(_ref6, _FeatureSet.Features.DataEvents, true), _ref6));
+var TextArea = exports.TextArea = new _FeatureSet.FeatureSet((_ref6 = {}, _defineProperty(_ref6, _FeatureSet.Features.ClassNames, true), _defineProperty(_ref6, _FeatureSet.Features.Visibility, true), _defineProperty(_ref6, _FeatureSet.Features.Disabled, true), _defineProperty(_ref6, _FeatureSet.Features.DataEvents, true), _defineProperty(_ref6, _FeatureSet.Features.InputField, _react.PropTypes.string.isRequired), _ref6));
