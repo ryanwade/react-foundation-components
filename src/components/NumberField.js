@@ -8,10 +8,10 @@ class NumberField extends React.Component {
     render() {
         let { label, value, max } = this.props;
         return (
-            <div className={featureSet.getClassNames(this)}>
+            <div className={featureSet.getOuterClassNames(this)}>
                 <label>
                     {label}
-                    <input  className="input-group-field"
+                    <input  className={featureSet.getInnerClassNames(this, "input-group-field")}
                             type="number"
                             value={value}
                             min={1}

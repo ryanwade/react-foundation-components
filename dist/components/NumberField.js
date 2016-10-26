@@ -41,12 +41,12 @@ var NumberField = function (_React$Component) {
 
             return _react2.default.createElement(
                 'div',
-                { className: _componentFeatures.NumberField.getClassNames(this) },
+                { className: _componentFeatures.NumberField.getOuterClassNames(this) },
                 _react2.default.createElement(
                     'label',
                     null,
                     label,
-                    _react2.default.createElement('input', _extends({ className: 'input-group-field',
+                    _react2.default.createElement('input', _extends({ className: _componentFeatures.NumberField.getInnerClassNames(this, "input-group-field"),
                         type: 'number',
                         value: value,
                         min: 1,

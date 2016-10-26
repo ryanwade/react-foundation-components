@@ -36,10 +36,10 @@ var Title = function (_React$Component) {
 
             return _react2.default.createElement(
                 'div',
-                { className: _componentFeatures.Title.getClassNames(this) },
+                { className: _componentFeatures.Title.getOuterClassNames(this) },
                 _react2.default.createElement(
                     'h3',
-                    { className: 'rock-salt' },
+                    { className: _componentFeatures.Title.getInnerClassNames(this, "rock-salt") },
                     text
                 )
             );

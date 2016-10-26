@@ -45,11 +45,11 @@ var Button = function (_React$Component) {
 
             return _react2.default.createElement(
                 'div',
-                { className: _componentFeatures.Button.getClassNames(this) },
+                { className: _componentFeatures.Button.getOuterClassNames(this) },
                 _react2.default.createElement(
                     'button',
                     _extends({ type: 'button',
-                        className: (0, _classnames2.default)("button", color)
+                        className: _componentFeatures.Button.getInnerClassNames(this, (0, _classnames2.default)("button", color))
                     }, _componentFeatures.Button.getAttrs(this)),
                     label || children
                 )

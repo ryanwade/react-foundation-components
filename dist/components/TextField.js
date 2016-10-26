@@ -40,13 +40,13 @@ var TextField = function (_React$Component) {
 
             return _react2.default.createElement(
                 'div',
-                { className: _componentFeatures.TextField.getClassNames(this, 'input-group') },
+                { className: _componentFeatures.TextField.getOuterClassNames(this, 'input-group') },
                 _react2.default.createElement(
                     'span',
                     { className: 'input-group-label' },
                     label
                 ),
-                _react2.default.createElement('input', _extends({ className: 'input-group-field',
+                _react2.default.createElement('input', _extends({ className: _componentFeatures.TextField.getInnerClassNames(this, "input-group-field"),
                     type: 'text',
                     value: value
                 }, _componentFeatures.TextField.getAttrs(this)))

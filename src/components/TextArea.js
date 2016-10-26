@@ -8,10 +8,11 @@ class TextArea extends React.Component {
     render() {
         let { label, value } = this.props;
         return (
-            <div className={featureSet.getClassNames(this)}>
+            <div className={featureSet.getOuterClassNames(this)}>
                 <label>
                     {label}
                     <textarea
+                        className={featureSet.getInnerClassNames(this)}
                         value={value}
                         {...featureSet.getAttrs(this)} />
                 </label>

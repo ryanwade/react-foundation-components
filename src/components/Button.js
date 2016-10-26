@@ -9,9 +9,9 @@ class Button extends React.Component {
     render() {
         let { color, label, children } = this.props;
         return (
-            <div className={featureSet.getClassNames(this)}>
+            <div className={featureSet.getOuterClassNames(this)}>
                 <button type="button"
-                        className={classNames("button", color)}
+                        className={featureSet.getInnerClassNames(this, classNames("button", color))}
                         {...featureSet.getAttrs(this)}>
                         {label || children}
                 </button>

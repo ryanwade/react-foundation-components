@@ -40,12 +40,13 @@ var TextArea = function (_React$Component) {
 
             return _react2.default.createElement(
                 'div',
-                { className: _componentFeatures.TextArea.getClassNames(this) },
+                { className: _componentFeatures.TextArea.getOuterClassNames(this) },
                 _react2.default.createElement(
                     'label',
                     null,
                     label,
                     _react2.default.createElement('textarea', _extends({
+                        className: _componentFeatures.TextArea.getInnerClassNames(this),
                         value: value
                     }, _componentFeatures.TextArea.getAttrs(this)))
                 )

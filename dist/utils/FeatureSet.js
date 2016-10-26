@@ -36,29 +36,39 @@ var FeatureSet = exports.FeatureSet = function () {
 
         this.set = set;
 
-        this.getClassNames = this.getClassNames.bind(this);
+        this.getOuterClassNames = this.getOuterClassNames.bind(this);
+        this.getInnerClassNames = this.getInnerClassNames.bind(this);
         this.getAttrs = this.getAttrs.bind(this);
         this.getDefaultProps = this.getDefaultProps.bind(this);
         this.getPropTypes = this.getPropTypes.bind(this);
     }
 
     _createClass(FeatureSet, [{
-        key: 'getClassNames',
-        value: function getClassNames(ref, extraClasses) {
-            var myClassNames = extraClasses;
+        key: 'getOuterClassNames',
+        value: function getOuterClassNames(ref, extraClasses) {
+            var outerClassNames = extraClasses;
             if (this.set[Features.ClassNames]) {
-                (0, _classnames2.default)(myClassNames, ref.props.className);
+                outerClassNames = (0, _classnames2.default)(outerClassNames, ref.props.outerClassName, ref.props.className);
             }
             if (this.set[Features.Visibility]) {
-                myClassNames = (0, _classnames2.default)(myClassNames, {
+                outerClassNames = (0, _classnames2.default)(outerClassNames, {
                     "show": ref.props.show,
                     "hide": !ref.props.show
                 });
             }
             if (this.set[Features.Float]) {
-                myClassNames = (0, _classnames2.default)(myClassNames, _defineProperty({}, "float-" + ref.props.float, ref.props.float));
+                outerClassNames = (0, _classnames2.default)(outerClassNames, _defineProperty({}, "float-" + ref.props.float, ref.props.float));
             }
-            return myClassNames;
+            return outerClassNames;
+        }
+    }, {
+        key: 'getInnerClassNames',
+        value: function getInnerClassNames(ref, extraClasses) {
+            var innerClassNames = extraClasses;
+            if (this.set[Features.ClassNames]) {
+                innerClassNames = (0, _classnames2.default)(innerClassNames, ref.props.innerClassName);
+            }
+            return innerClassNames;
         }
     }, {
         key: 'getAttrs',
@@ -81,7 +91,8 @@ var FeatureSet = exports.FeatureSet = function () {
             var propTypes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
             if (this.set[Features.ClassNames]) {
-                propTypes.className = _react.PropTypes.string;
+                propTypes.outerClassName = _react.PropTypes.string;
+                propTypes.innerClassName = _react.PropTypes.string;
             }
             if (this.set[Features.Visibility]) {
                 propTypes.show = _react.PropTypes.bool;

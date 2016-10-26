@@ -8,9 +8,9 @@ class TextField extends React.Component {
     render() {
         let { label, value } = this.props;
         return (
-            <div className={featureSet.getClassNames(this, 'input-group')}>
+            <div className={featureSet.getOuterClassNames(this, 'input-group')}>
                 <span   className="input-group-label">{label}</span>
-                <input  className="input-group-field"
+                <input  className={featureSet.getInnerClassNames(this, "input-group-field")}
                         type="text"
                         value={value}
                         {...featureSet.getAttrs(this)}/>

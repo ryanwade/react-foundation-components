@@ -14,31 +14,43 @@ export class FeatureSet {
     constructor(set = {}) {
         this.set = set;
 
-        this.getClassNames      = this.getClassNames.bind(this);
+        this.getOuterClassNames = this.getOuterClassNames.bind(this);
+        this.getInnerClassNames = this.getInnerClassNames.bind(this);
         this.getAttrs           = this.getAttrs.bind(this);
         this.getDefaultProps    = this.getDefaultProps.bind(this);
         this.getPropTypes       = this.getPropTypes.bind(this);
     }
-    getClassNames(ref, extraClasses) {
-        let myClassNames = extraClasses;
+    getOuterClassNames(ref, extraClasses) {
+        let outerClassNames = extraClasses;
         if(this.set[Features.ClassNames]) {
-            classNames(
-                myClassNames,
+            outerClassNames = classNames(
+                outerClassNames,
+                ref.props.outerClassName,
                 ref.props.className
             );
         }
         if(this.set[Features.Visibility]) {
-            myClassNames = classNames(myClassNames, {
+            outerClassNames = classNames(outerClassNames, {
                 "show": ref.props.show,
                 "hide": !ref.props.show
             });
         }
         if(this.set[Features.Float]) {
-            myClassNames = classNames(myClassNames, {
+            outerClassNames = classNames(outerClassNames, {
                 ["float-"+ref.props.float]: ref.props.float
             });
         }
-        return myClassNames;
+        return outerClassNames;
+    }
+    getInnerClassNames(ref, extraClasses) {
+        let innerClassNames = extraClasses;
+        if(this.set[Features.ClassNames]) {
+            innerClassNames = classNames(
+                innerClassNames,
+                ref.props.innerClassName
+            );
+        }
+        return innerClassNames;
     }
     getAttrs(ref) {
         let attrs = {};
@@ -55,7 +67,8 @@ export class FeatureSet {
     }
     getPropTypes(propTypes = {}) {
         if(this.set[Features.ClassNames]) {
-            propTypes.className = PropTypes.string;
+            propTypes.outerClassName = PropTypes.string;
+            propTypes.innerClassName = PropTypes.string;
         }
         if(this.set[Features.Visibility]) {
             propTypes.show = PropTypes.bool;
