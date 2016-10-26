@@ -56,10 +56,10 @@ var TextArea = function (_React$Component) {
     return TextArea;
 }(_react2.default.Component);
 
-TextArea.propTypes = {
+TextArea.propTypes = _componentFeatures.TextArea.getPropTypes({
     label: _react.PropTypes.string.isRequired,
     value: _react.PropTypes.string
-};
+});
 TextArea.defaultProps = _componentFeatures.TextArea.getDefaultProps({});
 
 exports.default = TextArea;

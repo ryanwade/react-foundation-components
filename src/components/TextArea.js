@@ -19,10 +19,10 @@ class TextArea extends React.Component {
         );
     }
 }
-TextArea.propTypes = {
+TextArea.propTypes = featureSet.getPropTypes({
     label: PropTypes.string.isRequired,
     value: PropTypes.string
-};
+});
 TextArea.defaultProps = featureSet.getDefaultProps({
 });
 
