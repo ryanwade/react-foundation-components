@@ -34,9 +34,10 @@ var Title = function (_React$Component) {
     _createClass(Title, [{
         key: 'render',
         value: function render() {
-            var text = props.text;
+            var _props = this.props;
+            var text = _props.text;
 
-            var props = _objectWithoutProperties(props, ['text']);
+            var props = _objectWithoutProperties(_props, ['text']);
 
             return _react2.default.createElement(
                 'div',
