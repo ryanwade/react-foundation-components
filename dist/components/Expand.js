@@ -10,15 +10,15 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _componentFeatures = require('../../utils/componentFeatures');
+var _componentFeatures = require('../utils/componentFeatures');
 
-var _ExpandTitle = require('./ExpandTitle.js');
+var _Title = require('./Expand/Title.js');
 
-var _ExpandTitle2 = _interopRequireDefault(_ExpandTitle);
+var _Title2 = _interopRequireDefault(_Title);
 
-var _ExpandContent = require('./ExpandContent.js');
+var _Content = require('./Expand/Content.js');
 
-var _ExpandContent2 = _interopRequireDefault(_ExpandContent);
+var _Content2 = _interopRequireDefault(_Content);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38,52 +38,49 @@ var Expand = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (Expand.__proto__ || Object.getPrototypeOf(Expand)).call(this, props));
 
-        _this.renderChildren = _this.renderChildren.bind(_this);
+        _this.toggleShow = _this.toggleShow.bind(_this);
         return _this;
     }
 
     _createClass(Expand, [{
-        key: 'renderChildren',
-        value: function renderChildren(children) {
-            var _this2 = this;
-
+        key: 'toggleShow',
+        value: function toggleShow() {
             var _ref = this.state || {};
 
             var _ref$show = _ref.show;
             var show = _ref$show === undefined ? false : _ref$show;
 
-
-            return _react2.default.Children.map(children, function (child) {
-                if (child.type === _ExpandTitle2.default) {
-                    //set show state on ExpandTitle
-                    return _react2.default.cloneElement(child, {
-                        onClick: function onClick() {
-                            _this2.setState({ show: !show });
-                        },
-                        show: show
-                    });
-                } else if (child.type === _ExpandContent2.default) {
-                    //set Visibility on ExpandContent
-                    return _react2.default.cloneElement(child, {
-                        show: show
-                    });
-                } else {
-                    return child;
-                }
+            this.setState({
+                show: !show
             });
         }
     }, {
         key: 'render',
         value: function render() {
             var _props = this.props;
-            var children = _props.children;
+            var title = _props.title;
+            var content = _props.content;
 
-            var props = _objectWithoutProperties(_props, ['children']);
+            var props = _objectWithoutProperties(_props, ['title', 'content']);
+
+            var _ref2 = this.state || {};
+
+            var _ref2$show = _ref2.show;
+            var show = _ref2$show === undefined ? false : _ref2$show;
 
             return _react2.default.createElement(
                 'div',
                 { className: _componentFeatures.Expand.getOuterClassNames(props, "expand") },
-                this.renderChildren(children)
+                _react2.default.createElement(
+                    _Title2.default,
+                    { onClick: this.toggleShow, show: show },
+                    title
+                ),
+                _react2.default.createElement(
+                    _Content2.default,
+                    { show: show },
+                    content
+                )
             );
         }
     }]);
@@ -92,7 +89,8 @@ var Expand = function (_React$Component) {
 }(_react2.default.Component);
 
 Expand.propTypes = _componentFeatures.Expand.getPropTypes({
-    children: _react.PropTypes.node
+    title: _react.PropTypes.node.isRequired,
+    content: _react.PropTypes.node.isRequired
 });
 Expand.defaultProps = _componentFeatures.Expand.getDefaultProps();
 
