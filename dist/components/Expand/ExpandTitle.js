@@ -47,9 +47,13 @@ var ExpandTitle = function (_React$Component) {
                 _extends({ className: _componentFeatures.ExpandTitle.getOuterClassNames(props, "row callout expand-content")
                 }, _componentFeatures.ExpandTitle.getAttrs(props)),
                 children,
-                _react2.default.createElement('div', { className: _componentFeatures.ExpandTitle.getInnerClassNames(props, "is-accordion-submenu-parent"),
-                    'aria-expanded': show,
-                    style: { position: 'absolute', bottom: '15px', right: '0px' } })
+                _react2.default.createElement(
+                    'div',
+                    { className: _componentFeatures.ExpandTitle.getInnerClassNames(props, "is-accordion-submenu-parent"),
+                        'aria-expanded': show,
+                        style: { position: 'absolute', bottom: '15px', right: '0px' } },
+                    _react2.default.createElement('a', null)
+                )
             );
         }
     }]);

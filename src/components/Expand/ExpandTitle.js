@@ -13,7 +13,7 @@ class ExpandTitle extends React.Component {
                     <div    className={featureSet.getInnerClassNames(props,"is-accordion-submenu-parent")}
                             aria-expanded={show}
                             style={{position: 'absolute', bottom: '15px', right: '0px'}}>
-                            {/*<a onClick={toggleState}></a>*/}
+                            <a></a>
                     </div>
             </div>
         );

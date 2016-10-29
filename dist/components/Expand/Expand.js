@@ -57,7 +57,7 @@ var Expand = function (_React$Component) {
                 if (child.type === _ExpandTitle2.default) {
                     //set show state on ExpandTitle
                     return _react2.default.cloneElement(child, {
-                        toggleState: function toggleState() {
+                        onClick: function onClick() {
                             _this2.setState({ show: !show });
                         },
                         show: show

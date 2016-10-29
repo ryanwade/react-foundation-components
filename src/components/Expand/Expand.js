@@ -15,7 +15,7 @@ class Expand extends React.Component {
             if (child.type === ExpandTitle) {
                 //set show state on ExpandTitle
                 return React.cloneElement(child, {
-                    toggleState: () => {
+                    onClick: () => {
                         this.setState({show: !show});
                     },
                     show
