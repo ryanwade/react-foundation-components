@@ -42,3 +42,15 @@ export const TextArea = new FeatureSet({
     [Features.DataEvents]: true,
     [Features.InputField]: PropTypes.string.isRequired
 });
+
+export const ExpandContent = new FeatureSet({
+    [Features.Visibility]: true
+});
+
+export const ExpandTitle = new FeatureSet({
+    [Features.MouseEvents]: true
+});
+
+export const Expand = new FeatureSet({
+    [Features.ClassNames]: true
+});

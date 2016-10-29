@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.TextArea = exports.TextField = exports.NumberField = exports.Divider = exports.Title = exports.Button = undefined;
+exports.Expand = exports.ExpandTitle = exports.ExpandContent = exports.TextArea = exports.TextField = exports.NumberField = exports.Divider = exports.Title = exports.Button = undefined;
 
 var _ref, _ref2, _ref3, _ref4, _ref5, _ref6;
 
@@ -24,3 +24,9 @@ var NumberField = exports.NumberField = new _FeatureSet.FeatureSet((_ref4 = {}, 
 var TextField = exports.TextField = new _FeatureSet.FeatureSet((_ref5 = {}, _defineProperty(_ref5, _FeatureSet.Features.ClassNames, true), _defineProperty(_ref5, _FeatureSet.Features.Visibility, true), _defineProperty(_ref5, _FeatureSet.Features.Disabled, true), _defineProperty(_ref5, _FeatureSet.Features.DataEvents, true), _defineProperty(_ref5, _FeatureSet.Features.InputField, _react.PropTypes.string.isRequired), _ref5));
 
 var TextArea = exports.TextArea = new _FeatureSet.FeatureSet((_ref6 = {}, _defineProperty(_ref6, _FeatureSet.Features.ClassNames, true), _defineProperty(_ref6, _FeatureSet.Features.Visibility, true), _defineProperty(_ref6, _FeatureSet.Features.Disabled, true), _defineProperty(_ref6, _FeatureSet.Features.DataEvents, true), _defineProperty(_ref6, _FeatureSet.Features.InputField, _react.PropTypes.string.isRequired), _ref6));
+
+var ExpandContent = exports.ExpandContent = new _FeatureSet.FeatureSet(_defineProperty({}, _FeatureSet.Features.Visibility, true));
+
+var ExpandTitle = exports.ExpandTitle = new _FeatureSet.FeatureSet(_defineProperty({}, _FeatureSet.Features.MouseEvents, true));
+
+var Expand = exports.Expand = new _FeatureSet.FeatureSet(_defineProperty({}, _FeatureSet.Features.ClassNames, true));
