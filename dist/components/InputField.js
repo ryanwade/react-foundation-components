@@ -39,7 +39,7 @@ var InputField = function (_React$Component) {
             var className = _props.className;
             var children = _props.children;
 
-            if (input.isInline) {
+            if (input.label && input.isInline) {
                 //children.className="input-group-field" applied on Feature.InputField & props.isInline
                 return _react2.default.createElement(
                     'div',
@@ -51,7 +51,8 @@ var InputField = function (_React$Component) {
                     ),
                     children
                 );
-            } else {
+            }
+            if (input.label && !input.isInline) {
                 return _react2.default.createElement(
                     'div',
                     { className: className },
@@ -63,6 +64,11 @@ var InputField = function (_React$Component) {
                     )
                 );
             }
+            return _react2.default.createElement(
+                'div',
+                { className: className },
+                children
+            );
         }
     }]);
 

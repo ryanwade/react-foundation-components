@@ -6,7 +6,7 @@ class InputField extends React.Component {
     }
     render() {
         let { input, className, children } = this.props;
-        if(input.isInline) {
+        if(input.label && input.isInline) {
             //children.className="input-group-field" applied on Feature.InputField & props.isInline
             return (
                 <div className={classNames(className, 'input-group')}>
@@ -15,7 +15,7 @@ class InputField extends React.Component {
                 </div>
             );
         }
-        else {
+        if(input.label && !input.isInline) {
             return (
                 <div className={className}>
                     <label>
@@ -25,6 +25,11 @@ class InputField extends React.Component {
                 </div>
             );
         }
+        return (
+            <div className={className}>
+                {children}
+            </div>
+        );
     }
 }
 InputField.propTypes = {

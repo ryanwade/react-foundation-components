@@ -97,7 +97,7 @@ export class FeatureSet {
         }
         if(this.set[Features.InputField]) {
             propTypes.value = this.set[Features.InputField];
-            propTypes.label = PropTypes.string.isRequired;
+            propTypes.label = PropTypes.string;
             propTypes.isInline = PropTypes.bool;
         }
         return propTypes;
@@ -114,6 +114,7 @@ export class FeatureSet {
         }
         if(this.set[Features.InputField]) {
             defaultProps.isInline = false;
+            defaultProps.label = false;
         }
         return defaultProps;
     }

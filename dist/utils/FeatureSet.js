@@ -118,7 +118,7 @@ var FeatureSet = exports.FeatureSet = function () {
             }
             if (this.set[Features.InputField]) {
                 propTypes.value = this.set[Features.InputField];
-                propTypes.label = _react.PropTypes.string.isRequired;
+                propTypes.label = _react.PropTypes.string;
                 propTypes.isInline = _react.PropTypes.bool;
             }
             return propTypes;
@@ -139,6 +139,7 @@ var FeatureSet = exports.FeatureSet = function () {
             }
             if (this.set[Features.InputField]) {
                 defaultProps.isInline = false;
+                defaultProps.label = false;
             }
             return defaultProps;
         }
