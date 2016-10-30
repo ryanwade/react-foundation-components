@@ -44,7 +44,7 @@ var Title = function (_React$Component) {
                 { className: _componentFeatures.Title.getOuterClassNames(props) },
                 _react2.default.createElement(
                     'h3',
-                    { className: _componentFeatures.Title.getInnerClassNames(props, "rock-salt") },
+                    { className: _componentFeatures.Title.getInnerClassNames(props, "title-font") },
                     text
                 )
             );
