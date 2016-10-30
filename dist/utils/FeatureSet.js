@@ -139,7 +139,7 @@ var FeatureSet = exports.FeatureSet = function () {
             }
             if (this.set[Features.InputField]) {
                 defaultProps.isInline = false;
-                defaultProps.label = false;
+                defaultProps.label = null;
             }
             return defaultProps;
         }
