@@ -14,7 +14,8 @@ export const Features = {
     Orientation: "Orientation",
     Expanded: "Expanded",
     Simple: "Simple",
-    Nested: "Nested"
+    Nested: "Nested",
+    IconTop: "IconTop"
 };
 
 export const Alignment = {
@@ -89,6 +90,11 @@ export class FeatureSet {
         if(this.set[Features.Nested]) {
             outerClassNames = classNames(outerClassNames, {
                 "nested": props.isNested
+            });
+        }
+        if(this.set[Features.IconTop]) {
+            outerClassNames = classNames(outerClassNames, {
+                "icon-top": props.iconTop
             });
         }
         return outerClassNames;
@@ -168,6 +174,9 @@ export class FeatureSet {
         if(this.set[Features.Nested]) {
             propTypes.isNested = PropTypes.bool;
         }
+        if(this.set[Features.IconTop]) {
+            propTypes.iconTop = PropTypes.bool;
+        }
         return propTypes;
     }
     getDefaultProps(defaultProps = {}) {
@@ -201,6 +210,9 @@ export class FeatureSet {
         }
         if(this.set[Features.Nested]) {
             defaultProps.isNested = false;
+        }
+        if(this.set[Features.IconTop]) {
+            defaultProps.iconTop = false;
         }
         return defaultProps;
     }
