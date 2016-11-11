@@ -31,7 +31,8 @@ var Features = exports.Features = {
     Active: "Active",
     Orientation: "Orientation",
     Expanded: "Expanded",
-    Simple: "Simple"
+    Simple: "Simple",
+    Nested: "Nested"
 };
 
 var Alignment = exports.Alignment = {
@@ -103,6 +104,11 @@ var FeatureSet = exports.FeatureSet = function () {
             if (this.set[Features.Simple]) {
                 outerClassNames = (0, _classnames2.default)(outerClassNames, {
                     "simple": props.isSimple
+                });
+            }
+            if (this.set[Features.Nested]) {
+                outerClassNames = (0, _classnames2.default)(outerClassNames, {
+                    "nested": props.isNested
                 });
             }
             return outerClassNames;
@@ -181,6 +187,9 @@ var FeatureSet = exports.FeatureSet = function () {
             if (this.set[Features.Simple]) {
                 propTypes.isSimple = _react.PropTypes.bool;
             }
+            if (this.set[Features.Nested]) {
+                propTypes.isNested = _react.PropTypes.bool;
+            }
             return propTypes;
         }
     }, {
@@ -215,6 +224,9 @@ var FeatureSet = exports.FeatureSet = function () {
             }
             if (this.set[Features.Simple]) {
                 defaultProps.isSimple = false;
+            }
+            if (this.set[Features.Nested]) {
+                defaultProps.isNested = false;
             }
             return defaultProps;
         }
