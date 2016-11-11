@@ -27,7 +27,8 @@ var Features = exports.Features = {
     DataEvents: "DataEvents",
     Float: "Float",
     InputField: "InputField",
-    Alignment: "Alignment"
+    Alignment: "Alignment",
+    Active: "Active"
 };
 
 var Alignment = exports.Alignment = {
@@ -73,6 +74,11 @@ var FeatureSet = exports.FeatureSet = function () {
             }
             if (this.set[Features.Alignment]) {
                 outerClassNames = (0, _classnames2.default)(outerClassNames, _defineProperty({}, "align-" + props.alignment, props.alignment));
+            }
+            if (this.set[Features.Active]) {
+                outerClassNames = (0, _classnames2.default)(outerClassNames, {
+                    "active": props.isActive
+                });
             }
             return outerClassNames;
         }
@@ -138,6 +144,9 @@ var FeatureSet = exports.FeatureSet = function () {
             if (this.set[Features.Alignment]) {
                 propTypes.alignment = _react.PropTypes.oneOf(Alignment_List);
             }
+            if (this.set[Features.Active]) {
+                propTypes.isActive = _react.PropTypes.bool;
+            }
             return propTypes;
         }
     }, {
@@ -161,7 +170,9 @@ var FeatureSet = exports.FeatureSet = function () {
             if (this.set[Features.Alignment]) {
                 defaultProps.alignment = Alignment.None;
             }
-
+            if (this.set[Features.Active]) {
+                defaultProps.isActive = false;
+            }
             return defaultProps;
         }
     }]);

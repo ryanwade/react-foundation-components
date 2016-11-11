@@ -9,7 +9,8 @@ export const Features = {
     DataEvents: "DataEvents",
     Float: "Float",
     InputField: "InputField",
-    Alignment: "Alignment"
+    Alignment: "Alignment",
+    Active: "Active"
 };
 
 export const Alignment = {
@@ -53,6 +54,11 @@ export class FeatureSet {
         if(this.set[Features.Alignment]) {
             outerClassNames = classNames(outerClassNames, {
                 ["align-"+props.alignment]: props.alignment
+            });
+        }
+        if(this.set[Features.Active]) {
+            outerClassNames = classNames(outerClassNames,{
+                "active": props.isActive
             });
         }
         return outerClassNames;
@@ -117,6 +123,9 @@ export class FeatureSet {
         if(this.set[Features.Alignment]) {
             propTypes.alignment = PropTypes.oneOf(Alignment_List);
         }
+        if(this.set[Features.Active]) {
+            propTypes.isActive = PropTypes.bool;
+        }
         return propTypes;
     }
     getDefaultProps(defaultProps = {}) {
@@ -136,7 +145,9 @@ export class FeatureSet {
         if(this.set[Features.Alignment]) {
             defaultProps.alignment = Alignment.None;
         }
- 
+        if(this.set[Features.Active]) {
+            defaultProps.isActive = false;
+        }
         return defaultProps;
     }
 }
