@@ -54,3 +54,27 @@ export const ExpandTitle = new FeatureSet({
 export const Expand = new FeatureSet({
     [Features.ClassNames]: true
 });
+
+export const Menu = new FeatureSet({
+    [Features.Visibility]: true,
+    [Features.Alignment]: true,
+    [Features.Orientaiton]: true,
+    [Features.Expanded]: true,
+    [Features.Simple]: true,
+    [Features.Nested]: true,
+    [Features.IconTop]: true
+});
+
+export const MenuItem = new FeatureSet({
+    [Features.Visibility]: true,
+    [Features.Active]: true
+});
+
+export const MenuText = new FeatureSet({
+    [Features.Visibility]: true
+});
+
+export const Icon = new FeatureSet({
+    [Features.Visibility]: true,
+    [Features.Icon]: true
+});

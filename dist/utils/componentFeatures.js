@@ -3,9 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Expand = exports.ExpandTitle = exports.ExpandContent = exports.TextArea = exports.TextField = exports.NumberField = exports.Divider = exports.Title = exports.Button = undefined;
+exports.Icon = exports.MenuText = exports.MenuItem = exports.Menu = exports.Expand = exports.ExpandTitle = exports.ExpandContent = exports.TextArea = exports.TextField = exports.NumberField = exports.Divider = exports.Title = exports.Button = undefined;
 
-var _ref, _ref2, _ref3, _ref4, _ref5, _ref6;
+var _ref, _ref2, _ref3, _ref4, _ref5, _ref6, _ref10, _ref11, _ref13;
 
 var _react = require('react');
 
@@ -30,3 +30,11 @@ var ExpandContent = exports.ExpandContent = new _FeatureSet.FeatureSet(_definePr
 var ExpandTitle = exports.ExpandTitle = new _FeatureSet.FeatureSet(_defineProperty({}, _FeatureSet.Features.MouseEvents, true));
 
 var Expand = exports.Expand = new _FeatureSet.FeatureSet(_defineProperty({}, _FeatureSet.Features.ClassNames, true));
+
+var Menu = exports.Menu = new _FeatureSet.FeatureSet((_ref10 = {}, _defineProperty(_ref10, _FeatureSet.Features.Visibility, true), _defineProperty(_ref10, _FeatureSet.Features.Alignment, true), _defineProperty(_ref10, _FeatureSet.Features.Orientaiton, true), _defineProperty(_ref10, _FeatureSet.Features.Expanded, true), _defineProperty(_ref10, _FeatureSet.Features.Simple, true), _defineProperty(_ref10, _FeatureSet.Features.Nested, true), _defineProperty(_ref10, _FeatureSet.Features.IconTop, true), _ref10));
+
+var MenuItem = exports.MenuItem = new _FeatureSet.FeatureSet((_ref11 = {}, _defineProperty(_ref11, _FeatureSet.Features.Visibility, true), _defineProperty(_ref11, _FeatureSet.Features.Active, true), _ref11));
+
+var MenuText = exports.MenuText = new _FeatureSet.FeatureSet(_defineProperty({}, _FeatureSet.Features.Visibility, true));
+
+var Icon = exports.Icon = new _FeatureSet.FeatureSet((_ref13 = {}, _defineProperty(_ref13, _FeatureSet.Features.Visibility, true), _defineProperty(_ref13, _FeatureSet.Features.Icon, true), _ref13));
