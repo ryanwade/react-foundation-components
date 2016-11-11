@@ -42,8 +42,7 @@ export class FeatureSet {
     getOuterClassNames(props, extraClasses) {
         let outerClassNames = extraClasses;
         if(this.set[Features.ClassNames]) {
-            outerClassNames = classNames(
-                outerClassNames,
+            outerClassNames = classNames(outerClassNames,
                 props.outerClassName,
                 props.className
             );
