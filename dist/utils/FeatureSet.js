@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.FeatureSet = exports.Features = undefined;
+exports.FeatureSet = exports.Alignment = exports.Features = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -26,8 +26,19 @@ var Features = exports.Features = {
     MouseEvents: "MouseEvents",
     DataEvents: "DataEvents",
     Float: "Float",
-    InputField: "InputField"
+    InputField: "InputField",
+    Alignment: "Alignment"
 };
+
+var Alignment = exports.Alignment = {
+    Left: "left",
+    Right: "right",
+    Center: "center",
+    None: null
+};
+var Alignment_List = Object.keys(Alignment).map(function (key) {
+    return Alignment[key];
+});
 
 var FeatureSet = exports.FeatureSet = function () {
     function FeatureSet() {
@@ -59,6 +70,9 @@ var FeatureSet = exports.FeatureSet = function () {
             }
             if (this.set[Features.Float]) {
                 outerClassNames = (0, _classnames2.default)(outerClassNames, _defineProperty({}, "float-" + props.float, props.float));
+            }
+            if (this.set[Features.Alignment]) {
+                outerClassNames = (0, _classnames2.default)(outerClassNames, _defineProperty({}, "align-" + props.alignment, props.alignment));
             }
             return outerClassNames;
         }
@@ -105,7 +119,7 @@ var FeatureSet = exports.FeatureSet = function () {
                 propTypes.show = _react.PropTypes.bool;
             }
             if (this.set[Features.Float]) {
-                propTypes.float = _react.PropTypes.string;
+                propTypes.float = _react.PropTypes.oneOf(Alignment_List);
             }
             if (this.set[Features.Disabled]) {
                 propTypes.disabled = _react.PropTypes.bool;
@@ -121,6 +135,9 @@ var FeatureSet = exports.FeatureSet = function () {
                 propTypes.label = _react.PropTypes.string;
                 propTypes.isInline = _react.PropTypes.bool;
             }
+            if (this.set[Features.Alignment]) {
+                propTypes.alignment = _react.PropTypes.oneOf(Alignment_List);
+            }
             return propTypes;
         }
     }, {
@@ -132,7 +149,7 @@ var FeatureSet = exports.FeatureSet = function () {
                 defaultProps.show = true;
             }
             if (this.set[Features.Float]) {
-                defaultProps.float = null;
+                defaultProps.float = Alignment.None;
             }
             if (this.set[Features.Disabled]) {
                 defaultProps.disabled = false;
@@ -141,6 +158,10 @@ var FeatureSet = exports.FeatureSet = function () {
                 defaultProps.isInline = false;
                 defaultProps.label = null;
             }
+            if (this.set[Features.Alignment]) {
+                defaultProps.alignment = Alignment.None;
+            }
+
             return defaultProps;
         }
     }]);

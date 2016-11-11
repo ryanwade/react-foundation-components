@@ -12,6 +12,14 @@ export const Features = {
     Alignment: "Alignment"
 };
 
+export const Alignment = {
+    Left: "left",
+    Right: "right",
+    Center: "center",
+    None: null
+};
+const Alignment_List = Object.keys(Alignment).map(key => Alignment[key]);
+
 export class FeatureSet {
     constructor(set = {}) {
         this.set = set;
@@ -90,7 +98,7 @@ export class FeatureSet {
             propTypes.show = PropTypes.bool;
         }
         if(this.set[Features.Float]) {
-            propTypes.float = PropTypes.string;
+            propTypes.float = PropTypes.oneOf(Alignment_List);
         }
         if(this.set[Features.Disabled]) {
             propTypes.disabled = PropTypes.bool;
@@ -107,7 +115,7 @@ export class FeatureSet {
             propTypes.isInline = PropTypes.bool;
         }
         if(this.set[Features.Alignment]) {
-            propTypes.alignment = PropTypes.string;
+            propTypes.alignment = PropTypes.oneOf(Alignment_List);
         }
         return propTypes;
     }
@@ -116,7 +124,7 @@ export class FeatureSet {
             defaultProps.show = true;
         }
         if(this.set[Features.Float]) {
-            defaultProps.float = null; 
+            defaultProps.float = Alignment.None; 
         }
         if(this.set[Features.Disabled]) {
             defaultProps.disabled = false;
@@ -126,8 +134,9 @@ export class FeatureSet {
             defaultProps.label = null;
         }
         if(this.set[Features.Alignment]) {
-            defaultProps.alignment = null;
+            defaultProps.alignment = Alignment.None;
         }
+ 
         return defaultProps;
     }
 }
