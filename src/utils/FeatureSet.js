@@ -10,7 +10,8 @@ export const Features = {
     Float: "Float",
     InputField: "InputField",
     Alignment: "Alignment",
-    Active: "Active"
+    Active: "Active",
+    Orientation: "Orientation"
 };
 
 export const Alignment = {
@@ -20,6 +21,13 @@ export const Alignment = {
     None: null
 };
 const Alignment_List = Object.keys(Alignment).map(key => Alignment[key]);
+
+export const Orientation = {
+    Horizontal: "horizontal",
+    Vertical: "vertical",
+    Default: null
+};
+const Orientation_List = Object.keys(Orientation).map(key => Orientation[key]);
 
 export class FeatureSet {
     constructor(set = {}) {
@@ -60,6 +68,11 @@ export class FeatureSet {
             outerClassNames = classNames(outerClassNames,{
                 "active": props.isActive
             });
+        }
+        if(this.set[Features.Orientation]) {
+            outerClassNames = classNames(outerClassNames, 
+                props.orientation
+            );
         }
         return outerClassNames;
     }
@@ -126,6 +139,9 @@ export class FeatureSet {
         if(this.set[Features.Active]) {
             propTypes.isActive = PropTypes.bool;
         }
+        if(this.set[Features.Orientation]) {
+            propTypes.orientation = PropTypes.oneOf(Orientation_List);
+        }
         return propTypes;
     }
     getDefaultProps(defaultProps = {}) {
@@ -147,6 +163,9 @@ export class FeatureSet {
         }
         if(this.set[Features.Active]) {
             defaultProps.isActive = false;
+        }
+        if(this.set[Features.Orientation]) {
+            defaultProps.orientation = Orientation.Default;
         }
         return defaultProps;
     }

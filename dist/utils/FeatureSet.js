@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.FeatureSet = exports.Alignment = exports.Features = undefined;
+exports.FeatureSet = exports.Orientation = exports.Alignment = exports.Features = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -28,7 +28,8 @@ var Features = exports.Features = {
     Float: "Float",
     InputField: "InputField",
     Alignment: "Alignment",
-    Active: "Active"
+    Active: "Active",
+    Orientation: "Orientation"
 };
 
 var Alignment = exports.Alignment = {
@@ -39,6 +40,15 @@ var Alignment = exports.Alignment = {
 };
 var Alignment_List = Object.keys(Alignment).map(function (key) {
     return Alignment[key];
+});
+
+var Orientation = exports.Orientation = {
+    Horizontal: "horizontal",
+    Vertical: "vertical",
+    Default: null
+};
+var Orientation_List = Object.keys(Orientation).map(function (key) {
+    return Orientation[key];
 });
 
 var FeatureSet = exports.FeatureSet = function () {
@@ -79,6 +89,9 @@ var FeatureSet = exports.FeatureSet = function () {
                 outerClassNames = (0, _classnames2.default)(outerClassNames, {
                     "active": props.isActive
                 });
+            }
+            if (this.set[Features.Orientation]) {
+                outerClassNames = (0, _classnames2.default)(outerClassNames, props.orientation);
             }
             return outerClassNames;
         }
@@ -147,6 +160,9 @@ var FeatureSet = exports.FeatureSet = function () {
             if (this.set[Features.Active]) {
                 propTypes.isActive = _react.PropTypes.bool;
             }
+            if (this.set[Features.Orientation]) {
+                propTypes.orientation = _react.PropTypes.oneOf(Orientation_List);
+            }
             return propTypes;
         }
     }, {
@@ -172,6 +188,9 @@ var FeatureSet = exports.FeatureSet = function () {
             }
             if (this.set[Features.Active]) {
                 defaultProps.isActive = false;
+            }
+            if (this.set[Features.Orientation]) {
+                defaultProps.orientation = Orientation.Default;
             }
             return defaultProps;
         }
