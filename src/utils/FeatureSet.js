@@ -8,7 +8,8 @@ export const Features = {
     MouseEvents: "MouseEvents",
     DataEvents: "DataEvents",
     Float: "Float",
-    InputField: "InputField"
+    InputField: "InputField",
+    Alignment: "Alignment"
 };
 
 export class FeatureSet {
@@ -39,6 +40,11 @@ export class FeatureSet {
         if(this.set[Features.Float]) {
             outerClassNames = classNames(outerClassNames, {
                 ["float-"+props.float]: props.float
+            });
+        }
+        if(this.set[Features.Alignment]) {
+            outerClassNames = classNames(outerClassNames, {
+                ["align-"+props.alignment]: props.alignment
             });
         }
         return outerClassNames;
@@ -100,6 +106,9 @@ export class FeatureSet {
             propTypes.label = PropTypes.string;
             propTypes.isInline = PropTypes.bool;
         }
+        if(this.set[Features.Alignment]) {
+            propTypes.alignment = PropTypes.string;
+        }
         return propTypes;
     }
     getDefaultProps(defaultProps = {}) {
@@ -115,6 +124,9 @@ export class FeatureSet {
         if(this.set[Features.InputField]) {
             defaultProps.isInline = false;
             defaultProps.label = null;
+        }
+        if(this.set[Features.Alignment]) {
+            defaultProps.alignment = null;
         }
         return defaultProps;
     }
