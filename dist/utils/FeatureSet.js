@@ -33,6 +33,7 @@ var Features = exports.Features = {
     Expanded: "Expanded",
     Simple: "Simple",
     Nested: "Nested",
+    Icon: "Icon",
     IconTop: "IconTop"
 };
 
@@ -111,6 +112,9 @@ var FeatureSet = exports.FeatureSet = function () {
                 outerClassNames = (0, _classnames2.default)(outerClassNames, {
                     "nested": props.isNested
                 });
+            }
+            if (this.set[Features.Icon]) {
+                outerClassNames = (0, _classnames2.default)(outerClassNames, _defineProperty({}, "fi-" + props.icon, props.icon));
             }
             if (this.set[Features.IconTop]) {
                 outerClassNames = (0, _classnames2.default)(outerClassNames, {
@@ -196,6 +200,9 @@ var FeatureSet = exports.FeatureSet = function () {
             if (this.set[Features.Nested]) {
                 propTypes.isNested = _react.PropTypes.bool;
             }
+            if (this.set[Features.Icon]) {
+                propTypes.icon = _react.PropTypes.string;
+            }
             if (this.set[Features.IconTop]) {
                 propTypes.iconTop = _react.PropTypes.bool;
             }
@@ -236,6 +243,9 @@ var FeatureSet = exports.FeatureSet = function () {
             }
             if (this.set[Features.Nested]) {
                 defaultProps.isNested = false;
+            }
+            if (this.set[Features.Icon]) {
+                defaultProps.icon = null;
             }
             if (this.set[Features.IconTop]) {
                 defaultProps.iconTop = false;

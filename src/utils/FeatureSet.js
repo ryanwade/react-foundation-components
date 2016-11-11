@@ -15,6 +15,7 @@ export const Features = {
     Expanded: "Expanded",
     Simple: "Simple",
     Nested: "Nested",
+    Icon: "Icon",
     IconTop: "IconTop"
 };
 
@@ -90,6 +91,11 @@ export class FeatureSet {
         if(this.set[Features.Nested]) {
             outerClassNames = classNames(outerClassNames, {
                 "nested": props.isNested
+            });
+        }
+        if(this.set[Features.Icon]) {
+            outerClassNames = classNames(outerClassNames, {
+                ["fi-"+props.icon]: props.icon
             });
         }
         if(this.set[Features.IconTop]) {
@@ -174,6 +180,9 @@ export class FeatureSet {
         if(this.set[Features.Nested]) {
             propTypes.isNested = PropTypes.bool;
         }
+        if(this.set[Features.Icon]) {
+            propTypes.icon = PropTypes.string;
+        }
         if(this.set[Features.IconTop]) {
             propTypes.iconTop = PropTypes.bool;
         }
@@ -210,6 +219,9 @@ export class FeatureSet {
         }
         if(this.set[Features.Nested]) {
             defaultProps.isNested = false;
+        }
+        if(this.set[Features.Icon]) {
+            defaultProps.icon = null;
         }
         if(this.set[Features.IconTop]) {
             defaultProps.iconTop = false;
