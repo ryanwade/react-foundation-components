@@ -11,7 +11,9 @@ export const Features = {
     InputField: "InputField",
     Alignment: "Alignment",
     Active: "Active",
-    Orientation: "Orientation"
+    Orientation: "Orientation",
+    Expanded: "Expanded",
+    Simple: "Simple"
 };
 
 export const Alignment = {
@@ -72,6 +74,16 @@ export class FeatureSet {
             outerClassNames = classNames(outerClassNames, 
                 props.orientation
             );
+        }
+        if(this.set[Features.Expanded]) {
+            outerClassNames = classNames(outerClassNames, {
+                "expanded": props.isExpanded
+            });
+        }
+        if(this.set[Features.Simple]) {
+            outerClassNames = classNames(outerClassNames, {
+                "simple": props.isSimple
+            });
         }
         return outerClassNames;
     }
@@ -141,6 +153,12 @@ export class FeatureSet {
         if(this.set[Features.Orientation]) {
             propTypes.orientation = PropTypes.oneOf(Orientation_List);
         }
+        if(this.set[Features.Expanded]) {
+            propTypes.isExpanded = PropTypes.bool;
+        }
+        if(this.set[Features.Simple]) {
+            propTypes.isSimple = PropTypes.bool;
+        }
         return propTypes;
     }
     getDefaultProps(defaultProps = {}) {
@@ -165,6 +183,12 @@ export class FeatureSet {
         }
         if(this.set[Features.Orientation]) {
             defaultProps.orientation = Orientation.Default;
+        }
+        if(this.set[Features.Expanded]) {
+            defaultProps.isExpanded = false;
+        }
+        if(this.set[Features.Simple]) {
+            defaultProps.isSimple = false;
         }
         return defaultProps;
     }

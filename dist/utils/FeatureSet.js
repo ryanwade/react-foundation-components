@@ -29,7 +29,9 @@ var Features = exports.Features = {
     InputField: "InputField",
     Alignment: "Alignment",
     Active: "Active",
-    Orientation: "Orientation"
+    Orientation: "Orientation",
+    Expanded: "Expanded",
+    Simple: "Simple"
 };
 
 var Alignment = exports.Alignment = {
@@ -92,6 +94,16 @@ var FeatureSet = exports.FeatureSet = function () {
             }
             if (this.set[Features.Orientation]) {
                 outerClassNames = (0, _classnames2.default)(outerClassNames, props.orientation);
+            }
+            if (this.set[Features.Expanded]) {
+                outerClassNames = (0, _classnames2.default)(outerClassNames, {
+                    "expanded": props.isExpanded
+                });
+            }
+            if (this.set[Features.Simple]) {
+                outerClassNames = (0, _classnames2.default)(outerClassNames, {
+                    "simple": props.isSimple
+                });
             }
             return outerClassNames;
         }
@@ -163,6 +175,12 @@ var FeatureSet = exports.FeatureSet = function () {
             if (this.set[Features.Orientation]) {
                 propTypes.orientation = _react.PropTypes.oneOf(Orientation_List);
             }
+            if (this.set[Features.Expanded]) {
+                propTypes.isExpanded = _react.PropTypes.bool;
+            }
+            if (this.set[Features.Simple]) {
+                propTypes.isSimple = _react.PropTypes.bool;
+            }
             return propTypes;
         }
     }, {
@@ -191,6 +209,12 @@ var FeatureSet = exports.FeatureSet = function () {
             }
             if (this.set[Features.Orientation]) {
                 defaultProps.orientation = Orientation.Default;
+            }
+            if (this.set[Features.Expanded]) {
+                defaultProps.isExpanded = false;
+            }
+            if (this.set[Features.Simple]) {
+                defaultProps.isSimple = false;
             }
             return defaultProps;
         }
