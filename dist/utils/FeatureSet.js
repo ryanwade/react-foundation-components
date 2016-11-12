@@ -39,6 +39,10 @@ var _isArray2 = require('lodash/isArray');
 
 var _isArray3 = _interopRequireDefault(_isArray2);
 
+var _size2 = require('lodash/size');
+
+var _size3 = _interopRequireDefault(_size2);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -74,6 +78,13 @@ function mediaToClass(size, txt, n) {
         if ((0, _isString3.default)(size)) return size + append(txt) + append(n);
         if ((0, _isArray3.default)(size)) return (0, _classnames2.default)((0, _map3.default)(size, function (s) {
                 return mediaToClass(s, txt, n);
+        }));
+}
+function pairToClass(arr) {
+        if (!(0, _isArray3.default)(arr)) return null;
+        if ((0, _size3.default)(arr) == 2 && (0, _isString3.default)(arr[1])) return mediaToClass(arr[0], "offset", arr[1]);
+        if ((0, _isArray3.default)(arr[0])) return (0, _classnames2.default)((0, _map3.default)(arr, function (pair) {
+                return pairToClass(pair);
         }));
 }
 
@@ -122,7 +133,7 @@ var FeatureSet = exports.FeatureSet = function () {
                                 "row": true,
                                 "column": props.isColumn === true
                         });
-                        if (this.set[Features.ColumnStyle]) classes.push((_classes$push6 = {}, _defineProperty(_classes$push6, _enums.Size.Small + "-" + props.small, !(0, _isUndefined3.default)(props.small)), _defineProperty(_classes$push6, _enums.Size.Medium + "-" + props.medium, !(0, _isUndefined3.default)(props.medium)), _defineProperty(_classes$push6, _enums.Size.Large + "-" + props.large, !(0, _isUndefined3.default)(props.large)), _defineProperty(_classes$push6, _enums.Size.XLarge + "-" + props.xlarge, !(0, _isUndefined3.default)(props.xlarge)), _defineProperty(_classes$push6, _enums.Size.XXLarge + "-" + props.xxlarge, !(0, _isUndefined3.default)(props.xxlarge)), _defineProperty(_classes$push6, "columns", true), _classes$push6));
+                        if (this.set[Features.ColumnStyle]) classes.push((_classes$push6 = {}, _defineProperty(_classes$push6, _enums.Size.Small + "-" + props.small, !(0, _isUndefined3.default)(props.small)), _defineProperty(_classes$push6, _enums.Size.Medium + "-" + props.medium, !(0, _isUndefined3.default)(props.medium)), _defineProperty(_classes$push6, _enums.Size.Large + "-" + props.large, !(0, _isUndefined3.default)(props.large)), _defineProperty(_classes$push6, _enums.Size.XLarge + "-" + props.xlarge, !(0, _isUndefined3.default)(props.xlarge)), _defineProperty(_classes$push6, _enums.Size.XXLarge + "-" + props.xxlarge, !(0, _isUndefined3.default)(props.xxlarge)), _defineProperty(_classes$push6, pairToClass(props.offsetOn), (0, _isArray3.default)(props.offsetOn)), _defineProperty(_classes$push6, "columns", true), _classes$push6));
                         if (this.set[Features.Gutters]) classes.push((_classes$push7 = {}, _defineProperty(_classes$push7, _enums.Gutters.Collapse, props.collapse === true), _defineProperty(_classes$push7, mediaToClass(props.collapseOn, _enums.Gutters.Collapse), !(0, _isUndefined3.default)(props.collapseOn)), _defineProperty(_classes$push7, mediaToClass(props.uncollapseOn, _enums.Gutters.Uncollapse), !(0, _isUndefined3.default)(props.uncollapseOn)), _classes$push7));
                         return (0, _classnames2.default)(classes);
                 }
@@ -216,7 +227,8 @@ var FeatureSet = exports.FeatureSet = function () {
                                 medium: _react.PropTypes.number,
                                 large: _react.PropTypes.number,
                                 xlarge: _react.PropTypes.number,
-                                xxlarge: _react.PropTypes.number
+                                xxlarge: _react.PropTypes.number,
+                                offsetOn: _react.PropTypes.arrayOf(_react.PropTypes.oneOf([oneOfList(_enums.Size), _react.PropTypes.number, _react.PropTypes.arrayOf([oneOfList(_enums.Size), _react.PropTypes.number])]))
                         });
                         return propTypes;
                 }

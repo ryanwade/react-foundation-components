@@ -9,6 +9,7 @@ import _assign from 'lodash/assign';
 import _map from 'lodash/map';
 import _isString from 'lodash/isString';
 import _isArray from 'lodash/isArray';
+import _size from 'lodash/size';
 
 export const Features = {
     ClassNames:     "ClassNames",
@@ -38,6 +39,11 @@ function append(n) {
 function mediaToClass(size, txt, n) {
     if(_isString(size)) return size + append(txt) + append(n);
     if(_isArray(size)) return classNames(_map(size, (s) => mediaToClass(s, txt, n)));
+}
+function pairToClass(arr) {
+    if(!_isArray(arr)) return null;
+    if(_size(arr) == 2 && _isString(arr[1])) return mediaToClass(arr[0],"offset",arr[1]);
+    if(_isArray(arr[0])) return classNames(_map(arr, (pair) => pairToClass(pair)));
 }
 export class FeatureSet {
     constructor(set = {}) {
@@ -93,6 +99,7 @@ export class FeatureSet {
                 [Size.Large+"-"+props.large]                            : !_isUndefined(props.large),
                 [Size.XLarge+"-"+props.xlarge]                          : !_isUndefined(props.xlarge),
                 [Size.XXLarge+"-"+props.xxlarge]                        : !_isUndefined(props.xxlarge),
+                [pairToClass(props.offsetOn)]                           : _isArray(props.offsetOn),
                 "columns"                                               : true
         });
         if(this.set[Features.Gutters]) classes.push({
@@ -188,7 +195,8 @@ export class FeatureSet {
                 medium          : PropTypes.number,
                 large           : PropTypes.number,
                 xlarge          : PropTypes.number,
-                xxlarge         : PropTypes.number
+                xxlarge         : PropTypes.number,
+                offsetOn        : PropTypes.arrayOf(PropTypes.oneOf([oneOfList(Size), PropTypes.number, PropTypes.arrayOf([oneOfList(Size), PropTypes.number])]))
         });
         return propTypes;
     }
