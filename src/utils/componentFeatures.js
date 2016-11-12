@@ -76,3 +76,9 @@ export const Icon = new FeatureSet({
     [Features.Visibility]: true,
     [Features.Icon]: true
 });
+
+export const Row = new FeatureSet({
+    [Features.Visibility]: true,
+    [Features.ContentExpand]: true,
+    [Features.RowStyle]: true
+});

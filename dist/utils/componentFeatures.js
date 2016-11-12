@@ -3,9 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Icon = exports.MenuText = exports.MenuItem = exports.Menu = exports.Expand = exports.ExpandTitle = exports.ExpandContent = exports.TextArea = exports.TextField = exports.NumberField = exports.Divider = exports.Title = exports.Button = undefined;
+exports.Row = exports.Icon = exports.MenuText = exports.MenuItem = exports.Menu = exports.Expand = exports.ExpandTitle = exports.ExpandContent = exports.TextArea = exports.TextField = exports.NumberField = exports.Divider = exports.Title = exports.Button = undefined;
 
-var _ref, _ref2, _ref3, _ref4, _ref5, _ref6, _ref10, _ref11, _ref13;
+var _ref, _ref2, _ref3, _ref4, _ref5, _ref6, _ref10, _ref11, _ref13, _ref14;
 
 var _react = require('react');
 
@@ -38,3 +38,5 @@ var MenuItem = exports.MenuItem = new _FeatureSet.FeatureSet((_ref11 = {}, _defi
 var MenuText = exports.MenuText = new _FeatureSet.FeatureSet(_defineProperty({}, _FeatureSet.Features.Visibility, true));
 
 var Icon = exports.Icon = new _FeatureSet.FeatureSet((_ref13 = {}, _defineProperty(_ref13, _FeatureSet.Features.Visibility, true), _defineProperty(_ref13, _FeatureSet.Features.Icon, true), _ref13));
+
+var Row = exports.Row = new _FeatureSet.FeatureSet((_ref14 = {}, _defineProperty(_ref14, _FeatureSet.Features.Visibility, true), _defineProperty(_ref14, _FeatureSet.Features.ContentExpand, true), _defineProperty(_ref14, _FeatureSet.Features.RowStyle, true), _ref14));

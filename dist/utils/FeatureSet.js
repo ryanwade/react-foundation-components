@@ -51,6 +51,7 @@ var Features = exports.Features = {
     ContentExpand: "ContentExpand",
     MenuStyle: "MenuStyle",
     RowStyle: "RowStyle",
+    ColumnStyle: "ColumnStyle",
     Icon: "Icon"
 };
 
@@ -83,7 +84,7 @@ var FeatureSet = exports.FeatureSet = function () {
         value: function getClassNames(props, extraClasses) {
             var _classNames;
 
-            return (0, _classnames2.default)((_classNames = {}, _defineProperty(_classNames, extraClasses, true), _defineProperty(_classNames, props.className, this.set[Features.ClassNames]), _defineProperty(_classNames, "show", this.set[Features.Visibility] && props.show), _defineProperty(_classNames, "hide", this.set[Features.Visibility] && !props.show), _defineProperty(_classNames, "float-" + props.float, this.set[Features.Float] && props.float), _defineProperty(_classNames, "align-" + props.alignment, this.set[Features.Alignment] && props.alignment), _defineProperty(_classNames, "active", this.set[Features.Active] && props.isActive), _defineProperty(_classNames, props.orientation, this.set[Features.Orientation]), _defineProperty(_classNames, "expanded", this.set[Features.ContentExpand] && props.isExpanded), _defineProperty(_classNames, "simple", this.set[Features.MenuStyle] && props.isSimple), _defineProperty(_classNames, "nested", this.set[Features.MenuStyle] && props.isNested), _defineProperty(_classNames, "icon-top", this.set[Features.MenuStyle] && props.iconTop), _defineProperty(_classNames, "fi-" + props.icon, this.set[Features.Icon] && props.icon), _classNames));
+            return (0, _classnames2.default)((_classNames = {}, _defineProperty(_classNames, extraClasses, true), _defineProperty(_classNames, props.className, this.set[Features.ClassNames]), _defineProperty(_classNames, "show", this.set[Features.Visibility] && props.show), _defineProperty(_classNames, "hide", this.set[Features.Visibility] && !props.show), _defineProperty(_classNames, "float-" + props.float, this.set[Features.Float] && props.float), _defineProperty(_classNames, "align-" + props.alignment, this.set[Features.Alignment] && props.alignment), _defineProperty(_classNames, "active", this.set[Features.Active] && props.isActive), _defineProperty(_classNames, props.orientation, this.set[Features.Orientation]), _defineProperty(_classNames, "expanded", this.set[Features.ContentExpand] && props.isExpanded), _defineProperty(_classNames, "simple", this.set[Features.MenuStyle] && props.isSimple), _defineProperty(_classNames, "nested", this.set[Features.MenuStyle] && props.isNested), _defineProperty(_classNames, "icon-top", this.set[Features.MenuStyle] && props.iconTop), _defineProperty(_classNames, "fi-" + props.icon, this.set[Features.Icon] && props.icon), _defineProperty(_classNames, "row", this.set[Features.RowStyle]), _defineProperty(_classNames, "column", this.set[Features.ColumnStyle] || this.set[Features.RowStyle] && props.isColumn), _classNames));
         }
     }, {
         key: 'getInnerClassNames',
@@ -125,7 +126,8 @@ var FeatureSet = exports.FeatureSet = function () {
                 isSimple: this.set[Features.MenuStyle] ? _react.PropTypes.bool : undefined,
                 isNested: this.set[Features.MenuStyle] ? _react.PropTypes.bool : undefined,
                 iconTop: this.set[Features.MenuStyle] ? _react.PropTypes.bool : undefined,
-                icon: this.set[Features.Icon] ? _react.PropTypes.string : undefined
+                icon: this.set[Features.Icon] ? _react.PropTypes.string : undefined,
+                isColumn: this.set[Features.RowStyle] ? _react.PropTypes.bool : undefined
             }));
         }
     }, {

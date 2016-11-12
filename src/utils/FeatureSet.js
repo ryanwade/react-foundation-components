@@ -22,6 +22,7 @@ export const Features = {
     ContentExpand:  "ContentExpand",
     MenuStyle:      "MenuStyle",
     RowStyle:       "RowStyle",
+    ColumnStyle:    "ColumnStyle",
     Icon:           "Icon"
 };
 
@@ -55,7 +56,10 @@ export class FeatureSet {
             "simple"                    : this.set[Features.MenuStyle]          &&  props.isSimple,
             "nested"                    : this.set[Features.MenuStyle]          &&  props.isNested,
             "icon-top"                  : this.set[Features.MenuStyle]          &&  props.iconTop,
-            ["fi-"+props.icon]          : this.set[Features.Icon]               &&  props.icon
+            ["fi-"+props.icon]          : this.set[Features.Icon]               &&  props.icon,
+            "row"                       : this.set[Features.RowStyle],
+            "column"                    : this.set[Features.ColumnStyle] ||
+                                         (this.set[Features.RowStyle]           &&  props.isColumn)
         });
     }
     getInnerClassNames(props, extraClasses) {
@@ -92,7 +96,8 @@ export class FeatureSet {
             isSimple        : this.set[Features.MenuStyle]      ? PropTypes.bool                    : undefined,
             isNested        : this.set[Features.MenuStyle]      ? PropTypes.bool                    : undefined,
             iconTop         : this.set[Features.MenuStyle]      ? PropTypes.bool                    : undefined,
-            icon            : this.set[Features.Icon]           ? PropTypes.string                  : undefined
+            icon            : this.set[Features.Icon]           ? PropTypes.string                  : undefined,
+            isColumn        : this.set[Features.RowStyle]       ? PropTypes.bool                    : undefined
         }));
     }
     getDefaultProps(defaultProps = {}) {
