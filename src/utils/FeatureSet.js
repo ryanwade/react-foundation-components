@@ -175,8 +175,8 @@ export class FeatureSet {
         });
         if(this.set[Features.Gutters]) _assign(propTypes, {      
                 collapse        : PropTypes.bool,      
-                collapseOn      : PropTypes.oneOf(PropTypes.string, PropTypes.arrayOf(oneOfList(Size))),      
-                uncollapseOn    : PropTypes.oneOf(PropTypes.string, PropTypes.arrayOf(oneOfList(Size)))
+                collapseOn      : PropTypes.oneOf([PropTypes.string, PropTypes.arrayOf(oneOfList(Size))]),      
+                uncollapseOn    : PropTypes.oneOf([PropTypes.string, PropTypes.arrayOf(oneOfList(Size))])
         });
         return propTypes;
     }
