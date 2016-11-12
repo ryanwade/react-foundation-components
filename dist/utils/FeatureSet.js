@@ -31,6 +31,18 @@ var _assign2 = require('lodash/assign');
 
 var _assign3 = _interopRequireDefault(_assign2);
 
+var _map2 = require('lodash/map');
+
+var _map3 = _interopRequireDefault(_map2);
+
+var _isString2 = require('lodash/isString');
+
+var _isString3 = _interopRequireDefault(_isString2);
+
+var _isArray2 = require('lodash/isArray');
+
+var _isArray3 = _interopRequireDefault(_isArray2);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -52,7 +64,8 @@ var Features = exports.Features = {
     MenuStyle: "MenuStyle",
     RowStyle: "RowStyle",
     ColumnStyle: "ColumnStyle",
-    Icon: "Icon"
+    Icon: "Icon",
+    Gutters: "Gutters"
 };
 
 function oneOfList(obj) {
@@ -62,6 +75,15 @@ function clean(obj) {
     return (0, _pickBy3.default)(obj, function (o) {
         return !(0, _isUndefined3.default)(o);
     });
+}
+function append(n) {
+    return n ? "-" + n : "";
+}
+function mediaToClass(size, txt, n) {
+    if ((0, _isString3.default)(size)) return size + append(txt) + append(n);
+    if ((0, _isArray3.default)(size)) return (0, _classnames2.default)((0, _map3.default)(size, function (s) {
+        return mediaToClass(s, txt, n);
+    }));
 }
 
 var FeatureSet = exports.FeatureSet = function () {
@@ -84,7 +106,7 @@ var FeatureSet = exports.FeatureSet = function () {
         value: function getClassNames(props, extraClasses) {
             var _classNames;
 
-            return (0, _classnames2.default)((_classNames = {}, _defineProperty(_classNames, extraClasses, true), _defineProperty(_classNames, props.className, this.set[Features.ClassNames]), _defineProperty(_classNames, "show", this.set[Features.Visibility] && props.show), _defineProperty(_classNames, "hide", this.set[Features.Visibility] && !props.show), _defineProperty(_classNames, "float-" + props.float, this.set[Features.Float] && props.float), _defineProperty(_classNames, "align-" + props.alignment, this.set[Features.Alignment] && props.alignment), _defineProperty(_classNames, "active", this.set[Features.Active] && props.isActive), _defineProperty(_classNames, props.orientation, this.set[Features.Orientation]), _defineProperty(_classNames, "expanded", this.set[Features.ContentExpand] && props.isExpanded), _defineProperty(_classNames, "simple", this.set[Features.MenuStyle] && props.isSimple), _defineProperty(_classNames, "nested", this.set[Features.MenuStyle] && props.isNested), _defineProperty(_classNames, "icon-top", this.set[Features.MenuStyle] && props.iconTop), _defineProperty(_classNames, "fi-" + props.icon, this.set[Features.Icon] && props.icon), _defineProperty(_classNames, "row", this.set[Features.RowStyle]), _defineProperty(_classNames, "column", this.set[Features.ColumnStyle] || this.set[Features.RowStyle] && props.isColumn), _classNames));
+            return (0, _classnames2.default)((_classNames = {}, _defineProperty(_classNames, extraClasses, true), _defineProperty(_classNames, props.className, this.set[Features.ClassNames]), _defineProperty(_classNames, "show", this.set[Features.Visibility] && props.show), _defineProperty(_classNames, "hide", this.set[Features.Visibility] && !props.show), _defineProperty(_classNames, "float-" + props.float, this.set[Features.Float] && props.float), _defineProperty(_classNames, "align-" + props.alignment, this.set[Features.Alignment] && props.alignment), _defineProperty(_classNames, "active", this.set[Features.Active] && props.isActive), _defineProperty(_classNames, props.orientation, this.set[Features.Orientation]), _defineProperty(_classNames, "expanded", this.set[Features.ContentExpand] && props.isExpanded), _defineProperty(_classNames, "simple", this.set[Features.MenuStyle] && props.isSimple), _defineProperty(_classNames, "nested", this.set[Features.MenuStyle] && props.isNested), _defineProperty(_classNames, "icon-top", this.set[Features.MenuStyle] && props.iconTop), _defineProperty(_classNames, "fi-" + props.icon, this.set[Features.Icon] && props.icon), _defineProperty(_classNames, "row", this.set[Features.RowStyle]), _defineProperty(_classNames, "column", this.set[Features.ColumnStyle] || this.set[Features.RowStyle] && props.isColumn), _defineProperty(_classNames, _enums.Gutters.Collapse, this.set[Features.Gutters] && props.collapse), _defineProperty(_classNames, mediaToClass(props.collapseOn, _enums.Gutters.Collapse), this.set[Features.Gutters] && props.collapseOn), _defineProperty(_classNames, mediaToClass(props.uncollapseOn, _enums.Gutters.Uncollapse), this.set[Features.Gutters] && props.uncollapseOn), _classNames));
         }
     }, {
         key: 'getInnerClassNames',
@@ -127,7 +149,10 @@ var FeatureSet = exports.FeatureSet = function () {
                 isNested: this.set[Features.MenuStyle] ? _react.PropTypes.bool : undefined,
                 iconTop: this.set[Features.MenuStyle] ? _react.PropTypes.bool : undefined,
                 icon: this.set[Features.Icon] ? _react.PropTypes.string : undefined,
-                isColumn: this.set[Features.RowStyle] ? _react.PropTypes.bool : undefined
+                isColumn: this.set[Features.RowStyle] ? _react.PropTypes.bool : undefined,
+                collapse: this.set[Features.Gutters] ? _react.PropTypes.bool : undefined,
+                collapseOn: this.set[Features.Gutters] ? _react.PropTypes.arrayOf(oneOfList(_enums.Size)) : undefined,
+                uncollapseOn: this.set[Features.Gutters] ? _react.PropTypes.arrayOf(oneOfList(_enums.Size)) : undefined
             }));
         }
     }, {
@@ -148,7 +173,8 @@ var FeatureSet = exports.FeatureSet = function () {
                 isSimple: this.set[Features.MenuStyle] ? false : undefined,
                 isNested: this.set[Features.MenuStyle] ? false : undefined,
                 iconTop: this.set[Features.MenuStyle] ? false : undefined,
-                icon: this.set[Features.Icon] ? null : undefined
+                icon: this.set[Features.Icon] ? null : undefined,
+                collapse: this.set[Features.Gutters] ? false : undefined
             }));
         }
     }]);

@@ -14,3 +14,16 @@ var Orientation = exports.Orientation = {
     Vertical: "vertical",
     Default: null
 };
+
+var Size = exports.Size = {
+    Small: "small",
+    Medium: "medium",
+    Large: "large",
+    XLarge: "xlarge",
+    XXLarge: "xxlarge"
+};
+
+var Gutters = exports.Gutters = {
+    Collapse: "collapse",
+    Uncollapse: "uncollapse"
+};

@@ -9,3 +9,16 @@ export const Orientation = {
     Vertical: "vertical",
     Default: null
 };
+
+export const Size = {
+    Small: "small",
+    Medium: "medium",
+    Large: "large",
+    XLarge: "xlarge",
+    XXLarge: "xxlarge"
+};
+
+export const Gutters = {
+    Collapse: "collapse",
+    Uncollapse: "uncollapse"
+};

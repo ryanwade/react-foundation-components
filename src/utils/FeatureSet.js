@@ -1,12 +1,15 @@
 import { PropTypes } from 'react';
 import classNames from 'classnames';
 
-import { Alignment, Orientation } from './enums';
+import { Alignment, Orientation, Size, Gutters } from './enums';
 
 import _values from 'lodash/values';
 import _pickBy from 'lodash/pickBy';
 import _isUndefined from 'lodash/isUndefined';
 import _assign from 'lodash/assign';
+import _map from 'lodash/map';
+import _isString from 'lodash/isString';
+import _isArray from 'lodash/isArray';
 
 export const Features = {
     ClassNames:     "ClassNames",
@@ -23,7 +26,8 @@ export const Features = {
     MenuStyle:      "MenuStyle",
     RowStyle:       "RowStyle",
     ColumnStyle:    "ColumnStyle",
-    Icon:           "Icon"
+    Icon:           "Icon",
+    Gutters:        "Gutters"
 };
 
 function oneOfList(obj) {
@@ -31,6 +35,13 @@ function oneOfList(obj) {
 }
 function clean(obj) {
     return _pickBy(obj, (o) => !_isUndefined(o));
+}
+function append(n) {
+    return n? "-" + n: "";
+}
+function mediaToClass(size, txt, n) {
+    if(_isString(size)) return size + append(txt) + append(n);
+    if(_isArray(size)) return classNames(_map(size, (s) => mediaToClass(s, txt, n)));
 }
 export class FeatureSet {
     constructor(set = {}) {
@@ -59,7 +70,12 @@ export class FeatureSet {
             ["fi-"+props.icon]          : this.set[Features.Icon]               &&  props.icon,
             "row"                       : this.set[Features.RowStyle],
             "column"                    : this.set[Features.ColumnStyle] ||
-                                         (this.set[Features.RowStyle]           &&  props.isColumn)
+                                         (this.set[Features.RowStyle]           &&  props.isColumn),
+            [Gutters.Collapse]          : this.set[Features.Gutters]            &&  props.collapse,
+            [mediaToClass(props.collapseOn, Gutters.Collapse)] :
+                                          this.set[Features.Gutters]            &&  props.collapseOn,
+            [mediaToClass(props.uncollapseOn, Gutters.Uncollapse)] :
+                                          this.set[Features.Gutters]            &&  props.uncollapseOn
         });
     }
     getInnerClassNames(props, extraClasses) {
@@ -97,7 +113,10 @@ export class FeatureSet {
             isNested        : this.set[Features.MenuStyle]      ? PropTypes.bool                    : undefined,
             iconTop         : this.set[Features.MenuStyle]      ? PropTypes.bool                    : undefined,
             icon            : this.set[Features.Icon]           ? PropTypes.string                  : undefined,
-            isColumn        : this.set[Features.RowStyle]       ? PropTypes.bool                    : undefined
+            isColumn        : this.set[Features.RowStyle]       ? PropTypes.bool                    : undefined,
+            collapse        : this.set[Features.Gutters]        ? PropTypes.bool                    : undefined,
+            collapseOn      : this.set[Features.Gutters]        ? PropTypes.arrayOf(oneOfList(Size)): undefined,
+            uncollapseOn    : this.set[Features.Gutters]        ? PropTypes.arrayOf(oneOfList(Size)): undefined
         }));
     }
     getDefaultProps(defaultProps = {}) {
@@ -114,7 +133,8 @@ export class FeatureSet {
             isSimple        : this.set[Features.MenuStyle]      ? false                             : undefined,
             isNested        : this.set[Features.MenuStyle]      ? false                             : undefined,
             iconTop         : this.set[Features.MenuStyle]      ? false                             : undefined,
-            icon            : this.set[Features.Icon]           ? null                              : undefined
+            icon            : this.set[Features.Icon]           ? null                              : undefined,
+            collapse        : this.set[Features.Gutters]        ? false                             : undefined
         }));
     }
 }
