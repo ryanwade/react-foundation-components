@@ -4,21 +4,20 @@ import classNames from 'classnames';
 import { Alignment, Orientation } from './enums';
 
 export const Features = {
-    ClassNames: "ClassNames",
-    Visibility: "Visibility",
-    Disabled: "Disabled",
-    MouseEvents: "MouseEvents",
-    DataEvents: "DataEvents",
-    Float: "Float",
-    InputField: "InputField",
-    Alignment: "Alignment",
-    Active: "Active",
-    Orientation: "Orientation",
-    Expanded: "Expanded",
-    Simple: "Simple",
-    Nested: "Nested",
-    Icon: "Icon",
-    IconTop: "IconTop"
+    ClassNames:     "ClassNames",
+    Visibility:     "Visibility",
+    Disabled:       "Disabled",
+    MouseEvents:    "MouseEvents",
+    DataEvents:     "DataEvents",
+    Float:          "Float",
+    InputField:     "InputField",
+    Alignment:      "Alignment",
+    Active:         "Active",
+    Orientation:    "Orientation",
+    ContentExpand:  "ContentExpand",
+    MenuStyle:      "MenuStyle",
+    RowStyle:       "RowStyle",
+    Icon:           "Icon"
 };
 
 function oneOfList(obj) {
@@ -40,17 +39,17 @@ export class FeatureSet {
             extraClasses,
             [props.outerClassName]      : this.set[Features.ClassNames],
             [props.className]           : this.set[Features.ClassNames],
-            "show"                      : this.set[Features.Visibility]     &&  props.show,
-            "hide"                      : this.set[Features.Visibility]     && !props.show,
-            ["float-"+props.float]      : this.set[Features.Float]          &&  props.float,
-            ["align-"+props.alignment]  : this.set[Features.Alignment]      &&  props.alignment,
-            "active"                    : this.set[Features.Active]         &&  props.isActive, 
+            "show"                      : this.set[Features.Visibility]         &&  props.show,
+            "hide"                      : this.set[Features.Visibility]         && !props.show,
+            ["float-"+props.float]      : this.set[Features.Float]              &&  props.float,
+            ["align-"+props.alignment]  : this.set[Features.Alignment]          &&  props.alignment,
+            "active"                    : this.set[Features.Active]             &&  props.isActive, 
             [props.orientation]         : this.set[Features.Orientation],
-            "expanded"                  : this.set[Features.Expanded]       &&  props.isExpanded,
-            "simple"                    : this.set[Features.Simple]         &&  props.isSimple,
-            "nested"                    : this.set[Features.Nested]         &&  props.isNested,
-            ["fi-"+props.icon]          : this.set[Features.Icon]           &&  props.icon,
-            "icon-top"                  : this.set[Features.IconTop]        &&  props.iconTop
+            "expanded"                  : this.set[Features.ContentExpand]      &&  props.isExpanded,
+            "simple"                    : this.set[Features.MenuStyle]          &&  props.isSimple,
+            "nested"                    : this.set[Features.MenuStyle]          &&  props.isNested,
+            "icon-top"                  : this.set[Features.MenuStyle]          &&  props.iconTop,
+            ["fi-"+props.icon]          : this.set[Features.Icon]               &&  props.icon
         });
     }
     getInnerClassNames(props, extraClasses) {
@@ -83,11 +82,11 @@ export class FeatureSet {
             alignment       : this.set[Features.Alignment]      ? oneOfList(Alignment)              : undefined,
             isActive        : this.set[Features.Active]         ? PropTypes.bool                    : undefined,
             orientation     : this.set[Features.Orientation]    ? oneOfList(Orientation)            : undefined,
-            isExpanded      : this.set[Features.Expanded]       ? PropTypes.bool                    : undefined,
-            isSimple        : this.set[Features.Simple]         ? PropTypes.bool                    : undefined,
-            isNested        : this.set[Features.Nested]         ? PropTypes.bool                    : undefined,
-            icon            : this.set[Features.Icon]           ? PropTypes.string                  : undefined,
-            iconTop         : this.set[Features.IconTop]        ? PropTypes.bool                    : undefined
+            isExpanded      : this.set[Features.ContentExpand]  ? PropTypes.bool                    : undefined,
+            isSimple        : this.set[Features.MenuStyle]      ? PropTypes.bool                    : undefined,
+            isNested        : this.set[Features.MenuStyle]      ? PropTypes.bool                    : undefined,
+            iconTop         : this.set[Features.MenuStyle]      ? PropTypes.bool                    : undefined,
+            icon            : this.set[Features.Icon]           ? PropTypes.string                  : undefined
         });
     }
     getDefaultProps(defaultProps = {}) {
@@ -100,11 +99,11 @@ export class FeatureSet {
             alignment       : this.set[Features.Alignment]      ? Alignment.None                    : undefined,
             isActive        : this.set[Features.Active]         ? false                             : undefined,
             orientation     : this.set[Features.Orientation]    ? Orientation.Default               : undefined,
-            isExpanded      : this.set[Features.Expanded]       ? false                             : undefined,
-            isSimple        : this.set[Features.Simple]         ? false                             : undefined,
-            isNested        : this.set[Features.Nested]         ? false                             : undefined,
-            icon            : this.set[Features.Icon]           ? null                              : undefined,
-            iconTop         : this.set[Features.IconTop]        ? false                             : undefined
+            isExpanded      : this.set[Features.ContentExpand]  ? false                             : undefined,
+            isSimple        : this.set[Features.MenuStyle]      ? false                             : undefined,
+            isNested        : this.set[Features.MenuStyle]      ? false                             : undefined,
+            iconTop         : this.set[Features.MenuStyle]      ? false                             : undefined,
+            icon            : this.set[Features.Icon]           ? null                              : undefined
         });
     }
 }

@@ -32,11 +32,10 @@ var Features = exports.Features = {
     Alignment: "Alignment",
     Active: "Active",
     Orientation: "Orientation",
-    Expanded: "Expanded",
-    Simple: "Simple",
-    Nested: "Nested",
-    Icon: "Icon",
-    IconTop: "IconTop"
+    ContentExpand: "ContentExpand",
+    MenuStyle: "MenuStyle",
+    RowStyle: "RowStyle",
+    Icon: "Icon"
 };
 
 function oneOfList(obj) {
@@ -67,7 +66,7 @@ var FeatureSet = exports.FeatureSet = function () {
 
             return (0, _classnames2.default)((_classNames = {
                 extraClasses: extraClasses
-            }, _defineProperty(_classNames, props.outerClassName, this.set[Features.ClassNames]), _defineProperty(_classNames, props.className, this.set[Features.ClassNames]), _defineProperty(_classNames, "show", this.set[Features.Visibility] && props.show), _defineProperty(_classNames, "hide", this.set[Features.Visibility] && !props.show), _defineProperty(_classNames, "float-" + props.float, this.set[Features.Float] && props.float), _defineProperty(_classNames, "align-" + props.alignment, this.set[Features.Alignment] && props.alignment), _defineProperty(_classNames, "active", this.set[Features.Active] && props.isActive), _defineProperty(_classNames, props.orientation, this.set[Features.Orientation]), _defineProperty(_classNames, "expanded", this.set[Features.Expanded] && props.isExpanded), _defineProperty(_classNames, "simple", this.set[Features.Simple] && props.isSimple), _defineProperty(_classNames, "nested", this.set[Features.Nested] && props.isNested), _defineProperty(_classNames, "fi-" + props.icon, this.set[Features.Icon] && props.icon), _defineProperty(_classNames, "icon-top", this.set[Features.IconTop] && props.iconTop), _classNames));
+            }, _defineProperty(_classNames, props.outerClassName, this.set[Features.ClassNames]), _defineProperty(_classNames, props.className, this.set[Features.ClassNames]), _defineProperty(_classNames, "show", this.set[Features.Visibility] && props.show), _defineProperty(_classNames, "hide", this.set[Features.Visibility] && !props.show), _defineProperty(_classNames, "float-" + props.float, this.set[Features.Float] && props.float), _defineProperty(_classNames, "align-" + props.alignment, this.set[Features.Alignment] && props.alignment), _defineProperty(_classNames, "active", this.set[Features.Active] && props.isActive), _defineProperty(_classNames, props.orientation, this.set[Features.Orientation]), _defineProperty(_classNames, "expanded", this.set[Features.ContentExpand] && props.isExpanded), _defineProperty(_classNames, "simple", this.set[Features.MenuStyle] && props.isSimple), _defineProperty(_classNames, "nested", this.set[Features.MenuStyle] && props.isNested), _defineProperty(_classNames, "icon-top", this.set[Features.MenuStyle] && props.iconTop), _defineProperty(_classNames, "fi-" + props.icon, this.set[Features.Icon] && props.icon), _classNames));
         }
     }, {
         key: 'getInnerClassNames',
@@ -107,11 +106,11 @@ var FeatureSet = exports.FeatureSet = function () {
                 alignment: this.set[Features.Alignment] ? oneOfList(_enums.Alignment) : undefined,
                 isActive: this.set[Features.Active] ? _react.PropTypes.bool : undefined,
                 orientation: this.set[Features.Orientation] ? oneOfList(_enums.Orientation) : undefined,
-                isExpanded: this.set[Features.Expanded] ? _react.PropTypes.bool : undefined,
-                isSimple: this.set[Features.Simple] ? _react.PropTypes.bool : undefined,
-                isNested: this.set[Features.Nested] ? _react.PropTypes.bool : undefined,
-                icon: this.set[Features.Icon] ? _react.PropTypes.string : undefined,
-                iconTop: this.set[Features.IconTop] ? _react.PropTypes.bool : undefined
+                isExpanded: this.set[Features.ContentExpand] ? _react.PropTypes.bool : undefined,
+                isSimple: this.set[Features.MenuStyle] ? _react.PropTypes.bool : undefined,
+                isNested: this.set[Features.MenuStyle] ? _react.PropTypes.bool : undefined,
+                iconTop: this.set[Features.MenuStyle] ? _react.PropTypes.bool : undefined,
+                icon: this.set[Features.Icon] ? _react.PropTypes.string : undefined
             });
         }
     }, {
@@ -128,11 +127,11 @@ var FeatureSet = exports.FeatureSet = function () {
                 alignment: this.set[Features.Alignment] ? _enums.Alignment.None : undefined,
                 isActive: this.set[Features.Active] ? false : undefined,
                 orientation: this.set[Features.Orientation] ? _enums.Orientation.Default : undefined,
-                isExpanded: this.set[Features.Expanded] ? false : undefined,
-                isSimple: this.set[Features.Simple] ? false : undefined,
-                isNested: this.set[Features.Nested] ? false : undefined,
-                icon: this.set[Features.Icon] ? null : undefined,
-                iconTop: this.set[Features.IconTop] ? false : undefined
+                isExpanded: this.set[Features.ContentExpand] ? false : undefined,
+                isSimple: this.set[Features.MenuStyle] ? false : undefined,
+                isNested: this.set[Features.MenuStyle] ? false : undefined,
+                iconTop: this.set[Features.MenuStyle] ? false : undefined,
+                icon: this.set[Features.Icon] ? null : undefined
             });
         }
     }]);
