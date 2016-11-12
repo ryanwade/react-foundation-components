@@ -43,7 +43,7 @@ export class FeatureSet {
     }
     getOuterClassNames(props, extraClasses) {
         return classNames({
-            extraClasses,
+            [extraClasses]              : true,
             [props.outerClassName]      : this.set[Features.ClassNames],
             [props.className]           : this.set[Features.ClassNames],
             "show"                      : this.set[Features.Visibility]         &&  props.show,
@@ -61,18 +61,18 @@ export class FeatureSet {
     }
     getInnerClassNames(props, extraClasses) {
         return classNames({
-            extraClasses,
+            [extraClasses]              : true,
             [props.innerClassName]      : this.set[Features.ClassNames],
             "input-group-field"         : this.set[Features.InputField]     && props.isInline
         });
     }
     getAttrs(props) {
-        return classNames({
+        return {
             disabled        : this.set[Features.Disabled]       ? props.disabled                    : undefined,
             onClick         : this.set[Features.MouseEvents]    ? props.onClick                     : undefined,
             onChange        : this.set[Features.DataEvents]     ? props.onChange                    : undefined,
             value           : this.set[Features.InputField]     ? props.value                       : undefined
-        });
+        };
     }
     getPropTypes(propTypes = {}) {
         return _assign(propTypes, clean({

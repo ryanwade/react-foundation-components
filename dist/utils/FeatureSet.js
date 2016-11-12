@@ -83,28 +83,24 @@ var FeatureSet = exports.FeatureSet = function () {
         value: function getOuterClassNames(props, extraClasses) {
             var _classNames;
 
-            return (0, _classnames2.default)((_classNames = {
-                extraClasses: extraClasses
-            }, _defineProperty(_classNames, props.outerClassName, this.set[Features.ClassNames]), _defineProperty(_classNames, props.className, this.set[Features.ClassNames]), _defineProperty(_classNames, "show", this.set[Features.Visibility] && props.show), _defineProperty(_classNames, "hide", this.set[Features.Visibility] && !props.show), _defineProperty(_classNames, "float-" + props.float, this.set[Features.Float] && props.float), _defineProperty(_classNames, "align-" + props.alignment, this.set[Features.Alignment] && props.alignment), _defineProperty(_classNames, "active", this.set[Features.Active] && props.isActive), _defineProperty(_classNames, props.orientation, this.set[Features.Orientation]), _defineProperty(_classNames, "expanded", this.set[Features.ContentExpand] && props.isExpanded), _defineProperty(_classNames, "simple", this.set[Features.MenuStyle] && props.isSimple), _defineProperty(_classNames, "nested", this.set[Features.MenuStyle] && props.isNested), _defineProperty(_classNames, "icon-top", this.set[Features.MenuStyle] && props.iconTop), _defineProperty(_classNames, "fi-" + props.icon, this.set[Features.Icon] && props.icon), _classNames));
+            return (0, _classnames2.default)((_classNames = {}, _defineProperty(_classNames, extraClasses, true), _defineProperty(_classNames, props.outerClassName, this.set[Features.ClassNames]), _defineProperty(_classNames, props.className, this.set[Features.ClassNames]), _defineProperty(_classNames, "show", this.set[Features.Visibility] && props.show), _defineProperty(_classNames, "hide", this.set[Features.Visibility] && !props.show), _defineProperty(_classNames, "float-" + props.float, this.set[Features.Float] && props.float), _defineProperty(_classNames, "align-" + props.alignment, this.set[Features.Alignment] && props.alignment), _defineProperty(_classNames, "active", this.set[Features.Active] && props.isActive), _defineProperty(_classNames, props.orientation, this.set[Features.Orientation]), _defineProperty(_classNames, "expanded", this.set[Features.ContentExpand] && props.isExpanded), _defineProperty(_classNames, "simple", this.set[Features.MenuStyle] && props.isSimple), _defineProperty(_classNames, "nested", this.set[Features.MenuStyle] && props.isNested), _defineProperty(_classNames, "icon-top", this.set[Features.MenuStyle] && props.iconTop), _defineProperty(_classNames, "fi-" + props.icon, this.set[Features.Icon] && props.icon), _classNames));
         }
     }, {
         key: 'getInnerClassNames',
         value: function getInnerClassNames(props, extraClasses) {
             var _classNames2;
 
-            return (0, _classnames2.default)((_classNames2 = {
-                extraClasses: extraClasses
-            }, _defineProperty(_classNames2, props.innerClassName, this.set[Features.ClassNames]), _defineProperty(_classNames2, "input-group-field", this.set[Features.InputField] && props.isInline), _classNames2));
+            return (0, _classnames2.default)((_classNames2 = {}, _defineProperty(_classNames2, extraClasses, true), _defineProperty(_classNames2, props.innerClassName, this.set[Features.ClassNames]), _defineProperty(_classNames2, "input-group-field", this.set[Features.InputField] && props.isInline), _classNames2));
         }
     }, {
         key: 'getAttrs',
         value: function getAttrs(props) {
-            return (0, _classnames2.default)({
+            return {
                 disabled: this.set[Features.Disabled] ? props.disabled : undefined,
                 onClick: this.set[Features.MouseEvents] ? props.onClick : undefined,
                 onChange: this.set[Features.DataEvents] ? props.onChange : undefined,
                 value: this.set[Features.InputField] ? props.value : undefined
-            });
+            };
         }
     }, {
         key: 'getPropTypes',
