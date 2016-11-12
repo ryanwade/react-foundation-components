@@ -115,8 +115,10 @@ export class FeatureSet {
             icon            : this.set[Features.Icon]           ? PropTypes.string                  : undefined,
             isColumn        : this.set[Features.RowStyle]       ? PropTypes.bool                    : undefined,
             collapse        : this.set[Features.Gutters]        ? PropTypes.bool                    : undefined,
-            collapseOn      : this.set[Features.Gutters]        ? PropTypes.arrayOf(oneOfList(Size)): undefined,
-            uncollapseOn    : this.set[Features.Gutters]        ? PropTypes.arrayOf(oneOfList(Size)): undefined
+            collapseOn      : this.set[Features.Gutters]        ? PropTypes.oneOf(PropTypes.string, PropTypes.arrayOf(oneOfList(Size)))
+                                                                                                    : undefined,
+            uncollapseOn    : this.set[Features.Gutters]        ? PropTypes.oneOf(PropTypes.string, PropTypes.arrayOf(oneOfList(Size)))
+                                                                                                    : undefined
         }));
     }
     getDefaultProps(defaultProps = {}) {

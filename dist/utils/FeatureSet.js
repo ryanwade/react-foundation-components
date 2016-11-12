@@ -151,8 +151,8 @@ var FeatureSet = exports.FeatureSet = function () {
                 icon: this.set[Features.Icon] ? _react.PropTypes.string : undefined,
                 isColumn: this.set[Features.RowStyle] ? _react.PropTypes.bool : undefined,
                 collapse: this.set[Features.Gutters] ? _react.PropTypes.bool : undefined,
-                collapseOn: this.set[Features.Gutters] ? _react.PropTypes.arrayOf(oneOfList(_enums.Size)) : undefined,
-                uncollapseOn: this.set[Features.Gutters] ? _react.PropTypes.arrayOf(oneOfList(_enums.Size)) : undefined
+                collapseOn: this.set[Features.Gutters] ? _react.PropTypes.oneOf(_react.PropTypes.string, _react.PropTypes.arrayOf(oneOfList(_enums.Size))) : undefined,
+                uncollapseOn: this.set[Features.Gutters] ? _react.PropTypes.oneOf(_react.PropTypes.string, _react.PropTypes.arrayOf(oneOfList(_enums.Size))) : undefined
             }));
         }
     }, {
