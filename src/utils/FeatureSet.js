@@ -179,9 +179,9 @@ export class FeatureSet {
                 isColumn        : PropTypes.bool
         });
         if(this.set[Features.Gutters]) _assign(propTypes, {      
-                collapse        : PropTypes.bool,      
-                collapseOn      : PropTypes.oneOf([PropTypes.string, PropTypes.arrayOf(oneOfList(Size))]),      
-                uncollapseOn    : PropTypes.oneOf([PropTypes.string, PropTypes.arrayOf(oneOfList(Size))])
+                collapse        : PropTypes.bool,
+                collapseOn      : PropTypes.oneOfType([oneOfList(Size), PropTypes.arrayOf(oneOfList(Size))]),
+                uncollapseOn    : PropTypes.oneOfType([oneOfList(Size), PropTypes.arrayOf(oneOfList(Size))])
         });
         if(this.set[Features.ColumnStyle]) _assign(propTypes, {
                 small           : PropTypes.number,
@@ -189,7 +189,7 @@ export class FeatureSet {
                 large           : PropTypes.number,
                 xlarge          : PropTypes.number,
                 xxlarge         : PropTypes.number
-        })
+        });
         return propTypes;
     }
     getDefaultProps(defaultProps = {}) {

@@ -208,8 +208,8 @@ var FeatureSet = exports.FeatureSet = function () {
                         });
                         if (this.set[Features.Gutters]) (0, _assign3.default)(propTypes, {
                                 collapse: _react.PropTypes.bool,
-                                collapseOn: _react.PropTypes.oneOf([_react.PropTypes.string, _react.PropTypes.arrayOf(oneOfList(_enums.Size))]),
-                                uncollapseOn: _react.PropTypes.oneOf([_react.PropTypes.string, _react.PropTypes.arrayOf(oneOfList(_enums.Size))])
+                                collapseOn: _react.PropTypes.oneOfType([oneOfList(_enums.Size), _react.PropTypes.arrayOf(oneOfList(_enums.Size))]),
+                                uncollapseOn: _react.PropTypes.oneOfType([oneOfList(_enums.Size), _react.PropTypes.arrayOf(oneOfList(_enums.Size))])
                         });
                         if (this.set[Features.ColumnStyle]) (0, _assign3.default)(propTypes, {
                                 small: _react.PropTypes.number,
