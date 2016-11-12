@@ -57,8 +57,8 @@ export class FeatureSet {
         return classNames({
             [extraClasses]              : true,
             [props.className]           : this.set[Features.ClassNames],
-            "show"                      : this.set[Features.Visibility]         &&  props.show,
-            "hide"                      : this.set[Features.Visibility]         && !props.show,
+            "show"                      : this.set[Features.Visibility]         &&  props.show === true,
+            "hide"                      : this.set[Features.Visibility]         &&  props.show === false,
             ["float-"+props.float]      : this.set[Features.Float]              &&  props.float,
             ["align-"+props.alignment]  : this.set[Features.Alignment]          &&  props.alignment,
             "active"                    : this.set[Features.Active]             &&  props.isActive, 
@@ -123,7 +123,6 @@ export class FeatureSet {
     }
     getDefaultProps(defaultProps = {}) {
         return _assign(defaultProps, clean({
-            show            : this.set[Features.Visibility]     ? true                              : undefined,
             float           : this.set[Features.Float]          ? Alignment.None                    : undefined,
             disabled        : this.set[Features.Disabled]       ? false                             : undefined,
             isInline        : this.set[Features.InputField]     ? false                             : undefined,
