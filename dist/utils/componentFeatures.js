@@ -39,4 +39,4 @@ var MenuText = exports.MenuText = new _FeatureSet.FeatureSet(_defineProperty({},
 
 var Icon = exports.Icon = new _FeatureSet.FeatureSet((_ref13 = {}, _defineProperty(_ref13, _FeatureSet.Features.Visibility, true), _defineProperty(_ref13, _FeatureSet.Features.Icon, true), _ref13));
 
-var Row = exports.Row = new _FeatureSet.FeatureSet((_ref14 = {}, _defineProperty(_ref14, _FeatureSet.Features.Visibility, true), _defineProperty(_ref14, _FeatureSet.Features.ContentExpand, true), _defineProperty(_ref14, _FeatureSet.Features.RowStyle, true), _ref14));
+var Row = exports.Row = new _FeatureSet.FeatureSet((_ref14 = {}, _defineProperty(_ref14, _FeatureSet.Features.Visibility, true), _defineProperty(_ref14, _FeatureSet.Features.ContentExpand, true), _defineProperty(_ref14, _FeatureSet.Features.RowStyle, true), _defineProperty(_ref14, _FeatureSet.Features.Gutters, true), _ref14));

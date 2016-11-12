@@ -80,5 +80,6 @@ export const Icon = new FeatureSet({
 export const Row = new FeatureSet({
     [Features.Visibility]: true,
     [Features.ContentExpand]: true,
-    [Features.RowStyle]: true
+    [Features.RowStyle]: true,
+    [Features.Gutters]: true
 });
