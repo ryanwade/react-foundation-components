@@ -196,7 +196,7 @@ export class FeatureSet {
                 large           : PropTypes.number,
                 xlarge          : PropTypes.number,
                 xxlarge         : PropTypes.number,
-                offsetOn        : PropTypes.arrayOf(PropTypes.oneOf([oneOfList(Size), PropTypes.number, PropTypes.arrayOf([oneOfList(Size), PropTypes.number])]))
+                offsetOn        : PropTypes.arrayOf(PropTypes.oneOfType([oneOfList(Size), PropTypes.number, PropTypes.arrayOf(PropTypes.oneOfType([oneOfList(Size), PropTypes.number]))]))
         });
         return propTypes;
     }

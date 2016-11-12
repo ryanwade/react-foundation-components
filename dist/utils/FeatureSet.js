@@ -228,7 +228,7 @@ var FeatureSet = exports.FeatureSet = function () {
                                 large: _react.PropTypes.number,
                                 xlarge: _react.PropTypes.number,
                                 xxlarge: _react.PropTypes.number,
-                                offsetOn: _react.PropTypes.arrayOf(_react.PropTypes.oneOf([oneOfList(_enums.Size), _react.PropTypes.number, _react.PropTypes.arrayOf([oneOfList(_enums.Size), _react.PropTypes.number])]))
+                                offsetOn: _react.PropTypes.arrayOf(_react.PropTypes.oneOfType([oneOfList(_enums.Size), _react.PropTypes.number, _react.PropTypes.arrayOf(_react.PropTypes.oneOfType([oneOfList(_enums.Size), _react.PropTypes.number]))]))
                         });
                         return propTypes;
                 }
