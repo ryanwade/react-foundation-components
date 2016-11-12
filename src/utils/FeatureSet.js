@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import { Alignment, Orientation, Size, Gutters } from './enums';
 
 import _values from 'lodash/values';
-import _pickBy from 'lodash/pickBy';
 import _isUndefined from 'lodash/isUndefined';
 import _assign from 'lodash/assign';
 import _map from 'lodash/map';
@@ -33,9 +32,6 @@ export const Features = {
 function oneOfList(obj) {
     return PropTypes.oneOf(_values(obj));
 }
-function clean(obj) {
-    return _pickBy(obj, (o) => !_isUndefined(o));
-}
 function append(n) {
     return n? "-" + n: "";
 }
@@ -54,88 +50,152 @@ export class FeatureSet {
         this.getPropTypes       = this.getPropTypes.bind(this);
     }
     getClassNames(props, extraClasses) {
-        return classNames({
-            [extraClasses]              : true,
-            [props.className]           : this.set[Features.ClassNames],
-            "show"                      : this.set[Features.Visibility]         &&  props.show === true,
-            "hide"                      : this.set[Features.Visibility]         &&  props.show === false,
-            ["float-"+props.float]      : this.set[Features.Float]              &&  props.float,
-            ["align-"+props.alignment]  : this.set[Features.Alignment]          &&  props.alignment,
-            "active"                    : this.set[Features.Active]             &&  props.isActive, 
-            [props.orientation]         : this.set[Features.Orientation],
-            "expanded"                  : this.set[Features.ContentExpand]      &&  props.isExpanded,
-            "simple"                    : this.set[Features.MenuStyle]          &&  props.isSimple,
-            "nested"                    : this.set[Features.MenuStyle]          &&  props.isNested,
-            "icon-top"                  : this.set[Features.MenuStyle]          &&  props.iconTop,
-            ["fi-"+props.icon]          : this.set[Features.Icon]               &&  props.icon,
-            "row"                       : this.set[Features.RowStyle],
-            "column"                    : this.set[Features.ColumnStyle] ||
-                                         (this.set[Features.RowStyle]           &&  props.isColumn),
-            [Gutters.Collapse]          : this.set[Features.Gutters]            &&  props.collapse,
-            [mediaToClass(props.collapseOn, Gutters.Collapse)] :
-                                          this.set[Features.Gutters]            &&  props.collapseOn,
-            [mediaToClass(props.uncollapseOn, Gutters.Uncollapse)] :
-                                          this.set[Features.Gutters]            &&  props.uncollapseOn
+        let classes = [{
+                [extraClasses]                                          : true
+        }];
+        if(this.set[Features.ClassNames]) classes.append({
+                [props.className]                                       : true
         });
+        if(this.set[Features.Visibility]) classes.append({
+                "show"                                                  : props.show === true,
+                "hide"                                                  : props.show === false
+        });
+        if(this.set[Features.Float]) classes.append({
+                ["float-"+props.float]                                  : _isString(props.float)
+        });
+        if(this.set[Features.Alignment]) classes.append({
+                ["align-"+props.alignment]                              : _isString(props.alignment)
+        });
+        if(this.set[Features.Active]) classes.append({
+                "active"                                                : props.isActive === true
+        });
+        if(this.set[Features.Orientation]) classes.append({
+                [props.orientation]                                     : !_isUndefined(props.orientation)
+        });
+        if(this.set[Features.ContentExpand]) classes.append({
+                "expanded"                                              : props.isExpanded === true
+        });
+        if(this.set[Features.MenuStyle]) classes.append({
+                "simple"                                                : props.isSimple === true,
+                "nested"                                                : props.isNested === true,
+                "icon-top"                                              : props.iconTop === true
+        });
+        if(this.set[Features.Icon]) classes.append({
+                ["fi-"+props.icon]                                      : props.icon
+        });
+        if(this.set[Features.RowStyle]) classes.append({
+                "row"                                                   : true,
+                "column"                                                : props.isColumn === true
+        });
+        if(this.set[Features.ColumnStyle]) classes.append({
+                "column"                                                : true
+        });
+        if(this.set[Features.Gutters]) classes.append({
+                [Gutters.Collapse]                                      : props.collapse === true,
+                [mediaToClass(props.collapseOn, Gutters.Collapse)]      : !_isUndefined(props.collapseOn),
+                [mediaToClass(props.uncollapseOn, Gutters.Uncollapse)]  : !_isUndefined(props.uncollapseOn)
+        });
+        return classNames(classes);
     }
     getInnerClassNames(props, extraClasses) {
-        return classNames({
-            [extraClasses]              : true,
-            [props.innerClassName]      : this.set[Features.ClassNames],
-            "input-group-field"         : this.set[Features.InputField]     && props.isInline
+        let classes = [{
+                [extraClasses]                                          : true
+        }];
+        if(this.set[Features.ClassNames]) classes.append({
+                [props.innerClassName]                                  : true
         });
+        if(this.set[Features.InputField]) classes.append({
+                "input-group-field"                                     : props.isInline === true
+        });
+        return classNames(classes);
     }
     getAttrs(props) {
-        return {
-            disabled        : this.set[Features.Disabled]       ? props.disabled                    : undefined,
-            onClick         : this.set[Features.MouseEvents]    ? props.onClick                     : undefined,
-            onChange        : this.set[Features.DataEvents]     ? props.onChange                    : undefined,
-            value           : this.set[Features.InputField]     ? props.value                       : undefined
-        };
+        let attrs = {};
+        if(this.set[Features.Disabled]) _assign(attrs, {
+                disabled        : props.disabled
+        });
+        if(this.set[Features.MouseEvents]) _assign(attrs, {
+                onClick         : props.onClick
+        });
+        if(this.set[Features.DataEvents]) _assign(attrs, {
+                onChange        : props.onChange
+        });
+        if(this.set[Features.InputField]) _assign(attrs, {
+                value           : props.value
+        });
+        return attrs;
     }
-    getPropTypes(propTypes = {}) {
-        return _assign(propTypes, clean({
-            className       : this.set[Features.ClassNames]     ? PropTypes.string                  : undefined,
-            innerClassName  : this.set[Features.ClassNames]     ? PropTypes.string                  : undefined,
-            show            : this.set[Features.Visibility]     ? PropTypes.bool                    : undefined,
-            float           : this.set[Features.Float]          ? oneOfList(Alignment)              : undefined,
-            disabled        : this.set[Features.Disabled]       ? PropTypes.bool                    : undefined,
-            onClick         : this.set[Features.MouseEvents]    ? PropTypes.func                    : undefined,
-            onChange        : this.set[Features.DataEvents]     ? PropTypes.func                    : undefined,
-            value           : this.set[Features.InputField]     ? this.set[Features.InputField]     : undefined,
-            label           : this.set[Features.InputField]     ? PropTypes.string                  : undefined,
-            isInline        : this.set[Features.InputField]     ? PropTypes.bool                    : undefined,
-            alignment       : this.set[Features.Alignment]      ? oneOfList(Alignment)              : undefined,
-            isActive        : this.set[Features.Active]         ? PropTypes.bool                    : undefined,
-            orientation     : this.set[Features.Orientation]    ? oneOfList(Orientation)            : undefined,
-            isExpanded      : this.set[Features.ContentExpand]  ? PropTypes.bool                    : undefined,
-            isSimple        : this.set[Features.MenuStyle]      ? PropTypes.bool                    : undefined,
-            isNested        : this.set[Features.MenuStyle]      ? PropTypes.bool                    : undefined,
-            iconTop         : this.set[Features.MenuStyle]      ? PropTypes.bool                    : undefined,
-            icon            : this.set[Features.Icon]           ? PropTypes.string                  : undefined,
-            isColumn        : this.set[Features.RowStyle]       ? PropTypes.bool                    : undefined,
-            collapse        : this.set[Features.Gutters]        ? PropTypes.bool                    : undefined,
-            collapseOn      : this.set[Features.Gutters]        ? PropTypes.oneOf(PropTypes.string, PropTypes.arrayOf(oneOfList(Size)))
-                                                                                                    : undefined,
-            uncollapseOn    : this.set[Features.Gutters]        ? PropTypes.oneOf(PropTypes.string, PropTypes.arrayOf(oneOfList(Size)))
-                                                                                                    : undefined
-        }));
+    getPropTypes(propTypes = {}) {        
+        if(this.set[Features.ClassNames]) _assign(propTypes, {   
+                className       : PropTypes.string,
+                innerClassName  : PropTypes.string
+        });
+        if(this.set[Features.Visibility]) _assign(propTypes, {   
+                show            : PropTypes.bool
+        });
+        if(this.set[Features.Float]) _assign(propTypes, {        
+                float           : oneOfList(Alignment)
+        });
+        if(this.set[Features.Disabled]) _assign(propTypes, {     
+                disabled        : PropTypes.bool
+        });
+        if(this.set[Features.MouseEvents]) _assign(propTypes, {  
+                onClick         : PropTypes.func
+        });
+        if(this.set[Features.DataEvents]) _assign(propTypes, {   
+                onChange        : PropTypes.func
+        });
+        if(this.set[Features.InputField]) _assign(propTypes, {   
+                value           : this.set[Features.InputField],   
+                label           : PropTypes.string,   
+                isInline        : PropTypes.bool
+        });
+        if(this.set[Features.Alignment]) _assign(propTypes, {    
+                alignment       : oneOfList(Alignment)
+        });
+        if(this.set[Features.Active]) _assign(propTypes, {       
+                isActive        : PropTypes.bool
+        });
+        if(this.set[Features.Orientation]) _assign(propTypes, {  
+                orientation     : oneOfList(Orientation)
+        });
+        if(this.set[Features.ContentExpand]) _assign(propTypes, {
+                isExpanded      : PropTypes.bool
+        });
+        if(this.set[Features.MenuStyle]) _assign(propTypes, {    
+                isSimple        : PropTypes.bool,    
+                isNested        : PropTypes.bool,    
+                iconTop         : PropTypes.bool
+        });
+        if(this.set[Features.Icon]) _assign(propTypes, {         
+                icon            : PropTypes.string
+        });
+        if(this.set[Features.RowStyle]) _assign(propTypes, {     
+                isColumn        : PropTypes.bool
+        });
+        if(this.set[Features.Gutters]) _assign(propTypes, {      
+                collapse        : PropTypes.bool,      
+                collapseOn      : PropTypes.oneOf(PropTypes.string, PropTypes.arrayOf(oneOfList(Size))),      
+                uncollapseOn    : PropTypes.oneOf(PropTypes.string, PropTypes.arrayOf(oneOfList(Size)))
+        });
+        return propTypes;
     }
     getDefaultProps(defaultProps = {}) {
-        return _assign(defaultProps, clean({
-            float           : this.set[Features.Float]          ? Alignment.None                    : undefined,
-            disabled        : this.set[Features.Disabled]       ? false                             : undefined,
-            isInline        : this.set[Features.InputField]     ? false                             : undefined,
-            label           : this.set[Features.InputField]     ? null                              : undefined,
-            alignment       : this.set[Features.Alignment]      ? Alignment.None                    : undefined,
-            isActive        : this.set[Features.Active]         ? false                             : undefined,
-            orientation     : this.set[Features.Orientation]    ? Orientation.Default               : undefined,
-            isExpanded      : this.set[Features.ContentExpand]  ? false                             : undefined,
-            isSimple        : this.set[Features.MenuStyle]      ? false                             : undefined,
-            isNested        : this.set[Features.MenuStyle]      ? false                             : undefined,
-            iconTop         : this.set[Features.MenuStyle]      ? false                             : undefined,
-            icon            : this.set[Features.Icon]           ? null                              : undefined,
-            collapse        : this.set[Features.Gutters]        ? false                             : undefined
-        }));
+        if(this.set[Features.Float]) _assign(defaultProps, {
+                float           : Alignment.None
+        });
+        if(this.set[Features.Disabled]) _assign(defaultProps, {
+                disabled        : false
+        });
+        if(this.set[Features.InputField]) _assign(defaultProps, {
+                label           : null
+        });
+        if(this.set[Features.Alignment]) _assign(defaultProps, {
+                alignment       : Alignment.None
+        });
+        if(this.set[Features.Orientation]) _assign(defaultProps, {
+                orientation     : Orientation.Default
+        });
+        return defaultProps;
     }
 }
