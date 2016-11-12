@@ -18,8 +18,11 @@ var _InputField2 = _interopRequireDefault(_InputField);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
 var TextField = function TextField(_ref) {
-    var props = _ref.props;
+    var props = _objectWithoutProperties(_ref, []);
+
     return _react2.default.createElement(
         _InputField2.default,
         { className: _componentFeatures.TextField.getOuterClassNames(props), input: props },

@@ -2,7 +2,7 @@ import React from 'react';
 import { TextField as featureSet } from '../utils/componentFeatures';
 import InputField from './InputField';
 
-const TextField = ({props}) => (
+const TextField = ({...props}) => (
     <InputField className={featureSet.getOuterClassNames(props)} input={props}>
         <input  className={featureSet.getInnerClassNames(props)}
                 type="text"
