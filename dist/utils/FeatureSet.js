@@ -15,6 +15,22 @@ var _classnames2 = _interopRequireDefault(_classnames);
 
 var _enums = require('./enums');
 
+var _values2 = require('lodash/values');
+
+var _values3 = _interopRequireDefault(_values2);
+
+var _pickBy2 = require('lodash/pickBy');
+
+var _pickBy3 = _interopRequireDefault(_pickBy2);
+
+var _isUndefined2 = require('lodash/isUndefined');
+
+var _isUndefined3 = _interopRequireDefault(_isUndefined2);
+
+var _assign2 = require('lodash/assign');
+
+var _assign3 = _interopRequireDefault(_assign2);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -39,9 +55,12 @@ var Features = exports.Features = {
 };
 
 function oneOfList(obj) {
-    return _react.PropTypes.oneOf(Object.keys(obj).map(function (key) {
-        return obj[key];
-    }));
+    return _react.PropTypes.oneOf((0, _values3.default)(obj));
+}
+function clean(obj) {
+    return (0, _pickBy3.default)(obj, function (o) {
+        return !(0, _isUndefined3.default)(o);
+    });
 }
 
 var FeatureSet = exports.FeatureSet = function () {
@@ -92,7 +111,7 @@ var FeatureSet = exports.FeatureSet = function () {
         value: function getPropTypes() {
             var propTypes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-            return Object.assign(propTypes, {
+            return (0, _assign3.default)(propTypes, clean({
                 outerClassName: this.set[Features.ClassNames] ? _react.PropTypes.string : undefined,
                 innerClassName: this.set[Features.ClassNames] ? _react.PropTypes.string : undefined,
                 show: this.set[Features.Visibility] ? _react.PropTypes.bool : undefined,
@@ -111,14 +130,14 @@ var FeatureSet = exports.FeatureSet = function () {
                 isNested: this.set[Features.MenuStyle] ? _react.PropTypes.bool : undefined,
                 iconTop: this.set[Features.MenuStyle] ? _react.PropTypes.bool : undefined,
                 icon: this.set[Features.Icon] ? _react.PropTypes.string : undefined
-            });
+            }));
         }
     }, {
         key: 'getDefaultProps',
         value: function getDefaultProps() {
             var defaultProps = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-            return Object.assign(defaultProps, {
+            return (0, _assign3.default)(defaultProps, clean({
                 show: this.set[Features.Visibility] ? true : undefined,
                 float: this.set[Features.Float] ? _enums.Alignment.None : undefined,
                 disabled: this.set[Features.Disabled] ? false : undefined,
@@ -132,7 +151,7 @@ var FeatureSet = exports.FeatureSet = function () {
                 isNested: this.set[Features.MenuStyle] ? false : undefined,
                 iconTop: this.set[Features.MenuStyle] ? false : undefined,
                 icon: this.set[Features.Icon] ? null : undefined
-            });
+            }));
         }
     }]);
 
