@@ -1,28 +1,22 @@
 import React, { PropTypes } from 'react';
 import { Divider as featureSet } from '../utils/componentFeatures';
 
-class Divider extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        let { height, line, ...props } = this.props;
-        if(line) {
-            return (
-                <div className={featureSet.getOuterClassNames(props)}>
-                    <div style={{height: height + 'px'}}></div>
-                    <hr/>
-                    <div style={{height: height + 'px'}}></div>
-                </div>
-            );
-        }
+const Divider = ({ height, line, ...props }) => {
+    if(line) {
         return (
             <div className={featureSet.getOuterClassNames(props)}>
+                <div style={{height: height + 'px'}}></div>
+                <hr/>
                 <div style={{height: height + 'px'}}></div>
             </div>
         );
     }
-}
+    return (
+        <div className={featureSet.getOuterClassNames(props)}>
+            <div style={{height: height + 'px'}}></div>
+        </div>
+    );
+};
 Divider.propTypes = featureSet.getPropTypes({
     height: PropTypes.number,
     line: PropTypes.bool
