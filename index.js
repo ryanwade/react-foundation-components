@@ -1,4 +1,5 @@
 var Button          = require('./dist/components/Button.js').default;
+var Column          = require('./dist/components/Column.js').default;
 var Divider         = require('./dist/components/Divider.js').default;
 var Expand          = require('./dist/components/Expand.js').default;
 var Icon            = require('./dist/components/Icon.js').default;
@@ -14,6 +15,7 @@ var enums           = require('./dist/utils/enums.js');
 
 module.exports = {
     Button,
+    Column,
     Divider,
     Expand,
     Icon,

@@ -95,7 +95,7 @@ var FeatureSet = exports.FeatureSet = function () {
         _createClass(FeatureSet, [{
                 key: 'getClassNames',
                 value: function getClassNames(props, extraClasses) {
-                        var _classes$append6;
+                        var _classes$append6, _classes$append7;
 
                         var classes = [_defineProperty({}, extraClasses, true)];
                         if (this.set[Features.ClassNames]) classes.append(_defineProperty({}, props.className, true));
@@ -122,10 +122,8 @@ var FeatureSet = exports.FeatureSet = function () {
                                 "row": true,
                                 "column": props.isColumn === true
                         });
-                        if (this.set[Features.ColumnStyle]) classes.append({
-                                "column": true
-                        });
-                        if (this.set[Features.Gutters]) classes.append((_classes$append6 = {}, _defineProperty(_classes$append6, _enums.Gutters.Collapse, props.collapse === true), _defineProperty(_classes$append6, mediaToClass(props.collapseOn, _enums.Gutters.Collapse), !(0, _isUndefined3.default)(props.collapseOn)), _defineProperty(_classes$append6, mediaToClass(props.uncollapseOn, _enums.Gutters.Uncollapse), !(0, _isUndefined3.default)(props.uncollapseOn)), _classes$append6));
+                        if (this.set[Features.ColumnStyle]) classes.append((_classes$append6 = {}, _defineProperty(_classes$append6, _enums.Size.Small + "-" + props.small, !(0, _isUndefined3.default)(props.small)), _defineProperty(_classes$append6, _enums.Size.Medium + "-" + props.medium, !(0, _isUndefined3.default)(props.medium)), _defineProperty(_classes$append6, _enums.Size.Large + "-" + props.large, !(0, _isUndefined3.default)(props.large)), _defineProperty(_classes$append6, _enums.Size.XLarge + "-" + props.xlarge, !(0, _isUndefined3.default)(props.xlarge)), _defineProperty(_classes$append6, _enums.Size.XXLarge + "-" + props.xxlarge, !(0, _isUndefined3.default)(props.xxlarge)), _defineProperty(_classes$append6, "columns", true), _classes$append6));
+                        if (this.set[Features.Gutters]) classes.append((_classes$append7 = {}, _defineProperty(_classes$append7, _enums.Gutters.Collapse, props.collapse === true), _defineProperty(_classes$append7, mediaToClass(props.collapseOn, _enums.Gutters.Collapse), !(0, _isUndefined3.default)(props.collapseOn)), _defineProperty(_classes$append7, mediaToClass(props.uncollapseOn, _enums.Gutters.Uncollapse), !(0, _isUndefined3.default)(props.uncollapseOn)), _classes$append7));
                         return (0, _classnames2.default)(classes);
                 }
         }, {
@@ -212,6 +210,13 @@ var FeatureSet = exports.FeatureSet = function () {
                                 collapse: _react.PropTypes.bool,
                                 collapseOn: _react.PropTypes.oneOf([_react.PropTypes.string, _react.PropTypes.arrayOf(oneOfList(_enums.Size))]),
                                 uncollapseOn: _react.PropTypes.oneOf([_react.PropTypes.string, _react.PropTypes.arrayOf(oneOfList(_enums.Size))])
+                        });
+                        if (this.set[Features.ColumnStyle]) (0, _assign3.default)(propTypes, {
+                                small: _react.PropTypes.number,
+                                medium: _react.PropTypes.number,
+                                large: _react.PropTypes.number,
+                                xlarge: _react.PropTypes.number,
+                                xxlarge: _react.PropTypes.number
                         });
                         return propTypes;
                 }

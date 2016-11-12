@@ -83,3 +83,8 @@ export const Row = new FeatureSet({
     [Features.RowStyle]: true,
     [Features.Gutters]: true
 });
+
+export const Column = new FeatureSet({
+    [Features.Visibility]: true,
+    [Features.ColumnStyle]: true
+});

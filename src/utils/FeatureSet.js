@@ -88,7 +88,12 @@ export class FeatureSet {
                 "column"                                                : props.isColumn === true
         });
         if(this.set[Features.ColumnStyle]) classes.append({
-                "column"                                                : true
+                [Size.Small+"-"+props.small]                            : !_isUndefined(props.small),
+                [Size.Medium+"-"+props.medium]                          : !_isUndefined(props.medium),
+                [Size.Large+"-"+props.large]                            : !_isUndefined(props.large),
+                [Size.XLarge+"-"+props.xlarge]                          : !_isUndefined(props.xlarge),
+                [Size.XXLarge+"-"+props.xxlarge]                        : !_isUndefined(props.xxlarge),
+                "columns"                                               : true
         });
         if(this.set[Features.Gutters]) classes.append({
                 [Gutters.Collapse]                                      : props.collapse === true,
@@ -178,6 +183,13 @@ export class FeatureSet {
                 collapseOn      : PropTypes.oneOf([PropTypes.string, PropTypes.arrayOf(oneOfList(Size))]),      
                 uncollapseOn    : PropTypes.oneOf([PropTypes.string, PropTypes.arrayOf(oneOfList(Size))])
         });
+        if(this.set[Features.ColumnStyle]) _assign(propTypes, {
+                small           : PropTypes.number,
+                medium          : PropTypes.number,
+                large           : PropTypes.number,
+                xlarge          : PropTypes.number,
+                xxlarge         : PropTypes.number
+        })
         return propTypes;
     }
     getDefaultProps(defaultProps = {}) {
