@@ -4,7 +4,7 @@ import { Button as featureSet } from '../utils/componentFeatures';
 
 const Button = ({ color, label, children, ...props }) => (
     <button type="button"
-            className={featureSet.getOuterClassNames(props, classNames("button", color))}
+            className={featureSet.getClassNames(props, classNames("button", color))}
             {...featureSet.getAttrs(props)}>
             {label || children}
     </button>

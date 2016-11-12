@@ -17,7 +17,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 var Icon = function Icon(_ref) {
     var props = _objectWithoutProperties(_ref, []);
 
-    return _react2.default.createElement('i', { className: _componentFeatures.Icon.getOuterClassNames(props) });
+    return _react2.default.createElement('i', { className: _componentFeatures.Icon.getClassNames(props) });
 };
 Icon.propTypes = _componentFeatures.Icon.getPropTypes();
 Icon.defaultProps = _componentFeatures.Icon.getDefaultProps();

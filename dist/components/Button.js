@@ -30,7 +30,7 @@ var Button = function Button(_ref) {
     return _react2.default.createElement(
         'button',
         _extends({ type: 'button',
-            className: _componentFeatures.Button.getOuterClassNames(props, (0, _classnames2.default)("button", color))
+            className: _componentFeatures.Button.getClassNames(props, (0, _classnames2.default)("button", color))
         }, _componentFeatures.Button.getAttrs(props)),
         label || children
     );

@@ -25,7 +25,7 @@ var TextField = function TextField(_ref) {
 
     return _react2.default.createElement(
         _InputField2.default,
-        { className: _componentFeatures.TextField.getOuterClassNames(props), input: props },
+        { className: _componentFeatures.TextField.getClassNames(props), input: props },
         _react2.default.createElement('input', _extends({ className: _componentFeatures.TextField.getInnerClassNames(props),
             type: 'text'
         }, _componentFeatures.TextField.getAttrs(props)))

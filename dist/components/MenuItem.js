@@ -22,7 +22,7 @@ var MenuItem = function MenuItem(_ref) {
 
     return _react2.default.createElement(
         'li',
-        { className: _componentFeatures.MenuItem.getOuterClassNames(props) },
+        { className: _componentFeatures.MenuItem.getClassNames(props) },
         _react2.default.createElement(
             'a',
             { href: '#' },

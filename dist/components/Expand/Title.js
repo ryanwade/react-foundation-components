@@ -24,7 +24,7 @@ var ExpandTitle = function ExpandTitle(_ref) {
 
         return _react2.default.createElement(
                 'div',
-                _extends({ className: _componentFeatures.ExpandTitle.getOuterClassNames(props, "row callout expand-content")
+                _extends({ className: _componentFeatures.ExpandTitle.getClassNames(props, "row callout expand-content")
                 }, _componentFeatures.ExpandTitle.getAttrs(props)),
                 children,
                 _react2.default.createElement(

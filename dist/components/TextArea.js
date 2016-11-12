@@ -25,7 +25,7 @@ var TextArea = function TextArea(_ref) {
 
     return _react2.default.createElement(
         _InputField2.default,
-        { className: _componentFeatures.TextArea.getOuterClassNames(props), input: props },
+        { className: _componentFeatures.TextArea.getClassNames(props), input: props },
         _react2.default.createElement('textarea', _extends({ className: _componentFeatures.TextArea.getInnerClassNames(props)
         }, _componentFeatures.TextArea.getAttrs(props)))
     );

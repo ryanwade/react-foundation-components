@@ -4,7 +4,7 @@ import { Divider as featureSet } from '../utils/componentFeatures';
 const Divider = ({ height, line, ...props }) => {
     if(line) {
         return (
-            <div className={featureSet.getOuterClassNames(props)}>
+            <div className={featureSet.getClassNames(props)}>
                 <div style={{height: height + 'px'}}></div>
                 <hr/>
                 <div style={{height: height + 'px'}}></div>
@@ -12,7 +12,7 @@ const Divider = ({ height, line, ...props }) => {
         );
     }
     return (
-        <div className={featureSet.getOuterClassNames(props)}>
+        <div className={featureSet.getClassNames(props)}>
             <div style={{height: height + 'px'}}></div>
         </div>
     );

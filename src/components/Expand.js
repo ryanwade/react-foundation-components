@@ -20,7 +20,7 @@ class Expand extends React.Component {
         let {title, content, ...props} = this.props;
         let {show = false} = this.state || {};
         return (
-            <div className={featureSet.getOuterClassNames(props, "expand")}>
+            <div className={featureSet.getClassNames(props, "expand")}>
                 <ExpandTitle onClick={this.toggleShow} show={show}>
                     {title}
                 </ExpandTitle>

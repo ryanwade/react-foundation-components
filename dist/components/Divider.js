@@ -23,7 +23,7 @@ var Divider = function Divider(_ref) {
     if (line) {
         return _react2.default.createElement(
             'div',
-            { className: _componentFeatures.Divider.getOuterClassNames(props) },
+            { className: _componentFeatures.Divider.getClassNames(props) },
             _react2.default.createElement('div', { style: { height: height + 'px' } }),
             _react2.default.createElement('hr', null),
             _react2.default.createElement('div', { style: { height: height + 'px' } })
@@ -31,7 +31,7 @@ var Divider = function Divider(_ref) {
     }
     return _react2.default.createElement(
         'div',
-        { className: _componentFeatures.Divider.getOuterClassNames(props) },
+        { className: _componentFeatures.Divider.getClassNames(props) },
         _react2.default.createElement('div', { style: { height: height + 'px' } })
     );
 };

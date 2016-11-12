@@ -70,7 +70,7 @@ var Expand = function (_React$Component) {
 
             return _react2.default.createElement(
                 'div',
-                { className: _componentFeatures.Expand.getOuterClassNames(props, "expand") },
+                { className: _componentFeatures.Expand.getClassNames(props, "expand") },
                 _react2.default.createElement(
                     _Title2.default,
                     { onClick: this.toggleShow, show: show },

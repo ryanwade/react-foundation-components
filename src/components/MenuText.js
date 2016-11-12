@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { MenuText as featureSet } from '../utils/componentFeatures';
 
 const MenuText = ({text, ...props}) => (
-    <li className={featureSet.getOuterClassNames(props, "menu-text")}>
+    <li className={featureSet.getClassNames(props, "menu-text")}>
         {text}
     </li>
 );

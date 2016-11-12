@@ -71,7 +71,7 @@ var FeatureSet = exports.FeatureSet = function () {
 
         this.set = set;
 
-        this.getOuterClassNames = this.getOuterClassNames.bind(this);
+        this.getClassNames = this.getClassNames.bind(this);
         this.getInnerClassNames = this.getInnerClassNames.bind(this);
         this.getAttrs = this.getAttrs.bind(this);
         this.getDefaultProps = this.getDefaultProps.bind(this);
@@ -79,11 +79,11 @@ var FeatureSet = exports.FeatureSet = function () {
     }
 
     _createClass(FeatureSet, [{
-        key: 'getOuterClassNames',
-        value: function getOuterClassNames(props, extraClasses) {
+        key: 'getClassNames',
+        value: function getClassNames(props, extraClasses) {
             var _classNames;
 
-            return (0, _classnames2.default)((_classNames = {}, _defineProperty(_classNames, extraClasses, true), _defineProperty(_classNames, props.outerClassName, this.set[Features.ClassNames]), _defineProperty(_classNames, props.className, this.set[Features.ClassNames]), _defineProperty(_classNames, "show", this.set[Features.Visibility] && props.show), _defineProperty(_classNames, "hide", this.set[Features.Visibility] && !props.show), _defineProperty(_classNames, "float-" + props.float, this.set[Features.Float] && props.float), _defineProperty(_classNames, "align-" + props.alignment, this.set[Features.Alignment] && props.alignment), _defineProperty(_classNames, "active", this.set[Features.Active] && props.isActive), _defineProperty(_classNames, props.orientation, this.set[Features.Orientation]), _defineProperty(_classNames, "expanded", this.set[Features.ContentExpand] && props.isExpanded), _defineProperty(_classNames, "simple", this.set[Features.MenuStyle] && props.isSimple), _defineProperty(_classNames, "nested", this.set[Features.MenuStyle] && props.isNested), _defineProperty(_classNames, "icon-top", this.set[Features.MenuStyle] && props.iconTop), _defineProperty(_classNames, "fi-" + props.icon, this.set[Features.Icon] && props.icon), _classNames));
+            return (0, _classnames2.default)((_classNames = {}, _defineProperty(_classNames, extraClasses, true), _defineProperty(_classNames, props.className, this.set[Features.ClassNames]), _defineProperty(_classNames, "show", this.set[Features.Visibility] && props.show), _defineProperty(_classNames, "hide", this.set[Features.Visibility] && !props.show), _defineProperty(_classNames, "float-" + props.float, this.set[Features.Float] && props.float), _defineProperty(_classNames, "align-" + props.alignment, this.set[Features.Alignment] && props.alignment), _defineProperty(_classNames, "active", this.set[Features.Active] && props.isActive), _defineProperty(_classNames, props.orientation, this.set[Features.Orientation]), _defineProperty(_classNames, "expanded", this.set[Features.ContentExpand] && props.isExpanded), _defineProperty(_classNames, "simple", this.set[Features.MenuStyle] && props.isSimple), _defineProperty(_classNames, "nested", this.set[Features.MenuStyle] && props.isNested), _defineProperty(_classNames, "icon-top", this.set[Features.MenuStyle] && props.iconTop), _defineProperty(_classNames, "fi-" + props.icon, this.set[Features.Icon] && props.icon), _classNames));
         }
     }, {
         key: 'getInnerClassNames',
@@ -108,7 +108,7 @@ var FeatureSet = exports.FeatureSet = function () {
             var propTypes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
             return (0, _assign3.default)(propTypes, clean({
-                outerClassName: this.set[Features.ClassNames] ? _react.PropTypes.string : undefined,
+                className: this.set[Features.ClassNames] ? _react.PropTypes.string : undefined,
                 innerClassName: this.set[Features.ClassNames] ? _react.PropTypes.string : undefined,
                 show: this.set[Features.Visibility] ? _react.PropTypes.bool : undefined,
                 float: this.set[Features.Float] ? oneOfList(_enums.Alignment) : undefined,

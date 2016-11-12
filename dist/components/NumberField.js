@@ -27,7 +27,7 @@ var NumberField = function NumberField(_ref) {
 
     return _react2.default.createElement(
         _InputField2.default,
-        { className: _componentFeatures.NumberField.getOuterClassNames(props), input: props },
+        { className: _componentFeatures.NumberField.getClassNames(props), input: props },
         _react2.default.createElement('input', _extends({ className: _componentFeatures.NumberField.getInnerClassNames(props),
             type: 'number',
             min: 1,

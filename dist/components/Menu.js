@@ -21,7 +21,7 @@ var Menu = function Menu(_ref) {
 
     return _react2.default.createElement(
         'ul',
-        { className: _componentFeatures.Menu.getOuterClassNames(props, "menu") },
+        { className: _componentFeatures.Menu.getClassNames(props, "menu") },
         children
     );
 };

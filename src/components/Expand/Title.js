@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { ExpandTitle as featureSet } from '../../utils/componentFeatures';
 
 const ExpandTitle = ({children, show, ...props}) => (
-    <div className={featureSet.getOuterClassNames(props,"row callout expand-content")}
+    <div className={featureSet.getClassNames(props,"row callout expand-content")}
             {...featureSet.getAttrs(props)}>
             {children}
             <div    className={featureSet.getInnerClassNames(props,"is-accordion-submenu-parent")}

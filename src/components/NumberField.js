@@ -3,7 +3,7 @@ import { NumberField as featureSet } from '../utils/componentFeatures';
 import InputField from './InputField';
 
 const NumberField = ({ max, ...props }) => (
-    <InputField className={featureSet.getOuterClassNames(props)} input={props}>
+    <InputField className={featureSet.getClassNames(props)} input={props}>
         <input  className={featureSet.getInnerClassNames(props)}
                 type="number"
                 min={1}

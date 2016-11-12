@@ -21,7 +21,7 @@ var ExpandContent = function ExpandContent(_ref) {
 
     return _react2.default.createElement(
         'div',
-        { className: _componentFeatures.ExpandContent.getOuterClassNames(props, "row callout expand-content") },
+        { className: _componentFeatures.ExpandContent.getClassNames(props, "row callout expand-content") },
         children
     );
 };

@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { ExpandContent as featureSet } from '../../utils/componentFeatures';
 
 const ExpandContent = ({ children, ...props}) => (
-    <div className={featureSet.getOuterClassNames(props, "row callout expand-content")}>
+    <div className={featureSet.getClassNames(props, "row callout expand-content")}>
         {children}
     </div>
 );

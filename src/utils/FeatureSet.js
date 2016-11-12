@@ -35,16 +35,15 @@ export class FeatureSet {
     constructor(set = {}) {
         this.set = set;
 
-        this.getOuterClassNames = this.getOuterClassNames.bind(this);
+        this.getClassNames      = this.getClassNames.bind(this);
         this.getInnerClassNames = this.getInnerClassNames.bind(this);
         this.getAttrs           = this.getAttrs.bind(this);
         this.getDefaultProps    = this.getDefaultProps.bind(this);
         this.getPropTypes       = this.getPropTypes.bind(this);
     }
-    getOuterClassNames(props, extraClasses) {
+    getClassNames(props, extraClasses) {
         return classNames({
             [extraClasses]              : true,
-            [props.outerClassName]      : this.set[Features.ClassNames],
             [props.className]           : this.set[Features.ClassNames],
             "show"                      : this.set[Features.Visibility]         &&  props.show,
             "hide"                      : this.set[Features.Visibility]         && !props.show,
@@ -76,7 +75,7 @@ export class FeatureSet {
     }
     getPropTypes(propTypes = {}) {
         return _assign(propTypes, clean({
-            outerClassName  : this.set[Features.ClassNames]     ? PropTypes.string                  : undefined,
+            className       : this.set[Features.ClassNames]     ? PropTypes.string                  : undefined,
             innerClassName  : this.set[Features.ClassNames]     ? PropTypes.string                  : undefined,
             show            : this.set[Features.Visibility]     ? PropTypes.bool                    : undefined,
             float           : this.set[Features.Float]          ? oneOfList(Alignment)              : undefined,

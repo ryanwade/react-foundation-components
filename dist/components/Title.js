@@ -21,7 +21,7 @@ var Title = function Title(_ref) {
 
     return _react2.default.createElement(
         'h3',
-        { className: _componentFeatures.Title.getOuterClassNames(props, "title-font") },
+        { className: _componentFeatures.Title.getClassNames(props, "title-font") },
         text
     );
 };

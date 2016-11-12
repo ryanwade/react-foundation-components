@@ -21,7 +21,7 @@ var MenuText = function MenuText(_ref) {
 
     return _react2.default.createElement(
         'li',
-        { className: _componentFeatures.MenuText.getOuterClassNames(props, "menu-text") },
+        { className: _componentFeatures.MenuText.getClassNames(props, "menu-text") },
         text
     );
 };
