@@ -68,7 +68,7 @@ export class FeatureSet {
         });
     }
     getPropTypes(propTypes = {}) {
-        Object.assign(propTypes, {
+        return Object.assign(propTypes, {
             outerClassName  : this.set[Features.ClassNames]     ? PropTypes.string                  : undefined,
             innerClassName  : this.set[Features.ClassNames]     ? PropTypes.string                  : undefined,
             show            : this.set[Features.Visibility]     ? PropTypes.bool                    : undefined,
@@ -90,7 +90,7 @@ export class FeatureSet {
         });
     }
     getDefaultProps(defaultProps = {}) {
-        Object.assign(defaultProps, {
+        return Object.assign(defaultProps, {
             show            : this.set[Features.Visibility]     ? true                              : undefined,
             float           : this.set[Features.Float]          ? Alignment.None                    : undefined,
             disabled        : this.set[Features.Disabled]       ? false                             : undefined,

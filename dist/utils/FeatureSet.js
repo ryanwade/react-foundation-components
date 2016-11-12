@@ -92,7 +92,7 @@ var FeatureSet = exports.FeatureSet = function () {
         value: function getPropTypes() {
             var propTypes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-            Object.assign(propTypes, {
+            return Object.assign(propTypes, {
                 outerClassName: this.set[Features.ClassNames] ? _react.PropTypes.string : undefined,
                 innerClassName: this.set[Features.ClassNames] ? _react.PropTypes.string : undefined,
                 show: this.set[Features.Visibility] ? _react.PropTypes.bool : undefined,
@@ -118,7 +118,7 @@ var FeatureSet = exports.FeatureSet = function () {
         value: function getDefaultProps() {
             var defaultProps = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-            Object.assign(defaultProps, {
+            return Object.assign(defaultProps, {
                 show: this.set[Features.Visibility] ? true : undefined,
                 float: this.set[Features.Float] ? _enums.Alignment.None : undefined,
                 disabled: this.set[Features.Disabled] ? false : undefined,
