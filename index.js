@@ -10,6 +10,7 @@ var Row             = require('./dist/components/Row.js').default;
 var TextArea        = require('./dist/components/TextArea.js').default;
 var TextField       = require('./dist/components/TextField.js').default;
 var Title           = require('./dist/components/Title.js').default;
+var enums           = require('./dist/utils/enums.js');
 
 module.exports = {
     Button,
@@ -23,5 +24,9 @@ module.exports = {
     Row,
     TextArea,
     TextField,
-    Title
+    Title,
+    ALIGNMENT: enums.Alignment,
+    ORIENTATION: enums.Orientation,
+    SIZE: enums.Size,
+    GUTTERS: enums.Gutters
 };
