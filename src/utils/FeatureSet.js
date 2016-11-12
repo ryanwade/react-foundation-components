@@ -1,6 +1,8 @@
 import { PropTypes } from 'react';
 import classNames from 'classnames';
 
+import { Alignment, Orientation } from './enums';
+
 export const Features = {
     ClassNames: "ClassNames",
     Visibility: "Visibility",
@@ -19,20 +21,9 @@ export const Features = {
     IconTop: "IconTop"
 };
 
-export const Alignment = {
-    Left: "left",
-    Right: "right",
-    Center: "center",
-    None: null
-};
-const Alignment_List = Object.keys(Alignment).map(key => Alignment[key]);
-
-export const Orientation = {
-    Horizontal: "horizontal",
-    Vertical: "vertical",
-    Default: null
-};
-const Orientation_List = Object.keys(Orientation).map(key => Orientation[key]);
+function oneOfList(obj) {
+    return PropTypes.oneOf(Object.keys(obj).map(key => obj[key]));
+}
 
 export class FeatureSet {
     constructor(set = {}) {
@@ -45,187 +36,75 @@ export class FeatureSet {
         this.getPropTypes       = this.getPropTypes.bind(this);
     }
     getOuterClassNames(props, extraClasses) {
-        let outerClassNames = extraClasses;
-        if(this.set[Features.ClassNames]) {
-            outerClassNames = classNames(outerClassNames,
-                props.outerClassName,
-                props.className
-            );
-        }
-        if(this.set[Features.Visibility]) {
-            outerClassNames = classNames(outerClassNames, {
-                "show": props.show,
-                "hide": !props.show
-            });
-        }
-        if(this.set[Features.Float]) {
-            outerClassNames = classNames(outerClassNames, {
-                ["float-"+props.float]: props.float
-            });
-        }
-        if(this.set[Features.Alignment]) {
-            outerClassNames = classNames(outerClassNames, {
-                ["align-"+props.alignment]: props.alignment
-            });
-        }
-        if(this.set[Features.Active]) {
-            outerClassNames = classNames(outerClassNames,{
-                "active": props.isActive
-            });
-        }
-        if(this.set[Features.Orientation]) {
-            outerClassNames = classNames(outerClassNames, 
-                props.orientation
-            );
-        }
-        if(this.set[Features.Expanded]) {
-            outerClassNames = classNames(outerClassNames, {
-                "expanded": props.isExpanded
-            });
-        }
-        if(this.set[Features.Simple]) {
-            outerClassNames = classNames(outerClassNames, {
-                "simple": props.isSimple
-            });
-        }
-        if(this.set[Features.Nested]) {
-            outerClassNames = classNames(outerClassNames, {
-                "nested": props.isNested
-            });
-        }
-        if(this.set[Features.Icon]) {
-            outerClassNames = classNames(outerClassNames, {
-                ["fi-"+props.icon]: props.icon
-            });
-        }
-        if(this.set[Features.IconTop]) {
-            outerClassNames = classNames(outerClassNames, {
-                "icon-top": props.iconTop
-            });
-        }
-        return outerClassNames;
+        return classNames({
+            extraClasses,
+            [props.outerClassName]      : this.set[Features.ClassNames],
+            [props.className]           : this.set[Features.ClassNames],
+            "show"                      : this.set[Features.Visibility]     &&  props.show,
+            "hide"                      : this.set[Features.Visibility]     && !props.show,
+            ["float-"+props.float]      : this.set[Features.Float]          &&  props.float,
+            ["align-"+props.alignment]  : this.set[Features.Alignment]      &&  props.alignment,
+            "active"                    : this.set[Features.Active]         &&  props.isActive, 
+            [props.orientation]         : this.set[Features.Orientation],
+            "expanded"                  : this.set[Features.Expanded]       &&  props.isExpanded,
+            "simple"                    : this.set[Features.Simple]         &&  props.isSimple,
+            "nested"                    : this.set[Features.Nested]         &&  props.isNested,
+            ["fi-"+props.icon]          : this.set[Features.Icon]           &&  props.icon,
+            "icon-top"                  : this.set[Features.IconTop]        &&  props.iconTop
+        });
     }
     getInnerClassNames(props, extraClasses) {
-        let innerClassNames = extraClasses;
-        if(this.set[Features.ClassNames]) {
-            innerClassNames = classNames(
-                innerClassNames,
-                props.innerClassName
-            );
-        }
-        if(this.set[Features.InputField] && props.isInline) {
-            innerClassNames = classNames(
-                innerClassNames,
-                "input-group-field"
-            );
-        }
-        return innerClassNames;
+        return classNames({
+            extraClasses,
+            [props.innerClassName]      : this.set[Features.ClassNames],
+            "input-group-field"         : this.set[Features.InputField]     && props.isInline
+        });
     }
     getAttrs(props) {
-        let attrs = {};
-        if(this.set[Features.Disabled]) {
-            attrs.disabled = props.disabled;
-        }
-        if(this.set[Features.MouseEvents]) {
-            attrs.onClick = props.onClick;
-        }
-        if(this.set[Features.DataEvents]) {
-            attrs.onChange = props.onChange;
-        }
-        if(this.set[Features.InputField]) {
-            attrs.value = props.value;
-        }
-        return attrs;
+        return classNames({
+            disabled        : this.set[Features.Disabled]       ? props.disabled                    : undefined,
+            onClick         : this.set[Features.MouseEvents]    ? props.onClick                     : undefined,
+            onChange        : this.set[Features.DataEvents]     ? props.onChange                    : undefined,
+            value           : this.set[Features.InputField]     ? props.value                       : undefined
+        });
     }
     getPropTypes(propTypes = {}) {
-        if(this.set[Features.ClassNames]) {
-            propTypes.outerClassName = PropTypes.string;
-            propTypes.innerClassName = PropTypes.string;
-        }
-        if(this.set[Features.Visibility]) {
-            propTypes.show = PropTypes.bool;
-        }
-        if(this.set[Features.Float]) {
-            propTypes.float = PropTypes.oneOf(Alignment_List);
-        }
-        if(this.set[Features.Disabled]) {
-            propTypes.disabled = PropTypes.bool;
-        }
-        if(this.set[Features.MouseEvents]) {
-            propTypes.onClick = PropTypes.func;
-        }
-        if(this.set[Features.DataEvents]) {
-            propTypes.onChange = PropTypes.func;
-        }
-        if(this.set[Features.InputField]) {
-            propTypes.value = this.set[Features.InputField];
-            propTypes.label = PropTypes.string;
-            propTypes.isInline = PropTypes.bool;
-        }
-        if(this.set[Features.Alignment]) {
-            propTypes.alignment = PropTypes.oneOf(Alignment_List);
-        }
-        if(this.set[Features.Active]) {
-            propTypes.isActive = PropTypes.bool;
-        }
-        if(this.set[Features.Orientation]) {
-            propTypes.orientation = PropTypes.oneOf(Orientation_List);
-        }
-        if(this.set[Features.Expanded]) {
-            propTypes.isExpanded = PropTypes.bool;
-        }
-        if(this.set[Features.Simple]) {
-            propTypes.isSimple = PropTypes.bool;
-        }
-        if(this.set[Features.Nested]) {
-            propTypes.isNested = PropTypes.bool;
-        }
-        if(this.set[Features.Icon]) {
-            propTypes.icon = PropTypes.string;
-        }
-        if(this.set[Features.IconTop]) {
-            propTypes.iconTop = PropTypes.bool;
-        }
-        return propTypes;
+        Object.assign(propTypes, {
+            outerClassName  : this.set[Features.ClassNames]     ? PropTypes.string                  : undefined,
+            innerClassName  : this.set[Features.ClassNames]     ? PropTypes.string                  : undefined,
+            show            : this.set[Features.Visibility]     ? PropTypes.bool                    : undefined,
+            float           : this.set[Features.Float]          ? oneOfList(Alignment)              : undefined,
+            disabled        : this.set[Features.Disabled]       ? PropTypes.bool                    : undefined,
+            onClick         : this.set[Features.MouseEvents]    ? PropTypes.func                    : undefined,
+            onChange        : this.set[Features.DataEvents]     ? PropTypes.func                    : undefined,
+            value           : this.set[Features.InputField]     ? this.set[Features.InputField]     : undefined,
+            label           : this.set[Features.InputField]     ? PropTypes.string                  : undefined,
+            isInline        : this.set[Features.InputField]     ? PropTypes.bool                    : undefined,
+            alignment       : this.set[Features.Alignment]      ? oneOfList(Alignment)              : undefined,
+            isActive        : this.set[Features.Active]         ? PropTypes.bool                    : undefined,
+            orientation     : this.set[Features.Orientation]    ? oneOfList(Orientation)            : undefined,
+            isExpanded      : this.set[Features.Expanded]       ? PropTypes.bool                    : undefined,
+            isSimple        : this.set[Features.Simple]         ? PropTypes.bool                    : undefined,
+            isNested        : this.set[Features.Nested]         ? PropTypes.bool                    : undefined,
+            icon            : this.set[Features.Icon]           ? PropTypes.string                  : undefined,
+            iconTop         : this.set[Features.IconTop]        ? PropTypes.bool                    : undefined
+        });
     }
     getDefaultProps(defaultProps = {}) {
-        if(this.set[Features.Visibility]) {
-            defaultProps.show = true;
-        }
-        if(this.set[Features.Float]) {
-            defaultProps.float = Alignment.None; 
-        }
-        if(this.set[Features.Disabled]) {
-            defaultProps.disabled = false;
-        }
-        if(this.set[Features.InputField]) {
-            defaultProps.isInline = false;
-            defaultProps.label = null;
-        }
-        if(this.set[Features.Alignment]) {
-            defaultProps.alignment = Alignment.None;
-        }
-        if(this.set[Features.Active]) {
-            defaultProps.isActive = false;
-        }
-        if(this.set[Features.Orientation]) {
-            defaultProps.orientation = Orientation.Default;
-        }
-        if(this.set[Features.Expanded]) {
-            defaultProps.isExpanded = false;
-        }
-        if(this.set[Features.Simple]) {
-            defaultProps.isSimple = false;
-        }
-        if(this.set[Features.Nested]) {
-            defaultProps.isNested = false;
-        }
-        if(this.set[Features.Icon]) {
-            defaultProps.icon = null;
-        }
-        if(this.set[Features.IconTop]) {
-            defaultProps.iconTop = false;
-        }
-        return defaultProps;
+        Object.assign(defaultProps, {
+            show            : this.set[Features.Visibility]     ? true                              : undefined,
+            float           : this.set[Features.Float]          ? Alignment.None                    : undefined,
+            disabled        : this.set[Features.Disabled]       ? false                             : undefined,
+            isInline        : this.set[Features.InputField]     ? false                             : undefined,
+            label           : this.set[Features.InputField]     ? null                              : undefined,
+            alignment       : this.set[Features.Alignment]      ? Alignment.None                    : undefined,
+            isActive        : this.set[Features.Active]         ? false                             : undefined,
+            orientation     : this.set[Features.Orientation]    ? Orientation.Default               : undefined,
+            isExpanded      : this.set[Features.Expanded]       ? false                             : undefined,
+            isSimple        : this.set[Features.Simple]         ? false                             : undefined,
+            isNested        : this.set[Features.Nested]         ? false                             : undefined,
+            icon            : this.set[Features.Icon]           ? null                              : undefined,
+            iconTop         : this.set[Features.IconTop]        ? false                             : undefined
+        });
     }
 }

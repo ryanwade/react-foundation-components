@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.FeatureSet = exports.Orientation = exports.Alignment = exports.Features = undefined;
+exports.FeatureSet = exports.Features = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -12,6 +12,8 @@ var _react = require('react');
 var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
+
+var _enums = require('./enums');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37,24 +39,11 @@ var Features = exports.Features = {
     IconTop: "IconTop"
 };
 
-var Alignment = exports.Alignment = {
-    Left: "left",
-    Right: "right",
-    Center: "center",
-    None: null
-};
-var Alignment_List = Object.keys(Alignment).map(function (key) {
-    return Alignment[key];
-});
-
-var Orientation = exports.Orientation = {
-    Horizontal: "horizontal",
-    Vertical: "vertical",
-    Default: null
-};
-var Orientation_List = Object.keys(Orientation).map(function (key) {
-    return Orientation[key];
-});
+function oneOfList(obj) {
+    return _react.PropTypes.oneOf(Object.keys(obj).map(function (key) {
+        return obj[key];
+    }));
+}
 
 var FeatureSet = exports.FeatureSet = function () {
     function FeatureSet() {
@@ -74,183 +63,77 @@ var FeatureSet = exports.FeatureSet = function () {
     _createClass(FeatureSet, [{
         key: 'getOuterClassNames',
         value: function getOuterClassNames(props, extraClasses) {
-            var outerClassNames = extraClasses;
-            if (this.set[Features.ClassNames]) {
-                outerClassNames = (0, _classnames2.default)(outerClassNames, props.outerClassName, props.className);
-            }
-            if (this.set[Features.Visibility]) {
-                outerClassNames = (0, _classnames2.default)(outerClassNames, {
-                    "show": props.show,
-                    "hide": !props.show
-                });
-            }
-            if (this.set[Features.Float]) {
-                outerClassNames = (0, _classnames2.default)(outerClassNames, _defineProperty({}, "float-" + props.float, props.float));
-            }
-            if (this.set[Features.Alignment]) {
-                outerClassNames = (0, _classnames2.default)(outerClassNames, _defineProperty({}, "align-" + props.alignment, props.alignment));
-            }
-            if (this.set[Features.Active]) {
-                outerClassNames = (0, _classnames2.default)(outerClassNames, {
-                    "active": props.isActive
-                });
-            }
-            if (this.set[Features.Orientation]) {
-                outerClassNames = (0, _classnames2.default)(outerClassNames, props.orientation);
-            }
-            if (this.set[Features.Expanded]) {
-                outerClassNames = (0, _classnames2.default)(outerClassNames, {
-                    "expanded": props.isExpanded
-                });
-            }
-            if (this.set[Features.Simple]) {
-                outerClassNames = (0, _classnames2.default)(outerClassNames, {
-                    "simple": props.isSimple
-                });
-            }
-            if (this.set[Features.Nested]) {
-                outerClassNames = (0, _classnames2.default)(outerClassNames, {
-                    "nested": props.isNested
-                });
-            }
-            if (this.set[Features.Icon]) {
-                outerClassNames = (0, _classnames2.default)(outerClassNames, _defineProperty({}, "fi-" + props.icon, props.icon));
-            }
-            if (this.set[Features.IconTop]) {
-                outerClassNames = (0, _classnames2.default)(outerClassNames, {
-                    "icon-top": props.iconTop
-                });
-            }
-            return outerClassNames;
+            var _classNames;
+
+            return (0, _classnames2.default)((_classNames = {
+                extraClasses: extraClasses
+            }, _defineProperty(_classNames, props.outerClassName, this.set[Features.ClassNames]), _defineProperty(_classNames, props.className, this.set[Features.ClassNames]), _defineProperty(_classNames, "show", this.set[Features.Visibility] && props.show), _defineProperty(_classNames, "hide", this.set[Features.Visibility] && !props.show), _defineProperty(_classNames, "float-" + props.float, this.set[Features.Float] && props.float), _defineProperty(_classNames, "align-" + props.alignment, this.set[Features.Alignment] && props.alignment), _defineProperty(_classNames, "active", this.set[Features.Active] && props.isActive), _defineProperty(_classNames, props.orientation, this.set[Features.Orientation]), _defineProperty(_classNames, "expanded", this.set[Features.Expanded] && props.isExpanded), _defineProperty(_classNames, "simple", this.set[Features.Simple] && props.isSimple), _defineProperty(_classNames, "nested", this.set[Features.Nested] && props.isNested), _defineProperty(_classNames, "fi-" + props.icon, this.set[Features.Icon] && props.icon), _defineProperty(_classNames, "icon-top", this.set[Features.IconTop] && props.iconTop), _classNames));
         }
     }, {
         key: 'getInnerClassNames',
         value: function getInnerClassNames(props, extraClasses) {
-            var innerClassNames = extraClasses;
-            if (this.set[Features.ClassNames]) {
-                innerClassNames = (0, _classnames2.default)(innerClassNames, props.innerClassName);
-            }
-            if (this.set[Features.InputField] && props.isInline) {
-                innerClassNames = (0, _classnames2.default)(innerClassNames, "input-group-field");
-            }
-            return innerClassNames;
+            var _classNames2;
+
+            return (0, _classnames2.default)((_classNames2 = {
+                extraClasses: extraClasses
+            }, _defineProperty(_classNames2, props.innerClassName, this.set[Features.ClassNames]), _defineProperty(_classNames2, "input-group-field", this.set[Features.InputField] && props.isInline), _classNames2));
         }
     }, {
         key: 'getAttrs',
         value: function getAttrs(props) {
-            var attrs = {};
-            if (this.set[Features.Disabled]) {
-                attrs.disabled = props.disabled;
-            }
-            if (this.set[Features.MouseEvents]) {
-                attrs.onClick = props.onClick;
-            }
-            if (this.set[Features.DataEvents]) {
-                attrs.onChange = props.onChange;
-            }
-            if (this.set[Features.InputField]) {
-                attrs.value = props.value;
-            }
-            return attrs;
+            return (0, _classnames2.default)({
+                disabled: this.set[Features.Disabled] ? props.disabled : undefined,
+                onClick: this.set[Features.MouseEvents] ? props.onClick : undefined,
+                onChange: this.set[Features.DataEvents] ? props.onChange : undefined,
+                value: this.set[Features.InputField] ? props.value : undefined
+            });
         }
     }, {
         key: 'getPropTypes',
         value: function getPropTypes() {
             var propTypes = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-            if (this.set[Features.ClassNames]) {
-                propTypes.outerClassName = _react.PropTypes.string;
-                propTypes.innerClassName = _react.PropTypes.string;
-            }
-            if (this.set[Features.Visibility]) {
-                propTypes.show = _react.PropTypes.bool;
-            }
-            if (this.set[Features.Float]) {
-                propTypes.float = _react.PropTypes.oneOf(Alignment_List);
-            }
-            if (this.set[Features.Disabled]) {
-                propTypes.disabled = _react.PropTypes.bool;
-            }
-            if (this.set[Features.MouseEvents]) {
-                propTypes.onClick = _react.PropTypes.func;
-            }
-            if (this.set[Features.DataEvents]) {
-                propTypes.onChange = _react.PropTypes.func;
-            }
-            if (this.set[Features.InputField]) {
-                propTypes.value = this.set[Features.InputField];
-                propTypes.label = _react.PropTypes.string;
-                propTypes.isInline = _react.PropTypes.bool;
-            }
-            if (this.set[Features.Alignment]) {
-                propTypes.alignment = _react.PropTypes.oneOf(Alignment_List);
-            }
-            if (this.set[Features.Active]) {
-                propTypes.isActive = _react.PropTypes.bool;
-            }
-            if (this.set[Features.Orientation]) {
-                propTypes.orientation = _react.PropTypes.oneOf(Orientation_List);
-            }
-            if (this.set[Features.Expanded]) {
-                propTypes.isExpanded = _react.PropTypes.bool;
-            }
-            if (this.set[Features.Simple]) {
-                propTypes.isSimple = _react.PropTypes.bool;
-            }
-            if (this.set[Features.Nested]) {
-                propTypes.isNested = _react.PropTypes.bool;
-            }
-            if (this.set[Features.Icon]) {
-                propTypes.icon = _react.PropTypes.string;
-            }
-            if (this.set[Features.IconTop]) {
-                propTypes.iconTop = _react.PropTypes.bool;
-            }
-            return propTypes;
+            Object.assign(propTypes, {
+                outerClassName: this.set[Features.ClassNames] ? _react.PropTypes.string : undefined,
+                innerClassName: this.set[Features.ClassNames] ? _react.PropTypes.string : undefined,
+                show: this.set[Features.Visibility] ? _react.PropTypes.bool : undefined,
+                float: this.set[Features.Float] ? oneOfList(_enums.Alignment) : undefined,
+                disabled: this.set[Features.Disabled] ? _react.PropTypes.bool : undefined,
+                onClick: this.set[Features.MouseEvents] ? _react.PropTypes.func : undefined,
+                onChange: this.set[Features.DataEvents] ? _react.PropTypes.func : undefined,
+                value: this.set[Features.InputField] ? this.set[Features.InputField] : undefined,
+                label: this.set[Features.InputField] ? _react.PropTypes.string : undefined,
+                isInline: this.set[Features.InputField] ? _react.PropTypes.bool : undefined,
+                alignment: this.set[Features.Alignment] ? oneOfList(_enums.Alignment) : undefined,
+                isActive: this.set[Features.Active] ? _react.PropTypes.bool : undefined,
+                orientation: this.set[Features.Orientation] ? oneOfList(_enums.Orientation) : undefined,
+                isExpanded: this.set[Features.Expanded] ? _react.PropTypes.bool : undefined,
+                isSimple: this.set[Features.Simple] ? _react.PropTypes.bool : undefined,
+                isNested: this.set[Features.Nested] ? _react.PropTypes.bool : undefined,
+                icon: this.set[Features.Icon] ? _react.PropTypes.string : undefined,
+                iconTop: this.set[Features.IconTop] ? _react.PropTypes.bool : undefined
+            });
         }
     }, {
         key: 'getDefaultProps',
         value: function getDefaultProps() {
             var defaultProps = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-            if (this.set[Features.Visibility]) {
-                defaultProps.show = true;
-            }
-            if (this.set[Features.Float]) {
-                defaultProps.float = Alignment.None;
-            }
-            if (this.set[Features.Disabled]) {
-                defaultProps.disabled = false;
-            }
-            if (this.set[Features.InputField]) {
-                defaultProps.isInline = false;
-                defaultProps.label = null;
-            }
-            if (this.set[Features.Alignment]) {
-                defaultProps.alignment = Alignment.None;
-            }
-            if (this.set[Features.Active]) {
-                defaultProps.isActive = false;
-            }
-            if (this.set[Features.Orientation]) {
-                defaultProps.orientation = Orientation.Default;
-            }
-            if (this.set[Features.Expanded]) {
-                defaultProps.isExpanded = false;
-            }
-            if (this.set[Features.Simple]) {
-                defaultProps.isSimple = false;
-            }
-            if (this.set[Features.Nested]) {
-                defaultProps.isNested = false;
-            }
-            if (this.set[Features.Icon]) {
-                defaultProps.icon = null;
-            }
-            if (this.set[Features.IconTop]) {
-                defaultProps.iconTop = false;
-            }
-            return defaultProps;
+            Object.assign(defaultProps, {
+                show: this.set[Features.Visibility] ? true : undefined,
+                float: this.set[Features.Float] ? _enums.Alignment.None : undefined,
+                disabled: this.set[Features.Disabled] ? false : undefined,
+                isInline: this.set[Features.InputField] ? false : undefined,
+                label: this.set[Features.InputField] ? null : undefined,
+                alignment: this.set[Features.Alignment] ? _enums.Alignment.None : undefined,
+                isActive: this.set[Features.Active] ? false : undefined,
+                orientation: this.set[Features.Orientation] ? _enums.Orientation.Default : undefined,
+                isExpanded: this.set[Features.Expanded] ? false : undefined,
+                isSimple: this.set[Features.Simple] ? false : undefined,
+                isNested: this.set[Features.Nested] ? false : undefined,
+                icon: this.set[Features.Icon] ? null : undefined,
+                iconTop: this.set[Features.IconTop] ? false : undefined
+            });
         }
     }]);
 
