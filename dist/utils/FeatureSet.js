@@ -95,43 +95,43 @@ var FeatureSet = exports.FeatureSet = function () {
         _createClass(FeatureSet, [{
                 key: 'getClassNames',
                 value: function getClassNames(props, extraClasses) {
-                        var _classes$append6, _classes$append7;
+                        var _classes$push6, _classes$push7;
 
                         var classes = [_defineProperty({}, extraClasses, true)];
-                        if (this.set[Features.ClassNames]) classes.append(_defineProperty({}, props.className, true));
-                        if (this.set[Features.Visibility]) classes.append({
+                        if (this.set[Features.ClassNames]) classes.push(_defineProperty({}, props.className, true));
+                        if (this.set[Features.Visibility]) classes.push({
                                 "show": props.show === true,
                                 "hide": props.show === false
                         });
-                        if (this.set[Features.Float]) classes.append(_defineProperty({}, "float-" + props.float, (0, _isString3.default)(props.float)));
-                        if (this.set[Features.Alignment]) classes.append(_defineProperty({}, "align-" + props.alignment, (0, _isString3.default)(props.alignment)));
-                        if (this.set[Features.Active]) classes.append({
+                        if (this.set[Features.Float]) classes.push(_defineProperty({}, "float-" + props.float, (0, _isString3.default)(props.float)));
+                        if (this.set[Features.Alignment]) classes.push(_defineProperty({}, "align-" + props.alignment, (0, _isString3.default)(props.alignment)));
+                        if (this.set[Features.Active]) classes.push({
                                 "active": props.isActive === true
                         });
-                        if (this.set[Features.Orientation]) classes.append(_defineProperty({}, props.orientation, !(0, _isUndefined3.default)(props.orientation)));
-                        if (this.set[Features.ContentExpand]) classes.append({
+                        if (this.set[Features.Orientation]) classes.push(_defineProperty({}, props.orientation, !(0, _isUndefined3.default)(props.orientation)));
+                        if (this.set[Features.ContentExpand]) classes.push({
                                 "expanded": props.isExpanded === true
                         });
-                        if (this.set[Features.MenuStyle]) classes.append({
+                        if (this.set[Features.MenuStyle]) classes.push({
                                 "simple": props.isSimple === true,
                                 "nested": props.isNested === true,
                                 "icon-top": props.iconTop === true
                         });
-                        if (this.set[Features.Icon]) classes.append(_defineProperty({}, "fi-" + props.icon, props.icon));
-                        if (this.set[Features.RowStyle]) classes.append({
+                        if (this.set[Features.Icon]) classes.push(_defineProperty({}, "fi-" + props.icon, props.icon));
+                        if (this.set[Features.RowStyle]) classes.push({
                                 "row": true,
                                 "column": props.isColumn === true
                         });
-                        if (this.set[Features.ColumnStyle]) classes.append((_classes$append6 = {}, _defineProperty(_classes$append6, _enums.Size.Small + "-" + props.small, !(0, _isUndefined3.default)(props.small)), _defineProperty(_classes$append6, _enums.Size.Medium + "-" + props.medium, !(0, _isUndefined3.default)(props.medium)), _defineProperty(_classes$append6, _enums.Size.Large + "-" + props.large, !(0, _isUndefined3.default)(props.large)), _defineProperty(_classes$append6, _enums.Size.XLarge + "-" + props.xlarge, !(0, _isUndefined3.default)(props.xlarge)), _defineProperty(_classes$append6, _enums.Size.XXLarge + "-" + props.xxlarge, !(0, _isUndefined3.default)(props.xxlarge)), _defineProperty(_classes$append6, "columns", true), _classes$append6));
-                        if (this.set[Features.Gutters]) classes.append((_classes$append7 = {}, _defineProperty(_classes$append7, _enums.Gutters.Collapse, props.collapse === true), _defineProperty(_classes$append7, mediaToClass(props.collapseOn, _enums.Gutters.Collapse), !(0, _isUndefined3.default)(props.collapseOn)), _defineProperty(_classes$append7, mediaToClass(props.uncollapseOn, _enums.Gutters.Uncollapse), !(0, _isUndefined3.default)(props.uncollapseOn)), _classes$append7));
+                        if (this.set[Features.ColumnStyle]) classes.push((_classes$push6 = {}, _defineProperty(_classes$push6, _enums.Size.Small + "-" + props.small, !(0, _isUndefined3.default)(props.small)), _defineProperty(_classes$push6, _enums.Size.Medium + "-" + props.medium, !(0, _isUndefined3.default)(props.medium)), _defineProperty(_classes$push6, _enums.Size.Large + "-" + props.large, !(0, _isUndefined3.default)(props.large)), _defineProperty(_classes$push6, _enums.Size.XLarge + "-" + props.xlarge, !(0, _isUndefined3.default)(props.xlarge)), _defineProperty(_classes$push6, _enums.Size.XXLarge + "-" + props.xxlarge, !(0, _isUndefined3.default)(props.xxlarge)), _defineProperty(_classes$push6, "columns", true), _classes$push6));
+                        if (this.set[Features.Gutters]) classes.push((_classes$push7 = {}, _defineProperty(_classes$push7, _enums.Gutters.Collapse, props.collapse === true), _defineProperty(_classes$push7, mediaToClass(props.collapseOn, _enums.Gutters.Collapse), !(0, _isUndefined3.default)(props.collapseOn)), _defineProperty(_classes$push7, mediaToClass(props.uncollapseOn, _enums.Gutters.Uncollapse), !(0, _isUndefined3.default)(props.uncollapseOn)), _classes$push7));
                         return (0, _classnames2.default)(classes);
                 }
         }, {
                 key: 'getInnerClassNames',
                 value: function getInnerClassNames(props, extraClasses) {
                         var classes = [_defineProperty({}, extraClasses, true)];
-                        if (this.set[Features.ClassNames]) classes.append(_defineProperty({}, props.innerClassName, true));
-                        if (this.set[Features.InputField]) classes.append({
+                        if (this.set[Features.ClassNames]) classes.push(_defineProperty({}, props.innerClassName, true));
+                        if (this.set[Features.InputField]) classes.push({
                                 "input-group-field": props.isInline === true
                         });
                         return (0, _classnames2.default)(classes);

@@ -53,41 +53,41 @@ export class FeatureSet {
         let classes = [{
                 [extraClasses]                                          : true
         }];
-        if(this.set[Features.ClassNames]) classes.append({
+        if(this.set[Features.ClassNames]) classes.push({
                 [props.className]                                       : true
         });
-        if(this.set[Features.Visibility]) classes.append({
+        if(this.set[Features.Visibility]) classes.push({
                 "show"                                                  : props.show === true,
                 "hide"                                                  : props.show === false
         });
-        if(this.set[Features.Float]) classes.append({
+        if(this.set[Features.Float]) classes.push({
                 ["float-"+props.float]                                  : _isString(props.float)
         });
-        if(this.set[Features.Alignment]) classes.append({
+        if(this.set[Features.Alignment]) classes.push({
                 ["align-"+props.alignment]                              : _isString(props.alignment)
         });
-        if(this.set[Features.Active]) classes.append({
+        if(this.set[Features.Active]) classes.push({
                 "active"                                                : props.isActive === true
         });
-        if(this.set[Features.Orientation]) classes.append({
+        if(this.set[Features.Orientation]) classes.push({
                 [props.orientation]                                     : !_isUndefined(props.orientation)
         });
-        if(this.set[Features.ContentExpand]) classes.append({
+        if(this.set[Features.ContentExpand]) classes.push({
                 "expanded"                                              : props.isExpanded === true
         });
-        if(this.set[Features.MenuStyle]) classes.append({
+        if(this.set[Features.MenuStyle]) classes.push({
                 "simple"                                                : props.isSimple === true,
                 "nested"                                                : props.isNested === true,
                 "icon-top"                                              : props.iconTop === true
         });
-        if(this.set[Features.Icon]) classes.append({
+        if(this.set[Features.Icon]) classes.push({
                 ["fi-"+props.icon]                                      : props.icon
         });
-        if(this.set[Features.RowStyle]) classes.append({
+        if(this.set[Features.RowStyle]) classes.push({
                 "row"                                                   : true,
                 "column"                                                : props.isColumn === true
         });
-        if(this.set[Features.ColumnStyle]) classes.append({
+        if(this.set[Features.ColumnStyle]) classes.push({
                 [Size.Small+"-"+props.small]                            : !_isUndefined(props.small),
                 [Size.Medium+"-"+props.medium]                          : !_isUndefined(props.medium),
                 [Size.Large+"-"+props.large]                            : !_isUndefined(props.large),
@@ -95,7 +95,7 @@ export class FeatureSet {
                 [Size.XXLarge+"-"+props.xxlarge]                        : !_isUndefined(props.xxlarge),
                 "columns"                                               : true
         });
-        if(this.set[Features.Gutters]) classes.append({
+        if(this.set[Features.Gutters]) classes.push({
                 [Gutters.Collapse]                                      : props.collapse === true,
                 [mediaToClass(props.collapseOn, Gutters.Collapse)]      : !_isUndefined(props.collapseOn),
                 [mediaToClass(props.uncollapseOn, Gutters.Uncollapse)]  : !_isUndefined(props.uncollapseOn)
@@ -106,10 +106,10 @@ export class FeatureSet {
         let classes = [{
                 [extraClasses]                                          : true
         }];
-        if(this.set[Features.ClassNames]) classes.append({
+        if(this.set[Features.ClassNames]) classes.push({
                 [props.innerClassName]                                  : true
         });
-        if(this.set[Features.InputField]) classes.append({
+        if(this.set[Features.InputField]) classes.push({
                 "input-group-field"                                     : props.isInline === true
         });
         return classNames(classes);
