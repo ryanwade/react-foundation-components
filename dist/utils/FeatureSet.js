@@ -97,8 +97,8 @@ var FeatureSet = exports.FeatureSet = function () {
                 value: function getClassNames(props, extraClasses) {
                         var _classes$push6, _classes$push7;
 
-                        var classes = [_defineProperty({}, extraClasses, true)];
-                        if (this.set[Features.ClassNames]) classes.push(_defineProperty({}, props.className, true));
+                        var classes = [_defineProperty({}, extraClasses, (0, _isString3.default)(extraClasses))];
+                        if (this.set[Features.ClassNames]) classes.push(_defineProperty({}, props.className, (0, _isString3.default)(props.className)));
                         if (this.set[Features.Visibility]) classes.push({
                                 "show": props.show === true,
                                 "hide": props.show === false
@@ -117,7 +117,7 @@ var FeatureSet = exports.FeatureSet = function () {
                                 "nested": props.isNested === true,
                                 "icon-top": props.iconTop === true
                         });
-                        if (this.set[Features.Icon]) classes.push(_defineProperty({}, "fi-" + props.icon, props.icon));
+                        if (this.set[Features.Icon]) classes.push(_defineProperty({}, "fi-" + props.icon, (0, _isString3.default)(props.icon)));
                         if (this.set[Features.RowStyle]) classes.push({
                                 "row": true,
                                 "column": props.isColumn === true
@@ -129,8 +129,8 @@ var FeatureSet = exports.FeatureSet = function () {
         }, {
                 key: 'getInnerClassNames',
                 value: function getInnerClassNames(props, extraClasses) {
-                        var classes = [_defineProperty({}, extraClasses, true)];
-                        if (this.set[Features.ClassNames]) classes.push(_defineProperty({}, props.innerClassName, true));
+                        var classes = [_defineProperty({}, extraClasses, (0, _isString3.default)(extraClasses))];
+                        if (this.set[Features.ClassNames]) classes.push(_defineProperty({}, props.innerClassName, (0, _isString3.default)(props.innerClassName)));
                         if (this.set[Features.InputField]) classes.push({
                                 "input-group-field": props.isInline === true
                         });

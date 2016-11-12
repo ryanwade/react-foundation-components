@@ -51,10 +51,10 @@ export class FeatureSet {
     }
     getClassNames(props, extraClasses) {
         let classes = [{
-                [extraClasses]                                          : true
+                [extraClasses]                                          : _isString(extraClasses)
         }];
         if(this.set[Features.ClassNames]) classes.push({
-                [props.className]                                       : true
+                [props.className]                                       : _isString(props.className)
         });
         if(this.set[Features.Visibility]) classes.push({
                 "show"                                                  : props.show === true,
@@ -81,7 +81,7 @@ export class FeatureSet {
                 "icon-top"                                              : props.iconTop === true
         });
         if(this.set[Features.Icon]) classes.push({
-                ["fi-"+props.icon]                                      : props.icon
+                ["fi-"+props.icon]                                      : _isString(props.icon)
         });
         if(this.set[Features.RowStyle]) classes.push({
                 "row"                                                   : true,
@@ -104,10 +104,10 @@ export class FeatureSet {
     }
     getInnerClassNames(props, extraClasses) {
         let classes = [{
-                [extraClasses]                                          : true
+                [extraClasses]                                          : _isString(extraClasses)
         }];
         if(this.set[Features.ClassNames]) classes.push({
-                [props.innerClassName]                                  : true
+                [props.innerClassName]                                  : _isString(props.innerClassName)
         });
         if(this.set[Features.InputField]) classes.push({
                 "input-group-field"                                     : props.isInline === true
