@@ -116,7 +116,8 @@ export class FeatureSet {
                 [pairToClass(props.offsetOn, "offset")]                 : _isArray(props.offsetOn),
                 [pairToClass(props.pushOn, "push")]                     : _isArray(props.pushOn),
                 [pairToClass(props.pullOn, "pull")]                     : _isArray(props.pullOn),
-                "columns"                                               : true
+                "columns"                                               : true,
+                "end"                                                   : props.isEnd === true
         });
         if(this.set[Features.Gutters]) classes.push({
                 [Gutters.Collapse]                                      : props.collapse === true,
@@ -220,7 +221,8 @@ export class FeatureSet {
                 centerOn        : PropTypes_sizeArray,
                 offsetOn        : PropTypes_sizePairArray,
                 pushOn          : PropTypes_sizePairArray,
-                pullOn          : PropTypes_sizePairArray
+                pullOn          : PropTypes_sizePairArray,
+                isEnd           : PropTypes.bool
         });
         return propTypes;
     }
