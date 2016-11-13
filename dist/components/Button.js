@@ -31,7 +31,7 @@ var Button = function Button(_ref) {
         'button',
         _extends({ type: 'button',
             className: _componentFeatures.Button.getClassNames(props, (0, _classnames2.default)("button", color))
-        }, _componentFeatures.Button.getAttrs(props)),
+        }, _componentFeatures.Button.getAttrs(props, undefined)),
         label || children
     );
 };
@@ -40,6 +40,7 @@ Button.propTypes = _componentFeatures.Button.getPropTypes({
     label: _react.PropTypes.string,
     children: _react.PropTypes.node
 });
-Button.defaultProps = _componentFeatures.Button.getDefaultProps({});
+Button.defaultProps = _componentFeatures.Button.getDefaultProps();
+Button.context = _componentFeatures.Button.getContext();
 
 exports.default = Button;

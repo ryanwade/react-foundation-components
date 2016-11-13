@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -25,7 +27,7 @@ var MenuItem = function MenuItem(_ref) {
         { className: _componentFeatures.MenuItem.getClassNames(props) },
         _react2.default.createElement(
             'a',
-            { href: '#' },
+            _extends({ href: '#' }, _componentFeatures.MenuItem.getAttrs(props, undefined)),
             icon,
             _react2.default.createElement(
                 'span',
@@ -42,5 +44,6 @@ MenuItem.propTypes = _componentFeatures.MenuItem.getPropTypes({
 MenuItem.defaultProps = _componentFeatures.MenuItem.getDefaultProps({
     label: null
 });
+MenuItem.context = _componentFeatures.MenuItem.getContext();
 
 exports.default = MenuItem;

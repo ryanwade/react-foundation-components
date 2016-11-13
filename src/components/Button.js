@@ -5,7 +5,7 @@ import { Button as featureSet } from '../utils/componentFeatures';
 const Button = ({ color, label, children, ...props }) => (
     <button type="button"
             className={featureSet.getClassNames(props, classNames("button", color))}
-            {...featureSet.getAttrs(props)}>
+            {...featureSet.getAttrs(props, this)}>
             {label || children}
     </button>
 );
@@ -14,7 +14,7 @@ Button.propTypes = featureSet.getPropTypes({
     label: PropTypes.string,
     children: PropTypes.node
 });
-Button.defaultProps = featureSet.getDefaultProps({
-});
+Button.defaultProps = featureSet.getDefaultProps();
+Button.context = featureSet.getContext();
 
 export default Button;

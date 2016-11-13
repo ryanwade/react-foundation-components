@@ -10,6 +10,7 @@ import _map from 'lodash/map';
 import _isString from 'lodash/isString';
 import _isArray from 'lodash/isArray';
 import _isNumber from 'lodash/isNumber';
+import _isFunction from 'lodash/isFunction';
 import _size from 'lodash/size';
 
 export const Features = {
@@ -28,7 +29,8 @@ export const Features = {
     RowStyle:       "RowStyle",
     ColumnStyle:    "ColumnStyle",
     Icon:           "Icon",
-    Gutters:        "Gutters"
+    Gutters:        "Gutters",
+    Link:           "Link"
 };
 function _isSimple(attr) {
     return !_isUndefined(attr) && (_isString(attr) || _isNumber(attr));
@@ -53,6 +55,14 @@ function pairToClass(arr, ...attrs) {
 const PropTypes_sizeArray = PropTypes.oneOfType([oneOfList(Size), PropTypes.arrayOf(oneOfList(Size))]);
 const PropTypes_sizePairArray = PropTypes.arrayOf(PropTypes.oneOfType([oneOfList(Size), PropTypes.number, PropTypes.arrayOf(PropTypes.oneOfType([oneOfList(Size), PropTypes.number]))]));
 
+function link(url, ref, cb = (e) => e.preventDefault()) {
+    return (e) => {
+        cb.bind(ref)(e);
+        let {router} = ref.context;
+        router.push(url);
+    };
+}
+
 export class FeatureSet {
     constructor(set = {}) {
         this.set = set;
@@ -62,6 +72,7 @@ export class FeatureSet {
         this.getAttrs           = this.getAttrs.bind(this);
         this.getDefaultProps    = this.getDefaultProps.bind(this);
         this.getPropTypes       = this.getPropTypes.bind(this);
+        this.getContext         = this.getContext.bind(this);
     }
     getClassNames(props, extraClasses) {
         let classes = [{
@@ -141,13 +152,26 @@ export class FeatureSet {
         });
         return classNames(classes);
     }
-    getAttrs(props) {
+    getAttrs(props, ref) {
         let attrs = {};
         if(this.set[Features.Disabled]) _assign(attrs, {
                 disabled        : props.disabled
         });
-        if(this.set[Features.MouseEvents]) _assign(attrs, {
-                onClick         : props.onClick
+        if(this.set[Features.Link] && this.set[Features.MouseEvents]) {
+            if(_isString(props.link) && _isFunction(props.onClick)) _assign(attrs, {
+                onClick         : link(props.link, ref, props.onClick.bind(ref))
+            });
+            else if(_isString(props.link)) _assign(attrs, {
+                onClick         : link(props.link, ref)
+            });
+            else if(_isFunction(props.onClick)) _assign(attrs, {
+                onClick         : props.onClick.bind(ref)
+            });
+        } else if(this.set[Features.Link] && _isString(props.link)) _assign(attrs, {
+                onClick         : link(props.link, ref)
+        });
+        else if(this.set[Features.MouseEvents] && _isFunction(props.onClick)) _assign(attrs, {
+                onClick         : props.onClick.bind(ref)
         });
         if(this.set[Features.DataEvents]) _assign(attrs, {
                 onChange        : props.onChange
@@ -230,6 +254,9 @@ export class FeatureSet {
                 pullOn          : PropTypes_sizePairArray,
                 isEnd           : PropTypes.bool
         });
+        if(this.set[Features.Link]) _assign(propTypes, {
+                link            : PropTypes.string        
+        });
         return propTypes;
     }
     getDefaultProps(defaultProps = {}) {
@@ -246,5 +273,10 @@ export class FeatureSet {
                 alignment       : Alignment.None
         });
         return defaultProps;
+    }
+    getContext(context = {}) {
+        if(this.set[Features.Link]) _assign(context, {
+                router          : PropTypes.object
+        });
     }
 }

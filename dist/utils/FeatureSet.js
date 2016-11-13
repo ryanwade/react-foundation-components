@@ -43,6 +43,10 @@ var _isNumber2 = require('lodash/isNumber');
 
 var _isNumber3 = _interopRequireDefault(_isNumber2);
 
+var _isFunction2 = require('lodash/isFunction');
+
+var _isFunction3 = _interopRequireDefault(_isFunction2);
+
 var _size2 = require('lodash/size');
 
 var _size3 = _interopRequireDefault(_size2);
@@ -69,7 +73,8 @@ var Features = exports.Features = {
         RowStyle: "RowStyle",
         ColumnStyle: "ColumnStyle",
         Icon: "Icon",
-        Gutters: "Gutters"
+        Gutters: "Gutters",
+        Link: "Link"
 };
 function _isSimple(attr) {
         return !(0, _isUndefined3.default)(attr) && ((0, _isString3.default)(attr) || (0, _isNumber3.default)(attr));
@@ -111,6 +116,19 @@ function pairToClass(arr) {
 var PropTypes_sizeArray = _react.PropTypes.oneOfType([oneOfList(_enums.Size), _react.PropTypes.arrayOf(oneOfList(_enums.Size))]);
 var PropTypes_sizePairArray = _react.PropTypes.arrayOf(_react.PropTypes.oneOfType([oneOfList(_enums.Size), _react.PropTypes.number, _react.PropTypes.arrayOf(_react.PropTypes.oneOfType([oneOfList(_enums.Size), _react.PropTypes.number]))]));
 
+function link(url, ref) {
+        var cb = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function (e) {
+                return e.preventDefault();
+        };
+
+        return function (e) {
+                cb.bind(ref)(e);
+                var router = ref.context.router;
+
+                router.push(url);
+        };
+}
+
 var FeatureSet = exports.FeatureSet = function () {
         function FeatureSet() {
                 var set = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -124,6 +142,7 @@ var FeatureSet = exports.FeatureSet = function () {
                 this.getAttrs = this.getAttrs.bind(this);
                 this.getDefaultProps = this.getDefaultProps.bind(this);
                 this.getPropTypes = this.getPropTypes.bind(this);
+                this.getContext = this.getContext.bind(this);
         }
 
         _createClass(FeatureSet, [{
@@ -175,13 +194,23 @@ var FeatureSet = exports.FeatureSet = function () {
                 }
         }, {
                 key: 'getAttrs',
-                value: function getAttrs(props) {
+                value: function getAttrs(props, ref) {
                         var attrs = {};
                         if (this.set[Features.Disabled]) (0, _assign3.default)(attrs, {
                                 disabled: props.disabled
                         });
-                        if (this.set[Features.MouseEvents]) (0, _assign3.default)(attrs, {
-                                onClick: props.onClick
+                        if (this.set[Features.Link] && this.set[Features.MouseEvents]) {
+                                if ((0, _isString3.default)(props.link) && (0, _isFunction3.default)(props.onClick)) (0, _assign3.default)(attrs, {
+                                        onClick: link(props.link, ref, props.onClick.bind(ref))
+                                });else if ((0, _isString3.default)(props.link)) (0, _assign3.default)(attrs, {
+                                        onClick: link(props.link, ref)
+                                });else if ((0, _isFunction3.default)(props.onClick)) (0, _assign3.default)(attrs, {
+                                        onClick: props.onClick.bind(ref)
+                                });
+                        } else if (this.set[Features.Link] && (0, _isString3.default)(props.link)) (0, _assign3.default)(attrs, {
+                                onClick: link(props.link, ref)
+                        });else if (this.set[Features.MouseEvents] && (0, _isFunction3.default)(props.onClick)) (0, _assign3.default)(attrs, {
+                                onClick: props.onClick.bind(ref)
                         });
                         if (this.set[Features.DataEvents]) (0, _assign3.default)(attrs, {
                                 onChange: props.onChange
@@ -268,6 +297,9 @@ var FeatureSet = exports.FeatureSet = function () {
                                 pullOn: PropTypes_sizePairArray,
                                 isEnd: _react.PropTypes.bool
                         });
+                        if (this.set[Features.Link]) (0, _assign3.default)(propTypes, {
+                                link: _react.PropTypes.string
+                        });
                         return propTypes;
                 }
         }, {
@@ -288,6 +320,15 @@ var FeatureSet = exports.FeatureSet = function () {
                                 alignment: _enums.Alignment.None
                         });
                         return defaultProps;
+                }
+        }, {
+                key: 'getContext',
+                value: function getContext() {
+                        var context = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+                        if (this.set[Features.Link]) (0, _assign3.default)(context, {
+                                router: _react.PropTypes.object
+                        });
                 }
         }]);
 

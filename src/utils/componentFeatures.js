@@ -6,7 +6,8 @@ export const Button = new FeatureSet({
     [Features.Visibility]: true,
     [Features.Float]: true,
     [Features.Disabled]: true,
-    [Features.MouseEvents]: true
+    [Features.MouseEvents]: true,
+    [Features.Link]: true
 });
 
 export const Title = new FeatureSet({
@@ -65,7 +66,9 @@ export const Menu = new FeatureSet({
 
 export const MenuItem = new FeatureSet({
     [Features.Visibility]: true,
-    [Features.Active]: true
+    [Features.Active]: true,
+    [Features.MouseEvents]: true,
+    [Features.Link]: true
 });
 
 export const MenuText = new FeatureSet({

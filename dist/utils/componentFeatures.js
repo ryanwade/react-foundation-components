@@ -13,7 +13,7 @@ var _FeatureSet = require('./FeatureSet');
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var Button = exports.Button = new _FeatureSet.FeatureSet((_ref = {}, _defineProperty(_ref, _FeatureSet.Features.ClassNames, true), _defineProperty(_ref, _FeatureSet.Features.Visibility, true), _defineProperty(_ref, _FeatureSet.Features.Float, true), _defineProperty(_ref, _FeatureSet.Features.Disabled, true), _defineProperty(_ref, _FeatureSet.Features.MouseEvents, true), _ref));
+var Button = exports.Button = new _FeatureSet.FeatureSet((_ref = {}, _defineProperty(_ref, _FeatureSet.Features.ClassNames, true), _defineProperty(_ref, _FeatureSet.Features.Visibility, true), _defineProperty(_ref, _FeatureSet.Features.Float, true), _defineProperty(_ref, _FeatureSet.Features.Disabled, true), _defineProperty(_ref, _FeatureSet.Features.MouseEvents, true), _defineProperty(_ref, _FeatureSet.Features.Link, true), _ref));
 
 var Title = exports.Title = new _FeatureSet.FeatureSet((_ref2 = {}, _defineProperty(_ref2, _FeatureSet.Features.ClassNames, true), _defineProperty(_ref2, _FeatureSet.Features.Visibility, true), _ref2));
 
@@ -33,7 +33,7 @@ var Expand = exports.Expand = new _FeatureSet.FeatureSet(_defineProperty({}, _Fe
 
 var Menu = exports.Menu = new _FeatureSet.FeatureSet((_ref10 = {}, _defineProperty(_ref10, _FeatureSet.Features.Visibility, true), _defineProperty(_ref10, _FeatureSet.Features.ContentExpand, true), _defineProperty(_ref10, _FeatureSet.Features.MenuStyle, true), _defineProperty(_ref10, _FeatureSet.Features.Alignment, true), _defineProperty(_ref10, _FeatureSet.Features.Orientation, true), _ref10));
 
-var MenuItem = exports.MenuItem = new _FeatureSet.FeatureSet((_ref11 = {}, _defineProperty(_ref11, _FeatureSet.Features.Visibility, true), _defineProperty(_ref11, _FeatureSet.Features.Active, true), _ref11));
+var MenuItem = exports.MenuItem = new _FeatureSet.FeatureSet((_ref11 = {}, _defineProperty(_ref11, _FeatureSet.Features.Visibility, true), _defineProperty(_ref11, _FeatureSet.Features.Active, true), _defineProperty(_ref11, _FeatureSet.Features.MouseEvents, true), _defineProperty(_ref11, _FeatureSet.Features.Link, true), _ref11));
 
 var MenuText = exports.MenuText = new _FeatureSet.FeatureSet(_defineProperty({}, _FeatureSet.Features.Visibility, true));
 
