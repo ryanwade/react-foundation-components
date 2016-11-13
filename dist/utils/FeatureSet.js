@@ -108,6 +108,9 @@ function pairToClass(arr) {
         }));
 }
 
+var PropTypes_sizeArray = _react.PropTypes.oneOfType([oneOfList(_enums.Size), _react.PropTypes.arrayOf(oneOfList(_enums.Size))]);
+var PropTypes_sizePairArray = _react.PropTypes.arrayOf(_react.PropTypes.oneOfType([oneOfList(_enums.Size), _react.PropTypes.number, _react.PropTypes.arrayOf(_react.PropTypes.oneOfType([oneOfList(_enums.Size), _react.PropTypes.number]))]));
+
 var FeatureSet = exports.FeatureSet = function () {
         function FeatureSet() {
                 var set = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -239,8 +242,8 @@ var FeatureSet = exports.FeatureSet = function () {
                         });
                         if (this.set[Features.Gutters]) (0, _assign3.default)(propTypes, {
                                 collapse: _react.PropTypes.bool,
-                                collapseOn: _react.PropTypes.oneOfType([oneOfList(_enums.Size), _react.PropTypes.arrayOf(oneOfList(_enums.Size))]),
-                                uncollapseOn: _react.PropTypes.oneOfType([oneOfList(_enums.Size), _react.PropTypes.arrayOf(oneOfList(_enums.Size))])
+                                collapseOn: PropTypes_sizeArray,
+                                uncollapseOn: PropTypes_sizeArray
                         });
                         if (this.set[Features.ColumnStyle]) (0, _assign3.default)(propTypes, {
                                 small: _react.PropTypes.number,
@@ -248,7 +251,7 @@ var FeatureSet = exports.FeatureSet = function () {
                                 large: _react.PropTypes.number,
                                 xlarge: _react.PropTypes.number,
                                 xxlarge: _react.PropTypes.number,
-                                offsetOn: _react.PropTypes.arrayOf(_react.PropTypes.oneOfType([oneOfList(_enums.Size), _react.PropTypes.number, _react.PropTypes.arrayOf(_react.PropTypes.oneOfType([oneOfList(_enums.Size), _react.PropTypes.number]))]))
+                                offsetOn: PropTypes_sizePairArray
                         });
                         return propTypes;
                 }

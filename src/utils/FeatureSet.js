@@ -49,6 +49,10 @@ function pairToClass(arr, ...attrs) {
     if(_size(arr) == 2 && _isSimple(arr[1])) return mediaToClass(arr[0], ...attrs, arr[1]);
     if(_isArray(arr[0])) return classNames(_map(arr, (pair) => pairToClass(pair, ...attrs)));
 }
+
+const PropTypes_sizeArray = PropTypes.oneOfType([oneOfList(Size), PropTypes.arrayOf(oneOfList(Size))]);
+const PropTypes_sizePairArray = PropTypes.arrayOf(PropTypes.oneOfType([oneOfList(Size), PropTypes.number, PropTypes.arrayOf(PropTypes.oneOfType([oneOfList(Size), PropTypes.number]))]));
+
 export class FeatureSet {
     constructor(set = {}) {
         this.set = set;
@@ -98,12 +102,12 @@ export class FeatureSet {
                 "column"                                                : props.isColumn === true
         });
         if(this.set[Features.ColumnStyle]) classes.push({
-                [mediaToClass(Size.Small,props.small)]                  : !_isUndefined(props.small),
-                [mediaToClass(Size.Medium,props.medium)]                : !_isUndefined(props.medium),
-                [mediaToClass(Size.Large,props.large)]                  : !_isUndefined(props.large),
-                [mediaToClass(Size.XLarge,props.xlarge)]                : !_isUndefined(props.xlarge),
-                [mediaToClass(Size.XXLarge,props.xxlarge)]              : !_isUndefined(props.xxlarge),
-                [pairToClass(props.offsetOn,"offset")]                  : _isArray(props.offsetOn),
+                [mediaToClass(Size.Small, props.small)]                 : !_isUndefined(props.small),
+                [mediaToClass(Size.Medium, props.medium)]               : !_isUndefined(props.medium),
+                [mediaToClass(Size.Large, props.large)]                 : !_isUndefined(props.large),
+                [mediaToClass(Size.XLarge, props.xlarge)]               : !_isUndefined(props.xlarge),
+                [mediaToClass(Size.XXLarge, props.xxlarge)]             : !_isUndefined(props.xxlarge),
+                [pairToClass(props.offsetOn, "offset")]                 : _isArray(props.offsetOn),
                 "columns"                                               : true
         });
         if(this.set[Features.Gutters]) classes.push({
@@ -191,8 +195,8 @@ export class FeatureSet {
         });
         if(this.set[Features.Gutters]) _assign(propTypes, {      
                 collapse        : PropTypes.bool,
-                collapseOn      : PropTypes.oneOfType([oneOfList(Size), PropTypes.arrayOf(oneOfList(Size))]),
-                uncollapseOn    : PropTypes.oneOfType([oneOfList(Size), PropTypes.arrayOf(oneOfList(Size))])
+                collapseOn      : PropTypes_sizeArray,
+                uncollapseOn    : PropTypes_sizeArray
         });
         if(this.set[Features.ColumnStyle]) _assign(propTypes, {
                 small           : PropTypes.number,
@@ -200,7 +204,7 @@ export class FeatureSet {
                 large           : PropTypes.number,
                 xlarge          : PropTypes.number,
                 xxlarge         : PropTypes.number,
-                offsetOn        : PropTypes.arrayOf(PropTypes.oneOfType([oneOfList(Size), PropTypes.number, PropTypes.arrayOf(PropTypes.oneOfType([oneOfList(Size), PropTypes.number]))]))
+                offsetOn        : PropTypes_sizePairArray
         });
         return propTypes;
     }
