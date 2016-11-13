@@ -57,10 +57,10 @@ export const Expand = new FeatureSet({
 
 export const Menu = new FeatureSet({
     [Features.Visibility]: true,
-    [Features.Alignment]: true,
-    [Features.Orientaiton]: true,
     [Features.ContentExpand]: true,
-    [Features.MenuStyle]: true
+    [Features.MenuStyle]: true,
+    [Features.Alignment]: true,
+    [Features.Orientation]: true
 });
 
 export const MenuItem = new FeatureSet({

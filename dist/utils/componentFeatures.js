@@ -31,7 +31,7 @@ var ExpandTitle = exports.ExpandTitle = new _FeatureSet.FeatureSet(_defineProper
 
 var Expand = exports.Expand = new _FeatureSet.FeatureSet(_defineProperty({}, _FeatureSet.Features.ClassNames, true));
 
-var Menu = exports.Menu = new _FeatureSet.FeatureSet((_ref10 = {}, _defineProperty(_ref10, _FeatureSet.Features.Visibility, true), _defineProperty(_ref10, _FeatureSet.Features.Alignment, true), _defineProperty(_ref10, _FeatureSet.Features.Orientaiton, true), _defineProperty(_ref10, _FeatureSet.Features.ContentExpand, true), _defineProperty(_ref10, _FeatureSet.Features.MenuStyle, true), _ref10));
+var Menu = exports.Menu = new _FeatureSet.FeatureSet((_ref10 = {}, _defineProperty(_ref10, _FeatureSet.Features.Visibility, true), _defineProperty(_ref10, _FeatureSet.Features.ContentExpand, true), _defineProperty(_ref10, _FeatureSet.Features.MenuStyle, true), _defineProperty(_ref10, _FeatureSet.Features.Alignment, true), _defineProperty(_ref10, _FeatureSet.Features.Orientation, true), _ref10));
 
 var MenuItem = exports.MenuItem = new _FeatureSet.FeatureSet((_ref11 = {}, _defineProperty(_ref11, _FeatureSet.Features.Visibility, true), _defineProperty(_ref11, _FeatureSet.Features.Active, true), _ref11));
 
