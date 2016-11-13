@@ -59,64 +59,64 @@ Acceptable Values: __1..12__
 ## <div id="ClassNames">ClassNames</div>
 ### props
 |prop|type|
-|-|-|
+|---|---|
 |className| string |
 |innerClassName| string |
 
 ## <div id="Visibility">Visibility</div>
 ### props
 |prop|type|
-|-|-|
+|---|---|
 |show|bool|
 
 ## <div id="Float">Float</div>
 ### props
 |prop|type|
-|-|-|
+|---|---|
 |float|[ALIGNMENT](#AlignmentEnum)|
 
 ## <div id="Disabled">Disabled</div>
 ### props
 |prop|type|default|
-|-|-|-|
+|---|---|---|
 |disabled|bool|false|
 
 ## <div id="MouseEvents">MouseEvents</div>
 ### props
 |prop|type|
-|-|-|
+|---|---|
 |onClick|function|
 
 ## <div id="DataEvents">DataEvents</div>
 ### props
 |prop|type|
-|-|-|
+|---|---|
 |onChange|function|
 
 ## <div id="InputField">InputField</div>
 ### props
 |prop|type|default|
-|-|-|-|
-|value|string ___or___ number|
+|---|---|---|
+|value|string ___or___ number| |
 |label|string|null|
-|isInline|bool|
+|isInline|bool| |
 
 ## <div id="Alignment">Alignment</div>
 ### props
 |prop|type|
-|-|-|
+|---|---|
 |alignment|[ALIGNMENT](#AlignmentEnum)|
 
 ## <div id="Active">Active</div>
 ### props
 |prop|type|
-|-|-|
+|---|---|
 |isActive|bool|
 
 ## <div id="Orientation">Orientation</div>
 ### props
 |prop|type|
-|-|-|
+|---|---|
 |isVertical|bool|
 |isHorizontal|bool|
 |verticalOn|[SIZE](#SizeEnum) ___or___ [[SIZE](#SizeEnum), ...]|
@@ -125,13 +125,13 @@ Acceptable Values: __1..12__
 ## <div id="ContentExpand">ContentExpand</div>
 ### props
 |prop|type|
-|-|-|
+|---|---|
 |isExpanded|bool|
 
 ## <div id="MenuStyle">MenuStyle</div>
 ### props
 |prop|type|
-|-|-|
+|---|---|
 |isSimple|bool|
 |isNested|bool|
 |iconTop|bool|
@@ -139,7 +139,7 @@ Acceptable Values: __1..12__
 ## <div id="IconStyle">IconStyle</div>
 ### props
 |prop|type|
-|-|-|
+|---|---|
 |icon|string|
 
 ## <div id="RowStyle">RowStyle</div>
@@ -153,7 +153,7 @@ $breakpoint-classes: (small medium large xlarge);
 
 ### props
 |prop|type|
-|-|-|
+|---|---|
 |smallUp|[COLUMN](#ColumnType)|
 |mediumUp|[COLUMN](#ColumnType)|
 |largeUp|[COLUMN](#ColumnType)|
@@ -164,7 +164,7 @@ $breakpoint-classes: (small medium large xlarge);
 ##  <div id="Gutters">Gutters</div>
 ### props
 |prop|type|
-|-|-|
+|---|---|
 |isCollapsed|bool|
 |collapseOn|[SIZE](#SizeEnum) ___or___ [[SIZE](#SizeEnum), ...]|
 |uncollapseOn|[SIZE](#SizeEnum) ___or___ [[SIZE](#SizeEnum), ...]|
@@ -180,7 +180,7 @@ $breakpoint-classes: (small medium large xlarge);
 
 ### props
 |prop|type|
-|-|-|
+|---|---|
 |small|[COLUMN](#ColumnType)|
 |medium|[COLUMN](#ColumnType)|
 |large|[COLUMN](#ColumnType)|
@@ -199,12 +199,12 @@ requires the use of react-router
 
 ### props
 |props|type|
-|-|-|
+|---|---|
 |link|string|
 
 ### context
 |context|type|
-|-|-|
+|---|---|
 |router|react-router object|
 
 # Attributions
