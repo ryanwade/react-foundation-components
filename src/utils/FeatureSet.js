@@ -9,6 +9,7 @@ import _assign from 'lodash/assign';
 import _map from 'lodash/map';
 import _isString from 'lodash/isString';
 import _isArray from 'lodash/isArray';
+import _isNumber from 'lodash/isNumber';
 import _size from 'lodash/size';
 
 export const Features = {
@@ -29,21 +30,23 @@ export const Features = {
     Icon:           "Icon",
     Gutters:        "Gutters"
 };
-
+function _isSimple(attr) {
+    return !_isUndefined(attr) && (_isString(attr) || _isNumber(attr));
+}
 function oneOfList(obj) {
     return PropTypes.oneOf(_values(obj));
 }
 function append(attr, ...attrs) {
-    if(!_isString(attr)) return "";
+    if(!_isSimple(attr)) return "";
     return "-" + attr + append(...attrs);
 }
 function mediaToClass(size, ...attrs) {
-    if(_isString(size)) return size + append(...attrs);
+    if(_isSimple(size)) return size + append(...attrs);
     if(_isArray(size)) return classNames(_map(size, (s) => mediaToClass(s, ...attrs)));
 }
 function pairToClass(arr, ...attrs) {
     if(!_isArray(arr)) return null;
-    if(_size(arr) == 2 && !_isArray(arr[1])) return mediaToClass(arr[0], ...attrs, arr[1]);
+    if(_size(arr) == 2 && _isSimple(arr[1])) return mediaToClass(arr[0], ...attrs, arr[1]);
     if(_isArray(arr[0])) return classNames(_map(arr, (pair) => pairToClass(pair, ...attrs)));
 }
 export class FeatureSet {

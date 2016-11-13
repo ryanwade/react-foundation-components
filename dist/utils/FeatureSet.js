@@ -39,6 +39,10 @@ var _isArray2 = require('lodash/isArray');
 
 var _isArray3 = _interopRequireDefault(_isArray2);
 
+var _isNumber2 = require('lodash/isNumber');
+
+var _isNumber3 = _interopRequireDefault(_isNumber2);
+
 var _size2 = require('lodash/size');
 
 var _size3 = _interopRequireDefault(_size2);
@@ -67,12 +71,14 @@ var Features = exports.Features = {
         Icon: "Icon",
         Gutters: "Gutters"
 };
-
+function _isSimple(attr) {
+        return !(0, _isUndefined3.default)(attr) && ((0, _isString3.default)(attr) || (0, _isNumber3.default)(attr));
+}
 function oneOfList(obj) {
         return _react.PropTypes.oneOf((0, _values3.default)(obj));
 }
 function append(attr) {
-        if (!(0, _isString3.default)(attr)) return "";
+        if (!_isSimple(attr)) return "";
 
         for (var _len = arguments.length, attrs = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
                 attrs[_key - 1] = arguments[_key];
@@ -85,7 +91,7 @@ function mediaToClass(size) {
                 attrs[_key2 - 1] = arguments[_key2];
         }
 
-        if ((0, _isString3.default)(size)) return size + append.apply(undefined, attrs);
+        if (_isSimple(size)) return size + append.apply(undefined, attrs);
         if ((0, _isArray3.default)(size)) return (0, _classnames2.default)((0, _map3.default)(size, function (s) {
                 return mediaToClass.apply(undefined, [s].concat(attrs));
         }));
@@ -96,7 +102,7 @@ function pairToClass(arr) {
         }
 
         if (!(0, _isArray3.default)(arr)) return null;
-        if ((0, _size3.default)(arr) == 2 && !(0, _isArray3.default)(arr[1])) return mediaToClass.apply(undefined, [arr[0]].concat(attrs, [arr[1]]));
+        if ((0, _size3.default)(arr) == 2 && _isSimple(arr[1])) return mediaToClass.apply(undefined, [arr[0]].concat(attrs, [arr[1]]));
         if ((0, _isArray3.default)(arr[0])) return (0, _classnames2.default)((0, _map3.default)(arr, function (pair) {
                 return pairToClass.apply(undefined, [pair].concat(attrs));
         }));
