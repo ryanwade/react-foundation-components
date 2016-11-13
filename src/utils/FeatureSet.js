@@ -33,17 +33,18 @@ export const Features = {
 function oneOfList(obj) {
     return PropTypes.oneOf(_values(obj));
 }
-function append(n) {
-    return n? "-" + n: "";
+function append(attr, ...attrs) {
+    if(!_isString(attr)) return "";
+    return "-" + attr + append(...attrs);
 }
-function mediaToClass(size, txt, n) {
-    if(_isString(size)) return size + append(txt) + append(n);
-    if(_isArray(size)) return classNames(_map(size, (s) => mediaToClass(s, txt, n)));
+function mediaToClass(size, ...attrs) {
+    if(_isString(size)) return size + append(...attrs);
+    if(_isArray(size)) return classNames(_map(size, (s) => mediaToClass(s, ...attrs)));
 }
-function pairToClass(arr) {
+function pairToClass(arr, ...attrs) {
     if(!_isArray(arr)) return null;
-    if(_size(arr) == 2 && _isString(arr[1])) return mediaToClass(arr[0],"offset",arr[1]);
-    if(_isArray(arr[0])) return classNames(_map(arr, (pair) => pairToClass(pair)));
+    if(_size(arr) == 2 && !_isArray(arr[1])) return mediaToClass(arr[0], ...attrs, arr[1]);
+    if(_isArray(arr[0])) return classNames(_map(arr, (pair) => pairToClass(pair, ...attrs)));
 }
 export class FeatureSet {
     constructor(set = {}) {
@@ -94,12 +95,12 @@ export class FeatureSet {
                 "column"                                                : props.isColumn === true
         });
         if(this.set[Features.ColumnStyle]) classes.push({
-                [Size.Small+"-"+props.small]                            : !_isUndefined(props.small),
-                [Size.Medium+"-"+props.medium]                          : !_isUndefined(props.medium),
-                [Size.Large+"-"+props.large]                            : !_isUndefined(props.large),
-                [Size.XLarge+"-"+props.xlarge]                          : !_isUndefined(props.xlarge),
-                [Size.XXLarge+"-"+props.xxlarge]                        : !_isUndefined(props.xxlarge),
-                [pairToClass(props.offsetOn)]                           : _isArray(props.offsetOn),
+                [mediaToClass(Size.Small,props.small)]                  : !_isUndefined(props.small),
+                [mediaToClass(Size.Medium,props.medium)]                : !_isUndefined(props.medium),
+                [mediaToClass(Size.Large,props.large)]                  : !_isUndefined(props.large),
+                [mediaToClass(Size.XLarge,props.xlarge)]                : !_isUndefined(props.xlarge),
+                [mediaToClass(Size.XXLarge,props.xxlarge)]              : !_isUndefined(props.xxlarge),
+                [pairToClass(props.offsetOn,"offset")]                  : _isArray(props.offsetOn),
                 "columns"                                               : true
         });
         if(this.set[Features.Gutters]) classes.push({

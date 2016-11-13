@@ -71,20 +71,34 @@ var Features = exports.Features = {
 function oneOfList(obj) {
         return _react.PropTypes.oneOf((0, _values3.default)(obj));
 }
-function append(n) {
-        return n ? "-" + n : "";
+function append(attr) {
+        if (!(0, _isString3.default)(attr)) return "";
+
+        for (var _len = arguments.length, attrs = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+                attrs[_key - 1] = arguments[_key];
+        }
+
+        return "-" + attr + append.apply(undefined, attrs);
 }
-function mediaToClass(size, txt, n) {
-        if ((0, _isString3.default)(size)) return size + append(txt) + append(n);
+function mediaToClass(size) {
+        for (var _len2 = arguments.length, attrs = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+                attrs[_key2 - 1] = arguments[_key2];
+        }
+
+        if ((0, _isString3.default)(size)) return size + append.apply(undefined, attrs);
         if ((0, _isArray3.default)(size)) return (0, _classnames2.default)((0, _map3.default)(size, function (s) {
-                return mediaToClass(s, txt, n);
+                return mediaToClass.apply(undefined, [s].concat(attrs));
         }));
 }
 function pairToClass(arr) {
+        for (var _len3 = arguments.length, attrs = Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+                attrs[_key3 - 1] = arguments[_key3];
+        }
+
         if (!(0, _isArray3.default)(arr)) return null;
-        if ((0, _size3.default)(arr) == 2 && (0, _isString3.default)(arr[1])) return mediaToClass(arr[0], "offset", arr[1]);
+        if ((0, _size3.default)(arr) == 2 && !(0, _isArray3.default)(arr[1])) return mediaToClass.apply(undefined, [arr[0]].concat(attrs, [arr[1]]));
         if ((0, _isArray3.default)(arr[0])) return (0, _classnames2.default)((0, _map3.default)(arr, function (pair) {
-                return pairToClass(pair);
+                return pairToClass.apply(undefined, [pair].concat(attrs));
         }));
 }
 
@@ -133,7 +147,7 @@ var FeatureSet = exports.FeatureSet = function () {
                                 "row": true,
                                 "column": props.isColumn === true
                         });
-                        if (this.set[Features.ColumnStyle]) classes.push((_classes$push6 = {}, _defineProperty(_classes$push6, _enums.Size.Small + "-" + props.small, !(0, _isUndefined3.default)(props.small)), _defineProperty(_classes$push6, _enums.Size.Medium + "-" + props.medium, !(0, _isUndefined3.default)(props.medium)), _defineProperty(_classes$push6, _enums.Size.Large + "-" + props.large, !(0, _isUndefined3.default)(props.large)), _defineProperty(_classes$push6, _enums.Size.XLarge + "-" + props.xlarge, !(0, _isUndefined3.default)(props.xlarge)), _defineProperty(_classes$push6, _enums.Size.XXLarge + "-" + props.xxlarge, !(0, _isUndefined3.default)(props.xxlarge)), _defineProperty(_classes$push6, pairToClass(props.offsetOn), (0, _isArray3.default)(props.offsetOn)), _defineProperty(_classes$push6, "columns", true), _classes$push6));
+                        if (this.set[Features.ColumnStyle]) classes.push((_classes$push6 = {}, _defineProperty(_classes$push6, mediaToClass(_enums.Size.Small, props.small), !(0, _isUndefined3.default)(props.small)), _defineProperty(_classes$push6, mediaToClass(_enums.Size.Medium, props.medium), !(0, _isUndefined3.default)(props.medium)), _defineProperty(_classes$push6, mediaToClass(_enums.Size.Large, props.large), !(0, _isUndefined3.default)(props.large)), _defineProperty(_classes$push6, mediaToClass(_enums.Size.XLarge, props.xlarge), !(0, _isUndefined3.default)(props.xlarge)), _defineProperty(_classes$push6, mediaToClass(_enums.Size.XXLarge, props.xxlarge), !(0, _isUndefined3.default)(props.xxlarge)), _defineProperty(_classes$push6, pairToClass(props.offsetOn, "offset"), (0, _isArray3.default)(props.offsetOn)), _defineProperty(_classes$push6, "columns", true), _classes$push6));
                         if (this.set[Features.Gutters]) classes.push((_classes$push7 = {}, _defineProperty(_classes$push7, _enums.Gutters.Collapse, props.collapse === true), _defineProperty(_classes$push7, mediaToClass(props.collapseOn, _enums.Gutters.Collapse), !(0, _isUndefined3.default)(props.collapseOn)), _defineProperty(_classes$push7, mediaToClass(props.uncollapseOn, _enums.Gutters.Uncollapse), !(0, _isUndefined3.default)(props.uncollapseOn)), _classes$push7));
                         return (0, _classnames2.default)(classes);
                 }
