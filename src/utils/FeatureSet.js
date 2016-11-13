@@ -278,5 +278,6 @@ export class FeatureSet {
         if(this.set[Features.Link]) _assign(context, {
                 router          : PropTypes.object
         });
+        return context;
     }
 }

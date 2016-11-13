@@ -328,6 +328,7 @@ var FeatureSet = exports.FeatureSet = function () {
                         if (this.set[Features.Link]) (0, _assign3.default)(context, {
                                 router: _react.PropTypes.object
                         });
+                        return context;
                 }
         }]);
 
