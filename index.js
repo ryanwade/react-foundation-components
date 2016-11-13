@@ -28,7 +28,6 @@ module.exports = {
     TextField,
     Title,
     ALIGNMENT: enums.Alignment,
-    ORIENTATION: enums.Orientation,
     SIZE: enums.Size,
     GUTTERS: enums.Gutters
 };
