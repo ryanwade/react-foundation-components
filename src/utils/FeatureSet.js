@@ -55,11 +55,10 @@ function pairToClass(arr, ...attrs) {
 const PropTypes_sizeArray = PropTypes.oneOfType([oneOfList(Size), PropTypes.arrayOf(oneOfList(Size))]);
 const PropTypes_sizePairArray = PropTypes.arrayOf(PropTypes.oneOfType([oneOfList(Size), PropTypes.number, PropTypes.arrayOf(PropTypes.oneOfType([oneOfList(Size), PropTypes.number]))]));
 
-function link(url, ref, cb = (e) => e.preventDefault()) {
+function link(url, context, cb = (e) => e.preventDefault()) {
     return (e) => {
-        cb.bind(ref)(e);
-        let {router} = ref.context;
-        router.push(url);
+        cb(e);
+        context.router.push(url);
     };
 }
 
@@ -152,23 +151,24 @@ export class FeatureSet {
         });
         return classNames(classes);
     }
-    getAttrs(props, ref) {
+    getAttrs(props, context) {
         let attrs = {};
+        let ref = {props, context};
         if(this.set[Features.Disabled]) _assign(attrs, {
                 disabled        : props.disabled
         });
         if(this.set[Features.Link] && this.set[Features.MouseEvents]) {
             if(_isString(props.link) && _isFunction(props.onClick)) _assign(attrs, {
-                onClick         : link(props.link, ref, props.onClick.bind(ref))
+                onClick         : link(props.link, context, props.onClick.bind(ref))
             });
             else if(_isString(props.link)) _assign(attrs, {
-                onClick         : link(props.link, ref)
+                onClick         : link(props.link, context)
             });
             else if(_isFunction(props.onClick)) _assign(attrs, {
                 onClick         : props.onClick.bind(ref)
             });
         } else if(this.set[Features.Link] && _isString(props.link)) _assign(attrs, {
-                onClick         : link(props.link, ref)
+                onClick         : link(props.link, context)
         });
         else if(this.set[Features.MouseEvents] && _isFunction(props.onClick)) _assign(attrs, {
                 onClick         : props.onClick.bind(ref)

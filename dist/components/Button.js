@@ -20,7 +20,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-var Button = function Button(_ref) {
+var Button = function Button(_ref, context) {
     var color = _ref.color;
     var label = _ref.label;
     var children = _ref.children;
@@ -31,7 +31,7 @@ var Button = function Button(_ref) {
         'button',
         _extends({ type: 'button',
             className: _componentFeatures.Button.getClassNames(props, (0, _classnames2.default)("button", color))
-        }, _componentFeatures.Button.getAttrs(props, undefined)),
+        }, _componentFeatures.Button.getAttrs(props, context)),
         label || children
     );
 };

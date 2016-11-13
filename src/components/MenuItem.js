@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 import { MenuItem as featureSet } from '../utils/componentFeatures';
 
-const MenuItem = ({label, icon, ...props}) => (
+const MenuItem = ({label, icon, ...props}, context) => (
     <li className={featureSet.getClassNames(props)}>
-        <a href="#" {...featureSet.getAttrs(props, this)}>
+        <a href="#" {...featureSet.getAttrs(props, context)}>
             {icon}<span>{label}</span>
         </a>
     </li>

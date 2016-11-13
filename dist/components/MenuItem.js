@@ -16,7 +16,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-var MenuItem = function MenuItem(_ref) {
+var MenuItem = function MenuItem(_ref, context) {
     var label = _ref.label;
     var icon = _ref.icon;
 
@@ -27,7 +27,7 @@ var MenuItem = function MenuItem(_ref) {
         { className: _componentFeatures.MenuItem.getClassNames(props) },
         _react2.default.createElement(
             'a',
-            _extends({ href: '#' }, _componentFeatures.MenuItem.getAttrs(props, undefined)),
+            _extends({ href: '#' }, _componentFeatures.MenuItem.getAttrs(props, context)),
             icon,
             _react2.default.createElement(
                 'span',

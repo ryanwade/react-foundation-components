@@ -116,16 +116,14 @@ function pairToClass(arr) {
 var PropTypes_sizeArray = _react.PropTypes.oneOfType([oneOfList(_enums.Size), _react.PropTypes.arrayOf(oneOfList(_enums.Size))]);
 var PropTypes_sizePairArray = _react.PropTypes.arrayOf(_react.PropTypes.oneOfType([oneOfList(_enums.Size), _react.PropTypes.number, _react.PropTypes.arrayOf(_react.PropTypes.oneOfType([oneOfList(_enums.Size), _react.PropTypes.number]))]));
 
-function link(url, ref) {
+function link(url, context) {
         var cb = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function (e) {
                 return e.preventDefault();
         };
 
         return function (e) {
-                cb.bind(ref)(e);
-                var router = ref.context.router;
-
-                router.push(url);
+                cb(e);
+                context.router.push(url);
         };
 }
 
@@ -194,21 +192,22 @@ var FeatureSet = exports.FeatureSet = function () {
                 }
         }, {
                 key: 'getAttrs',
-                value: function getAttrs(props, ref) {
+                value: function getAttrs(props, context) {
                         var attrs = {};
+                        var ref = { props: props, context: context };
                         if (this.set[Features.Disabled]) (0, _assign3.default)(attrs, {
                                 disabled: props.disabled
                         });
                         if (this.set[Features.Link] && this.set[Features.MouseEvents]) {
                                 if ((0, _isString3.default)(props.link) && (0, _isFunction3.default)(props.onClick)) (0, _assign3.default)(attrs, {
-                                        onClick: link(props.link, ref, props.onClick.bind(ref))
+                                        onClick: link(props.link, context, props.onClick.bind(ref))
                                 });else if ((0, _isString3.default)(props.link)) (0, _assign3.default)(attrs, {
-                                        onClick: link(props.link, ref)
+                                        onClick: link(props.link, context)
                                 });else if ((0, _isFunction3.default)(props.onClick)) (0, _assign3.default)(attrs, {
                                         onClick: props.onClick.bind(ref)
                                 });
                         } else if (this.set[Features.Link] && (0, _isString3.default)(props.link)) (0, _assign3.default)(attrs, {
-                                onClick: link(props.link, ref)
+                                onClick: link(props.link, context)
                         });else if (this.set[Features.MouseEvents] && (0, _isFunction3.default)(props.onClick)) (0, _assign3.default)(attrs, {
                                 onClick: props.onClick.bind(ref)
                         });
