@@ -71,7 +71,7 @@ export class FeatureSet {
         this.getAttrs           = this.getAttrs.bind(this);
         this.getDefaultProps    = this.getDefaultProps.bind(this);
         this.getPropTypes       = this.getPropTypes.bind(this);
-        this.getContext         = this.getContext.bind(this);
+        this.getContextTypes    = this.getContextTypes.bind(this);
     }
     getClassNames(props, extraClasses) {
         let classes = [{
@@ -274,7 +274,7 @@ export class FeatureSet {
         });
         return defaultProps;
     }
-    getContext(context = {}) {
+    getContextTypes(context = {}) {
         if(this.set[Features.Link]) _assign(context, {
                 router          : PropTypes.object
         });

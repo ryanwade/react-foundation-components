@@ -41,6 +41,6 @@ Button.propTypes = _componentFeatures.Button.getPropTypes({
     children: _react.PropTypes.node
 });
 Button.defaultProps = _componentFeatures.Button.getDefaultProps();
-Button.context = _componentFeatures.Button.getContext();
+Button.contextTypes = _componentFeatures.Button.getContextTypes();
 
 exports.default = Button;

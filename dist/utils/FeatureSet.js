@@ -140,7 +140,7 @@ var FeatureSet = exports.FeatureSet = function () {
                 this.getAttrs = this.getAttrs.bind(this);
                 this.getDefaultProps = this.getDefaultProps.bind(this);
                 this.getPropTypes = this.getPropTypes.bind(this);
-                this.getContext = this.getContext.bind(this);
+                this.getContextTypes = this.getContextTypes.bind(this);
         }
 
         _createClass(FeatureSet, [{
@@ -321,8 +321,8 @@ var FeatureSet = exports.FeatureSet = function () {
                         return defaultProps;
                 }
         }, {
-                key: 'getContext',
-                value: function getContext() {
+                key: 'getContextTypes',
+                value: function getContextTypes() {
                         var context = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
                         if (this.set[Features.Link]) (0, _assign3.default)(context, {

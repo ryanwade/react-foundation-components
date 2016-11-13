@@ -15,6 +15,6 @@ MenuItem.propTypes = featureSet.getPropTypes({
 MenuItem.defaultProps = featureSet.getDefaultProps({
     label: null
 });
-MenuItem.context = featureSet.getContext();
+MenuItem.contextTypes = featureSet.getContextTypes();
 
 export default MenuItem;

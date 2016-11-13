@@ -44,6 +44,6 @@ MenuItem.propTypes = _componentFeatures.MenuItem.getPropTypes({
 MenuItem.defaultProps = _componentFeatures.MenuItem.getDefaultProps({
     label: null
 });
-MenuItem.context = _componentFeatures.MenuItem.getContext();
+MenuItem.contextTypes = _componentFeatures.MenuItem.getContextTypes();
 
 exports.default = MenuItem;

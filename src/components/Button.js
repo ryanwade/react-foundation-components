@@ -15,6 +15,6 @@ Button.propTypes = featureSet.getPropTypes({
     children: PropTypes.node
 });
 Button.defaultProps = featureSet.getDefaultProps();
-Button.context = featureSet.getContext();
+Button.contextTypes = featureSet.getContextTypes();
 
 export default Button;
