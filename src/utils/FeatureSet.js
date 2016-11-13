@@ -99,7 +99,12 @@ export class FeatureSet {
         });
         if(this.set[Features.RowStyle]) classes.push({
                 "row"                                                   : true,
-                "column"                                                : props.isColumn === true
+                "column"                                                : props.isColumn === true,
+                [mediaToClass(Size.Small, "up", props.smallUp)]         : !_isUndefined(props.smallUp),
+                [mediaToClass(Size.Medium, "up", props.mediumUp)]       : !_isUndefined(props.mediumUp),
+                [mediaToClass(Size.Large, "up", props.largeUp)]         : !_isUndefined(props.largeUp),
+                [mediaToClass(Size.XLarge, "up", props.xlargeUp)]       : !_isUndefined(props.xlargeUp),
+                [mediaToClass(Size.XXLarge, "up", props.xxlargeUp)]     : !_isUndefined(props.xxlargeUp)
         });
         if(this.set[Features.ColumnStyle]) classes.push({
                 [mediaToClass(Size.Small, props.small)]                 : !_isUndefined(props.small),
@@ -107,7 +112,10 @@ export class FeatureSet {
                 [mediaToClass(Size.Large, props.large)]                 : !_isUndefined(props.large),
                 [mediaToClass(Size.XLarge, props.xlarge)]               : !_isUndefined(props.xlarge),
                 [mediaToClass(Size.XXLarge, props.xxlarge)]             : !_isUndefined(props.xxlarge),
+                [mediaToClass(props.centerOn, "centered")]              : !_isUndefined(props.centerOn),
                 [pairToClass(props.offsetOn, "offset")]                 : _isArray(props.offsetOn),
+                [pairToClass(props.pushOn, "push")]                     : _isArray(props.pushOn),
+                [pairToClass(props.pullOn, "pull")]                     : _isArray(props.pullOn),
                 "columns"                                               : true
         });
         if(this.set[Features.Gutters]) classes.push({
@@ -191,6 +199,11 @@ export class FeatureSet {
                 icon            : PropTypes.string
         });
         if(this.set[Features.RowStyle]) _assign(propTypes, {     
+                smallUp         : PropTypes.number,
+                mediumUp        : PropTypes.number,
+                largeUp         : PropTypes.number,
+                xlargeUp        : PropTypes.number,
+                xxlargeUp       : PropTypes.number,
                 isColumn        : PropTypes.bool
         });
         if(this.set[Features.Gutters]) _assign(propTypes, {      
@@ -204,7 +217,10 @@ export class FeatureSet {
                 large           : PropTypes.number,
                 xlarge          : PropTypes.number,
                 xxlarge         : PropTypes.number,
-                offsetOn        : PropTypes_sizePairArray
+                centerOn        : PropTypes_sizeArray,
+                offsetOn        : PropTypes_sizePairArray,
+                pushOn          : PropTypes_sizePairArray,
+                pullOn          : PropTypes_sizePairArray
         });
         return propTypes;
     }

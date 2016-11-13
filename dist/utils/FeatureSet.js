@@ -129,7 +129,7 @@ var FeatureSet = exports.FeatureSet = function () {
         _createClass(FeatureSet, [{
                 key: 'getClassNames',
                 value: function getClassNames(props, extraClasses) {
-                        var _classes$push6, _classes$push7;
+                        var _classes$push6, _classes$push7, _classes$push8;
 
                         var classes = [_defineProperty({}, extraClasses, (0, _isString3.default)(extraClasses))];
                         if (this.set[Features.ClassNames]) classes.push(_defineProperty({}, props.className, (0, _isString3.default)(props.className)));
@@ -152,12 +152,12 @@ var FeatureSet = exports.FeatureSet = function () {
                                 "icon-top": props.iconTop === true
                         });
                         if (this.set[Features.Icon]) classes.push(_defineProperty({}, "fi-" + props.icon, (0, _isString3.default)(props.icon)));
-                        if (this.set[Features.RowStyle]) classes.push({
+                        if (this.set[Features.RowStyle]) classes.push((_classes$push6 = {
                                 "row": true,
                                 "column": props.isColumn === true
-                        });
-                        if (this.set[Features.ColumnStyle]) classes.push((_classes$push6 = {}, _defineProperty(_classes$push6, mediaToClass(_enums.Size.Small, props.small), !(0, _isUndefined3.default)(props.small)), _defineProperty(_classes$push6, mediaToClass(_enums.Size.Medium, props.medium), !(0, _isUndefined3.default)(props.medium)), _defineProperty(_classes$push6, mediaToClass(_enums.Size.Large, props.large), !(0, _isUndefined3.default)(props.large)), _defineProperty(_classes$push6, mediaToClass(_enums.Size.XLarge, props.xlarge), !(0, _isUndefined3.default)(props.xlarge)), _defineProperty(_classes$push6, mediaToClass(_enums.Size.XXLarge, props.xxlarge), !(0, _isUndefined3.default)(props.xxlarge)), _defineProperty(_classes$push6, pairToClass(props.offsetOn, "offset"), (0, _isArray3.default)(props.offsetOn)), _defineProperty(_classes$push6, "columns", true), _classes$push6));
-                        if (this.set[Features.Gutters]) classes.push((_classes$push7 = {}, _defineProperty(_classes$push7, _enums.Gutters.Collapse, props.collapse === true), _defineProperty(_classes$push7, mediaToClass(props.collapseOn, _enums.Gutters.Collapse), !(0, _isUndefined3.default)(props.collapseOn)), _defineProperty(_classes$push7, mediaToClass(props.uncollapseOn, _enums.Gutters.Uncollapse), !(0, _isUndefined3.default)(props.uncollapseOn)), _classes$push7));
+                        }, _defineProperty(_classes$push6, mediaToClass(_enums.Size.Small, "up", props.smallUp), !(0, _isUndefined3.default)(props.smallUp)), _defineProperty(_classes$push6, mediaToClass(_enums.Size.Medium, "up", props.mediumUp), !(0, _isUndefined3.default)(props.mediumUp)), _defineProperty(_classes$push6, mediaToClass(_enums.Size.Large, "up", props.largeUp), !(0, _isUndefined3.default)(props.largeUp)), _defineProperty(_classes$push6, mediaToClass(_enums.Size.XLarge, "up", props.xlargeUp), !(0, _isUndefined3.default)(props.xlargeUp)), _defineProperty(_classes$push6, mediaToClass(_enums.Size.XXLarge, "up", props.xxlargeUp), !(0, _isUndefined3.default)(props.xxlargeUp)), _classes$push6));
+                        if (this.set[Features.ColumnStyle]) classes.push((_classes$push7 = {}, _defineProperty(_classes$push7, mediaToClass(_enums.Size.Small, props.small), !(0, _isUndefined3.default)(props.small)), _defineProperty(_classes$push7, mediaToClass(_enums.Size.Medium, props.medium), !(0, _isUndefined3.default)(props.medium)), _defineProperty(_classes$push7, mediaToClass(_enums.Size.Large, props.large), !(0, _isUndefined3.default)(props.large)), _defineProperty(_classes$push7, mediaToClass(_enums.Size.XLarge, props.xlarge), !(0, _isUndefined3.default)(props.xlarge)), _defineProperty(_classes$push7, mediaToClass(_enums.Size.XXLarge, props.xxlarge), !(0, _isUndefined3.default)(props.xxlarge)), _defineProperty(_classes$push7, mediaToClass(props.centerOn, "centered"), !(0, _isUndefined3.default)(props.centerOn)), _defineProperty(_classes$push7, pairToClass(props.offsetOn, "offset"), (0, _isArray3.default)(props.offsetOn)), _defineProperty(_classes$push7, pairToClass(props.pushOn, "push"), (0, _isArray3.default)(props.pushOn)), _defineProperty(_classes$push7, pairToClass(props.pullOn, "pull"), (0, _isArray3.default)(props.pullOn)), _defineProperty(_classes$push7, "columns", true), _classes$push7));
+                        if (this.set[Features.Gutters]) classes.push((_classes$push8 = {}, _defineProperty(_classes$push8, _enums.Gutters.Collapse, props.collapse === true), _defineProperty(_classes$push8, mediaToClass(props.collapseOn, _enums.Gutters.Collapse), !(0, _isUndefined3.default)(props.collapseOn)), _defineProperty(_classes$push8, mediaToClass(props.uncollapseOn, _enums.Gutters.Uncollapse), !(0, _isUndefined3.default)(props.uncollapseOn)), _classes$push8));
                         return (0, _classnames2.default)(classes);
                 }
         }, {
@@ -238,6 +238,11 @@ var FeatureSet = exports.FeatureSet = function () {
                                 icon: _react.PropTypes.string
                         });
                         if (this.set[Features.RowStyle]) (0, _assign3.default)(propTypes, {
+                                smallUp: _react.PropTypes.number,
+                                mediumUp: _react.PropTypes.number,
+                                largeUp: _react.PropTypes.number,
+                                xlargeUp: _react.PropTypes.number,
+                                xxlargeUp: _react.PropTypes.number,
                                 isColumn: _react.PropTypes.bool
                         });
                         if (this.set[Features.Gutters]) (0, _assign3.default)(propTypes, {
@@ -251,7 +256,10 @@ var FeatureSet = exports.FeatureSet = function () {
                                 large: _react.PropTypes.number,
                                 xlarge: _react.PropTypes.number,
                                 xxlarge: _react.PropTypes.number,
-                                offsetOn: PropTypes_sizePairArray
+                                centerOn: PropTypes_sizeArray,
+                                offsetOn: PropTypes_sizePairArray,
+                                pushOn: PropTypes_sizePairArray,
+                                pullOn: PropTypes_sizePairArray
                         });
                         return propTypes;
                 }
