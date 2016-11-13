@@ -28,7 +28,7 @@ export const Features = {
     MenuStyle:      "MenuStyle",
     RowStyle:       "RowStyle",
     ColumnStyle:    "ColumnStyle",
-    Icon:           "Icon",
+    IconStyle:      "IconStyle",
     Gutters:        "Gutters",
     Link:           "Link"
 };
@@ -107,7 +107,7 @@ export class FeatureSet {
                 "nested"                                                : props.isNested === true,
                 "icon-top"                                              : props.iconTop === true
         });
-        if(this.set[Features.Icon]) classes.push({
+        if(this.set[Features.IconStyle]) classes.push({
                 ["fi-"+props.icon]                                      : _isString(props.icon)
         });
         if(this.set[Features.RowStyle]) classes.push({
@@ -126,6 +126,7 @@ export class FeatureSet {
                 [mediaToClass(Size.XLarge, props.xlarge)]               : !_isUndefined(props.xlarge),
                 [mediaToClass(Size.XXLarge, props.xxlarge)]             : !_isUndefined(props.xxlarge),
                 [mediaToClass(props.centerOn, "centered")]              : !_isUndefined(props.centerOn),
+                [mediaToClass(props.uncenterOn, "uncentered")]          : !_isUndefined(props.uncenterOn),
                 [pairToClass(props.offsetOn, "offset")]                 : _isArray(props.offsetOn),
                 [pairToClass(props.pushOn, "push")]                     : _isArray(props.pushOn),
                 [pairToClass(props.pullOn, "pull")]                     : _isArray(props.pullOn),
@@ -133,7 +134,7 @@ export class FeatureSet {
                 "end"                                                   : props.isEnd === true
         });
         if(this.set[Features.Gutters]) classes.push({
-                [Gutters.Collapse]                                      : props.collapse === true,
+                [Gutters.Collapse]                                      : props.isCollapsed === true,
                 [mediaToClass(props.collapseOn, Gutters.Collapse)]      : !_isUndefined(props.collapseOn),
                 [mediaToClass(props.uncollapseOn, Gutters.Uncollapse)]  : !_isUndefined(props.uncollapseOn)
         });
@@ -226,7 +227,7 @@ export class FeatureSet {
                 isNested        : PropTypes.bool,    
                 iconTop         : PropTypes.bool
         });
-        if(this.set[Features.Icon]) _assign(propTypes, {         
+        if(this.set[Features.IconStyle]) _assign(propTypes, {         
                 icon            : PropTypes.string
         });
         if(this.set[Features.RowStyle]) _assign(propTypes, {     
@@ -238,7 +239,7 @@ export class FeatureSet {
                 isColumn        : PropTypes.bool
         });
         if(this.set[Features.Gutters]) _assign(propTypes, {      
-                collapse        : PropTypes.bool,
+                isCollapsed     : PropTypes.bool,
                 collapseOn      : PropTypes_sizeArray,
                 uncollapseOn    : PropTypes_sizeArray
         });
@@ -249,6 +250,7 @@ export class FeatureSet {
                 xlarge          : PropTypes.number,
                 xxlarge         : PropTypes.number,
                 centerOn        : PropTypes_sizeArray,
+                uncenterOn      : PropTypes_sizeArray,
                 offsetOn        : PropTypes_sizePairArray,
                 pushOn          : PropTypes_sizePairArray,
                 pullOn          : PropTypes_sizePairArray,
@@ -260,17 +262,11 @@ export class FeatureSet {
         return propTypes;
     }
     getDefaultProps(defaultProps = {}) {
-        if(this.set[Features.Float]) _assign(defaultProps, {
-                float           : Alignment.None
-        });
         if(this.set[Features.Disabled]) _assign(defaultProps, {
                 disabled        : false
         });
         if(this.set[Features.InputField]) _assign(defaultProps, {
                 label           : null
-        });
-        if(this.set[Features.Alignment]) _assign(defaultProps, {
-                alignment       : Alignment.None
         });
         return defaultProps;
     }

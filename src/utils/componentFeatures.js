@@ -4,10 +4,10 @@ import { FeatureSet, Features } from './FeatureSet';
 export const Button = new FeatureSet({
     [Features.ClassNames]: true,
     [Features.Visibility]: true,
-    [Features.Float]: true,
-    [Features.Disabled]: true,
     [Features.MouseEvents]: true,
-    [Features.Link]: true
+    [Features.Link]: true,
+    [Features.Disabled]: true,
+    [Features.Float]: true
 });
 
 export const Title = new FeatureSet({
@@ -23,24 +23,24 @@ export const Divider = new FeatureSet({
 export const NumberField = new FeatureSet({
     [Features.ClassNames]: true,
     [Features.Visibility]: true,
-    [Features.Disabled]: true,
     [Features.DataEvents]: true,
+    [Features.Disabled]: true,
     [Features.InputField]: PropTypes.number.isRequired
 });
 
 export const TextField = new FeatureSet({
     [Features.ClassNames]: true,
     [Features.Visibility]: true,
-    [Features.Disabled]: true,
     [Features.DataEvents]: true,
+    [Features.Disabled]: true,
     [Features.InputField]: PropTypes.string.isRequired
 });
 
 export const TextArea = new FeatureSet({
     [Features.ClassNames]: true,
     [Features.Visibility]: true,
-    [Features.Disabled]: true,
     [Features.DataEvents]: true,
+    [Features.Disabled]: true,
     [Features.InputField]: PropTypes.string.isRequired
 });
 
@@ -53,41 +53,48 @@ export const ExpandTitle = new FeatureSet({
 });
 
 export const Expand = new FeatureSet({
-    [Features.ClassNames]: true
+    [Features.ClassNames]: true,
+    [Features.Visibility]: true
 });
 
 export const Menu = new FeatureSet({
+    [Features.ClassNames]: true,
     [Features.Visibility]: true,
-    [Features.ContentExpand]: true,
     [Features.MenuStyle]: true,
+    [Features.ContentExpand]: true,
     [Features.Alignment]: true,
     [Features.Orientation]: true
 });
 
 export const MenuItem = new FeatureSet({
+    [Features.ClassNames]: true,
     [Features.Visibility]: true,
-    [Features.Active]: true,
     [Features.MouseEvents]: true,
-    [Features.Link]: true
+    [Features.Link]: true,
+    [Features.Active]: true
 });
 
 export const MenuText = new FeatureSet({
+    [Features.ClassNames]: true,
     [Features.Visibility]: true
 });
 
 export const Icon = new FeatureSet({
+    [Features.ClassNames]: true,
     [Features.Visibility]: true,
-    [Features.Icon]: true
+    [Features.IconStyle]: true
 });
 
 export const Row = new FeatureSet({
+    [Features.ClassNames]: true,
     [Features.Visibility]: true,
-    [Features.ContentExpand]: true,
     [Features.RowStyle]: true,
+    [Features.ContentExpand]: true,
     [Features.Gutters]: true
 });
 
 export const Column = new FeatureSet({
+    [Features.ClassNames]: true,
     [Features.Visibility]: true,
     [Features.ColumnStyle]: true
 });
