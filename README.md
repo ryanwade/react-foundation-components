@@ -19,21 +19,21 @@ A collection of Foundation components for react
 
 ## Features
 
-|Component        |  |Core                                                |Style                      |Input & Events                                                                    |Other|
-|-----------------|--|----------------------------------------------------|---------------------------|----------------------------------------------------------------------------------|-|
-|___Button___     |\||[ClassNames](#ClassNames), [Visibility](#Visibility)|                           |[MouseEvents](#MouseEvents), [Link](#Link), [Disabled](#Disabled)                 |[Float](#Float)|
-|___Column___     |\||[ClassNames](#ClassNames), [Visibility](#Visibility)|[ColumnStyle](#ColumnStyle)|
-|___Divider___    |\||[ClassNames](#ClassNames), [Visibility](#Visibility)|
-|___Expand___     |\||[ClassNames](#ClassNames), [Visibility](#Visibility)|
-|___Icon___       |\||[ClassNames](#ClassNames), [Visibility](#Visibility)|[IconStyle](#IconStyle)    |
-|___Menu___       |\||[ClassNames](#ClassNames), [Visibility](#Visibility)|[MenuStyle](#MenuStyle)    |                                                                                  |[ContentExpand](#ContentExpand), [Alignment](#Alignment), [Orientation](#Orientation)|
-|___MenuItem___   |\||[ClassNames](#ClassNames), [Visibility](#Visibility)|                           |[MouseEvents](#MouseEvents), [Link](#Link)                                        |[Active](#Active)|
-|___MenuText___   |\||[ClassNames](#ClassNames), [Visibility](#Visibility)|
-|___NumberField___|\||[ClassNames](#ClassNames), [Visibility](#Visibility)|                           |[DataEvents](#DataEvents), [Disabled](#Disabled), [InputField](#InputField)=number|
-|___Row___        |\||[ClassNames](#ClassNames), [Visibility](#Visibility)|[RowStyle](#RowStyle)      |                                                                                  |[ContentExpand](#ContentExpand), [Gutters](#Gutters)|
-|___TextArea___   |\||[ClassNames](#ClassNames), [Visibility](#Visibility)|                           |[DataEvents](#DataEvents), [Disabled](#Disabled), [InputField](#InputField)=string|
-|___TextField___  |\||[ClassNames](#ClassNames), [Visibility](#Visibility)|                           |[DataEvents](#DataEvents), [Disabled](#Disabled), [InputField](#InputField)=string|
-|___Title___      |\||[ClassNames](#ClassNames), [Visibility](#Visibility)|
+|Component        |Core                                                |Style                      |Input & Events                                                                    |Other|
+|-----------------|----------------------------------------------------|---------------------------|----------------------------------------------------------------------------------|---|
+|___Button___     |[ClassNames](#ClassNames), [Visibility](#Visibility)|                           |[MouseEvents](#MouseEvents), [Link](#Link), [Disabled](#Disabled)                 |[Float](#Float)|
+|___Column___     |[ClassNames](#ClassNames), [Visibility](#Visibility)|[ColumnStyle](#ColumnStyle)|                                                                                  |   |
+|___Divider___    |[ClassNames](#ClassNames), [Visibility](#Visibility)|                           |                                                                                  |   |
+|___Expand___     |[ClassNames](#ClassNames), [Visibility](#Visibility)|                           |                                                                                  |   |
+|___Icon___       |[ClassNames](#ClassNames), [Visibility](#Visibility)|[IconStyle](#IconStyle)    |                                                                                  |   |
+|___Menu___       |[ClassNames](#ClassNames), [Visibility](#Visibility)|[MenuStyle](#MenuStyle)    |                                                                                  |[ContentExpand](#ContentExpand), [Alignment](#Alignment), [Orientation](#Orientation)|
+|___MenuItem___   |[ClassNames](#ClassNames), [Visibility](#Visibility)|                           |[MouseEvents](#MouseEvents), [Link](#Link)                                        |[Active](#Active)|
+|___MenuText___   |[ClassNames](#ClassNames), [Visibility](#Visibility)|                           |                                                                                  |   |
+|___NumberField___|[ClassNames](#ClassNames), [Visibility](#Visibility)|                           |[DataEvents](#DataEvents), [Disabled](#Disabled), [InputField](#InputField)=number|   |
+|___Row___        |[ClassNames](#ClassNames), [Visibility](#Visibility)|[RowStyle](#RowStyle)      |                                                                                  |[ContentExpand](#ContentExpand), [Gutters](#Gutters)|
+|___TextArea___   |[ClassNames](#ClassNames), [Visibility](#Visibility)|                           |[DataEvents](#DataEvents), [Disabled](#Disabled), [InputField](#InputField)=string|   |
+|___TextField___  |[ClassNames](#ClassNames), [Visibility](#Visibility)|                           |[DataEvents](#DataEvents), [Disabled](#Disabled), [InputField](#InputField)=string|   |
+|___Title___      |[ClassNames](#ClassNames), [Visibility](#Visibility)|                           |                                                                                  |   |
 
 # Types & Enums
 ## <div id="AlignmentEnum">Alignment Enum</div>
