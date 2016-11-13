@@ -1,7 +1,7 @@
 import { PropTypes } from 'react';
 import classNames from 'classnames';
 
-import { Alignment, Orientation, Size, Gutters } from './enums';
+import { Alignment, Size, Gutters } from './enums';
 
 import _values from 'lodash/values';
 import _isUndefined from 'lodash/isUndefined';
@@ -84,7 +84,10 @@ export class FeatureSet {
                 "active"                                                : props.isActive === true
         });
         if(this.set[Features.Orientation]) classes.push({
-                [props.orientation]                                     : !_isUndefined(props.orientation)
+                "vertical"                                              : props.isVertical === true,
+                "horizontal"                                            : props.isHorizontal === true,
+                [mediaToClass(props.verticalOn, "vertical")]            : !_isUndefined(props.verticalOn),
+                [mediaToClass(props.horizontalOn, "horizontal")]        : !_isUndefined(props.horizontalOn)
         });
         if(this.set[Features.ContentExpand]) classes.push({
                 "expanded"                                              : props.isExpanded === true
@@ -186,7 +189,10 @@ export class FeatureSet {
                 isActive        : PropTypes.bool
         });
         if(this.set[Features.Orientation]) _assign(propTypes, {  
-                orientation     : oneOfList(Orientation)
+                isVertical      : PropTypes.bool,
+                isHorizontal    : PropTypes.bool,
+                verticalOn      : PropTypes_sizeArray,
+                horizontalOn    : PropTypes_sizeArray
         });
         if(this.set[Features.ContentExpand]) _assign(propTypes, {
                 isExpanded      : PropTypes.bool
@@ -238,9 +244,6 @@ export class FeatureSet {
         });
         if(this.set[Features.Alignment]) _assign(defaultProps, {
                 alignment       : Alignment.None
-        });
-        if(this.set[Features.Orientation]) _assign(defaultProps, {
-                orientation     : Orientation.Default
         });
         return defaultProps;
     }

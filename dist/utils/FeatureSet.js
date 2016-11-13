@@ -129,7 +129,7 @@ var FeatureSet = exports.FeatureSet = function () {
         _createClass(FeatureSet, [{
                 key: 'getClassNames',
                 value: function getClassNames(props, extraClasses) {
-                        var _classes$push6, _classes$push7, _classes$push8;
+                        var _classes$push4, _classes$push6, _classes$push7, _classes$push8;
 
                         var classes = [_defineProperty({}, extraClasses, (0, _isString3.default)(extraClasses))];
                         if (this.set[Features.ClassNames]) classes.push(_defineProperty({}, props.className, (0, _isString3.default)(props.className)));
@@ -142,7 +142,10 @@ var FeatureSet = exports.FeatureSet = function () {
                         if (this.set[Features.Active]) classes.push({
                                 "active": props.isActive === true
                         });
-                        if (this.set[Features.Orientation]) classes.push(_defineProperty({}, props.orientation, !(0, _isUndefined3.default)(props.orientation)));
+                        if (this.set[Features.Orientation]) classes.push((_classes$push4 = {
+                                "vertical": props.isVertical === true,
+                                "horizontal": props.isHorizontal === true
+                        }, _defineProperty(_classes$push4, mediaToClass(props.verticalOn, "vertical"), !(0, _isUndefined3.default)(props.verticalOn)), _defineProperty(_classes$push4, mediaToClass(props.horizontalOn, "horizontal"), !(0, _isUndefined3.default)(props.horizontalOn)), _classes$push4));
                         if (this.set[Features.ContentExpand]) classes.push({
                                 "expanded": props.isExpanded === true
                         });
@@ -224,7 +227,10 @@ var FeatureSet = exports.FeatureSet = function () {
                                 isActive: _react.PropTypes.bool
                         });
                         if (this.set[Features.Orientation]) (0, _assign3.default)(propTypes, {
-                                orientation: oneOfList(_enums.Orientation)
+                                isVertical: _react.PropTypes.bool,
+                                isHorizontal: _react.PropTypes.bool,
+                                verticalOn: PropTypes_sizeArray,
+                                horizontalOn: PropTypes_sizeArray
                         });
                         if (this.set[Features.ContentExpand]) (0, _assign3.default)(propTypes, {
                                 isExpanded: _react.PropTypes.bool
@@ -280,9 +286,6 @@ var FeatureSet = exports.FeatureSet = function () {
                         });
                         if (this.set[Features.Alignment]) (0, _assign3.default)(defaultProps, {
                                 alignment: _enums.Alignment.None
-                        });
-                        if (this.set[Features.Orientation]) (0, _assign3.default)(defaultProps, {
-                                orientation: _enums.Orientation.Default
                         });
                         return defaultProps;
                 }

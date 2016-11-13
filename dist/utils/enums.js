@@ -9,11 +9,6 @@ var Alignment = exports.Alignment = {
     Center: "center",
     None: null
 };
-var Orientation = exports.Orientation = {
-    Horizontal: "horizontal",
-    Vertical: "vertical",
-    Default: null
-};
 
 var Size = exports.Size = {
     Small: "small",

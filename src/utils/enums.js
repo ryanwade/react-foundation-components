@@ -4,11 +4,6 @@ export const Alignment = {
     Center: "center",
     None: null
 };
-export const Orientation = {
-    Horizontal: "horizontal",
-    Vertical: "vertical",
-    Default: null
-};
 
 export const Size = {
     Small: "small",
