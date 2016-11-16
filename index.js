@@ -13,6 +13,8 @@ var TextField       = require('./dist/components/TextField.js').default;
 var Title           = require('./dist/components/Title.js').default;
 var enums           = require('./dist/utils/enums.js');
 
+var UI_Builder      = require('./dist/utils/dynamicUi.js').default;
+
 module.exports = {
     Button,
     Column,
@@ -29,5 +31,6 @@ module.exports = {
     Title,
     ALIGNMENT: enums.Alignment,
     SIZE: enums.Size,
-    GUTTERS: enums.Gutters
+    GUTTERS: enums.Gutters,
+    UI_Builder: UI_Builder
 };
