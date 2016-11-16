@@ -18,9 +18,9 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 var MenuItem = function MenuItem(_ref, context) {
     var label = _ref.label;
-    var icon = _ref.icon;
+    var children = _ref.children;
 
-    var props = _objectWithoutProperties(_ref, ['label', 'icon']);
+    var props = _objectWithoutProperties(_ref, ['label', 'children']);
 
     return _react2.default.createElement(
         'li',
@@ -28,7 +28,7 @@ var MenuItem = function MenuItem(_ref, context) {
         _react2.default.createElement(
             'a',
             _extends({ href: '#' }, _componentFeatures.MenuItem.getAttrs(props, context)),
-            icon,
+            children,
             _react2.default.createElement(
                 'span',
                 null,
