@@ -18,16 +18,17 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 var MenuItem = function MenuItem(_ref, context) {
     var label = _ref.label;
+    var jump = _ref.jump;
     var children = _ref.children;
 
-    var props = _objectWithoutProperties(_ref, ['label', 'children']);
+    var props = _objectWithoutProperties(_ref, ['label', 'jump', 'children']);
 
     return _react2.default.createElement(
         'li',
         { className: _componentFeatures.MenuItem.getClassNames(props) },
         _react2.default.createElement(
             'a',
-            _extends({ href: '#' }, _componentFeatures.MenuItem.getAttrs(props, context)),
+            _extends({ href: jump }, _componentFeatures.MenuItem.getAttrs(props, context)),
             children,
             _react2.default.createElement(
                 'span',
@@ -39,10 +40,12 @@ var MenuItem = function MenuItem(_ref, context) {
 };
 MenuItem.propTypes = _componentFeatures.MenuItem.getPropTypes({
     label: _react.PropTypes.string,
+    jump: _react.PropTypes.string,
     icon: _react.PropTypes.node
 });
 MenuItem.defaultProps = _componentFeatures.MenuItem.getDefaultProps({
-    label: null
+    label: null,
+    jump: "#"
 });
 MenuItem.contextTypes = _componentFeatures.MenuItem.getContextTypes();
 
