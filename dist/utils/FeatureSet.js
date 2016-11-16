@@ -72,7 +72,7 @@ var Features = exports.Features = {
         MenuStyle: "MenuStyle",
         RowStyle: "RowStyle",
         ColumnStyle: "ColumnStyle",
-        Icon: "Icon",
+        IconStyle: "IconStyle",
         Gutters: "Gutters",
         Link: "Link"
 };
@@ -171,13 +171,13 @@ var FeatureSet = exports.FeatureSet = function () {
                                 "nested": props.isNested === true,
                                 "icon-top": props.iconTop === true
                         });
-                        if (this.set[Features.Icon]) classes.push(_defineProperty({}, "fi-" + props.icon, (0, _isString3.default)(props.icon)));
+                        if (this.set[Features.IconStyle]) classes.push(_defineProperty({}, "fi-" + props.icon, (0, _isString3.default)(props.icon)));
                         if (this.set[Features.RowStyle]) classes.push((_classes$push6 = {
                                 "row": true,
                                 "column": props.isColumn === true
                         }, _defineProperty(_classes$push6, mediaToClass(_enums.Size.Small, "up", props.smallUp), !(0, _isUndefined3.default)(props.smallUp)), _defineProperty(_classes$push6, mediaToClass(_enums.Size.Medium, "up", props.mediumUp), !(0, _isUndefined3.default)(props.mediumUp)), _defineProperty(_classes$push6, mediaToClass(_enums.Size.Large, "up", props.largeUp), !(0, _isUndefined3.default)(props.largeUp)), _defineProperty(_classes$push6, mediaToClass(_enums.Size.XLarge, "up", props.xlargeUp), !(0, _isUndefined3.default)(props.xlargeUp)), _defineProperty(_classes$push6, mediaToClass(_enums.Size.XXLarge, "up", props.xxlargeUp), !(0, _isUndefined3.default)(props.xxlargeUp)), _classes$push6));
-                        if (this.set[Features.ColumnStyle]) classes.push((_classes$push7 = {}, _defineProperty(_classes$push7, mediaToClass(_enums.Size.Small, props.small), !(0, _isUndefined3.default)(props.small)), _defineProperty(_classes$push7, mediaToClass(_enums.Size.Medium, props.medium), !(0, _isUndefined3.default)(props.medium)), _defineProperty(_classes$push7, mediaToClass(_enums.Size.Large, props.large), !(0, _isUndefined3.default)(props.large)), _defineProperty(_classes$push7, mediaToClass(_enums.Size.XLarge, props.xlarge), !(0, _isUndefined3.default)(props.xlarge)), _defineProperty(_classes$push7, mediaToClass(_enums.Size.XXLarge, props.xxlarge), !(0, _isUndefined3.default)(props.xxlarge)), _defineProperty(_classes$push7, mediaToClass(props.centerOn, "centered"), !(0, _isUndefined3.default)(props.centerOn)), _defineProperty(_classes$push7, pairToClass(props.offsetOn, "offset"), (0, _isArray3.default)(props.offsetOn)), _defineProperty(_classes$push7, pairToClass(props.pushOn, "push"), (0, _isArray3.default)(props.pushOn)), _defineProperty(_classes$push7, pairToClass(props.pullOn, "pull"), (0, _isArray3.default)(props.pullOn)), _defineProperty(_classes$push7, "columns", true), _defineProperty(_classes$push7, "end", props.isEnd === true), _classes$push7));
-                        if (this.set[Features.Gutters]) classes.push((_classes$push8 = {}, _defineProperty(_classes$push8, _enums.Gutters.Collapse, props.collapse === true), _defineProperty(_classes$push8, mediaToClass(props.collapseOn, _enums.Gutters.Collapse), !(0, _isUndefined3.default)(props.collapseOn)), _defineProperty(_classes$push8, mediaToClass(props.uncollapseOn, _enums.Gutters.Uncollapse), !(0, _isUndefined3.default)(props.uncollapseOn)), _classes$push8));
+                        if (this.set[Features.ColumnStyle]) classes.push((_classes$push7 = {}, _defineProperty(_classes$push7, mediaToClass(_enums.Size.Small, props.small), !(0, _isUndefined3.default)(props.small)), _defineProperty(_classes$push7, mediaToClass(_enums.Size.Medium, props.medium), !(0, _isUndefined3.default)(props.medium)), _defineProperty(_classes$push7, mediaToClass(_enums.Size.Large, props.large), !(0, _isUndefined3.default)(props.large)), _defineProperty(_classes$push7, mediaToClass(_enums.Size.XLarge, props.xlarge), !(0, _isUndefined3.default)(props.xlarge)), _defineProperty(_classes$push7, mediaToClass(_enums.Size.XXLarge, props.xxlarge), !(0, _isUndefined3.default)(props.xxlarge)), _defineProperty(_classes$push7, mediaToClass(props.centerOn, "centered"), !(0, _isUndefined3.default)(props.centerOn)), _defineProperty(_classes$push7, mediaToClass(props.uncenterOn, "uncentered"), !(0, _isUndefined3.default)(props.uncenterOn)), _defineProperty(_classes$push7, pairToClass(props.offsetOn, "offset"), (0, _isArray3.default)(props.offsetOn)), _defineProperty(_classes$push7, pairToClass(props.pushOn, "push"), (0, _isArray3.default)(props.pushOn)), _defineProperty(_classes$push7, pairToClass(props.pullOn, "pull"), (0, _isArray3.default)(props.pullOn)), _defineProperty(_classes$push7, "columns", true), _defineProperty(_classes$push7, "end", props.isEnd === true), _classes$push7));
+                        if (this.set[Features.Gutters]) classes.push((_classes$push8 = {}, _defineProperty(_classes$push8, _enums.Gutters.Collapse, props.isCollapsed === true), _defineProperty(_classes$push8, mediaToClass(props.collapseOn, _enums.Gutters.Collapse), !(0, _isUndefined3.default)(props.collapseOn)), _defineProperty(_classes$push8, mediaToClass(props.uncollapseOn, _enums.Gutters.Uncollapse), !(0, _isUndefined3.default)(props.uncollapseOn)), _classes$push8));
                         return (0, _classnames2.default)(classes);
                 }
         }, {
@@ -268,7 +268,7 @@ var FeatureSet = exports.FeatureSet = function () {
                                 isNested: _react.PropTypes.bool,
                                 iconTop: _react.PropTypes.bool
                         });
-                        if (this.set[Features.Icon]) (0, _assign3.default)(propTypes, {
+                        if (this.set[Features.IconStyle]) (0, _assign3.default)(propTypes, {
                                 icon: _react.PropTypes.string
                         });
                         if (this.set[Features.RowStyle]) (0, _assign3.default)(propTypes, {
@@ -280,7 +280,7 @@ var FeatureSet = exports.FeatureSet = function () {
                                 isColumn: _react.PropTypes.bool
                         });
                         if (this.set[Features.Gutters]) (0, _assign3.default)(propTypes, {
-                                collapse: _react.PropTypes.bool,
+                                isCollapsed: _react.PropTypes.bool,
                                 collapseOn: PropTypes_sizeArray,
                                 uncollapseOn: PropTypes_sizeArray
                         });
@@ -291,6 +291,7 @@ var FeatureSet = exports.FeatureSet = function () {
                                 xlarge: _react.PropTypes.number,
                                 xxlarge: _react.PropTypes.number,
                                 centerOn: PropTypes_sizeArray,
+                                uncenterOn: PropTypes_sizeArray,
                                 offsetOn: PropTypes_sizePairArray,
                                 pushOn: PropTypes_sizePairArray,
                                 pullOn: PropTypes_sizePairArray,
@@ -306,17 +307,11 @@ var FeatureSet = exports.FeatureSet = function () {
                 value: function getDefaultProps() {
                         var defaultProps = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-                        if (this.set[Features.Float]) (0, _assign3.default)(defaultProps, {
-                                float: _enums.Alignment.None
-                        });
                         if (this.set[Features.Disabled]) (0, _assign3.default)(defaultProps, {
                                 disabled: false
                         });
                         if (this.set[Features.InputField]) (0, _assign3.default)(defaultProps, {
                                 label: null
-                        });
-                        if (this.set[Features.Alignment]) (0, _assign3.default)(defaultProps, {
-                                alignment: _enums.Alignment.None
                         });
                         return defaultProps;
                 }
