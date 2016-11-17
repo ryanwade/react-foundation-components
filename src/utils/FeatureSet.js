@@ -182,38 +182,38 @@ export class FeatureSet {
         });
         return attrs;
     }
-    getPropTypes(propTypes = {}) {        
-        if(this.set[Features.ClassNames]) _assign(propTypes, {   
+    getPropTypes(propTypes = {}) {
+        if(this.set[Features.ClassNames]) _assign(propTypes, {
                 className       : PropTypes.string,
                 innerClassName  : PropTypes.string
         });
-        if(this.set[Features.Visibility]) _assign(propTypes, {   
+        if(this.set[Features.Visibility]) _assign(propTypes, {
                 show            : PropTypes.bool
         });
-        if(this.set[Features.Float]) _assign(propTypes, {        
+        if(this.set[Features.Float]) _assign(propTypes, {
                 float           : oneOfList(Alignment)
         });
-        if(this.set[Features.Disabled]) _assign(propTypes, {     
+        if(this.set[Features.Disabled]) _assign(propTypes, {
                 disabled        : PropTypes.bool
         });
-        if(this.set[Features.MouseEvents]) _assign(propTypes, {  
+        if(this.set[Features.MouseEvents]) _assign(propTypes, {
                 onClick         : PropTypes.func
         });
-        if(this.set[Features.DataEvents]) _assign(propTypes, {   
+        if(this.set[Features.DataEvents]) _assign(propTypes, {
                 onChange        : PropTypes.func
         });
-        if(this.set[Features.InputField]) _assign(propTypes, {   
-                value           : this.set[Features.InputField],   
-                label           : PropTypes.string,   
+        if(this.set[Features.InputField]) _assign(propTypes, {
+                value           : this.set[Features.InputField],
+                label           : PropTypes.string,
                 isInline        : PropTypes.bool
         });
-        if(this.set[Features.Alignment]) _assign(propTypes, {    
+        if(this.set[Features.Alignment]) _assign(propTypes, {
                 alignment       : oneOfList(Alignment)
         });
-        if(this.set[Features.Active]) _assign(propTypes, {       
+        if(this.set[Features.Active]) _assign(propTypes, {
                 isActive        : PropTypes.bool
         });
-        if(this.set[Features.Orientation]) _assign(propTypes, {  
+        if(this.set[Features.Orientation]) _assign(propTypes, {
                 isVertical      : PropTypes.bool,
                 isHorizontal    : PropTypes.bool,
                 verticalOn      : PropTypes_sizeArray,
@@ -222,15 +222,15 @@ export class FeatureSet {
         if(this.set[Features.ContentExpand]) _assign(propTypes, {
                 isExpanded      : PropTypes.bool
         });
-        if(this.set[Features.MenuStyle]) _assign(propTypes, {    
-                isSimple        : PropTypes.bool,    
-                isNested        : PropTypes.bool,    
+        if(this.set[Features.MenuStyle]) _assign(propTypes, {
+                isSimple        : PropTypes.bool,
+                isNested        : PropTypes.bool,
                 iconTop         : PropTypes.bool
         });
-        if(this.set[Features.IconStyle]) _assign(propTypes, {         
+        if(this.set[Features.IconStyle]) _assign(propTypes, {
                 icon            : PropTypes.string
         });
-        if(this.set[Features.RowStyle]) _assign(propTypes, {     
+        if(this.set[Features.RowStyle]) _assign(propTypes, {
                 smallUp         : PropTypes.number,
                 mediumUp        : PropTypes.number,
                 largeUp         : PropTypes.number,
@@ -238,7 +238,7 @@ export class FeatureSet {
                 xxlargeUp       : PropTypes.number,
                 isColumn        : PropTypes.bool
         });
-        if(this.set[Features.Gutters]) _assign(propTypes, {      
+        if(this.set[Features.Gutters]) _assign(propTypes, {
                 isCollapsed     : PropTypes.bool,
                 collapseOn      : PropTypes_sizeArray,
                 uncollapseOn    : PropTypes_sizeArray
@@ -257,7 +257,7 @@ export class FeatureSet {
                 isEnd           : PropTypes.bool
         });
         if(this.set[Features.Link]) _assign(propTypes, {
-                link            : PropTypes.string        
+                link            : PropTypes.string
         });
         return propTypes;
     }

@@ -15,10 +15,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 var Divider = function Divider(_ref) {
-    var height = _ref.height;
-    var line = _ref.line;
-
-    var props = _objectWithoutProperties(_ref, ['height', 'line']);
+    var height = _ref.height,
+        line = _ref.line,
+        props = _objectWithoutProperties(_ref, ['height', 'line']);
 
     if (line) {
         return _react2.default.createElement(

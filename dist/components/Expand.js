@@ -12,11 +12,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _componentFeatures = require('../utils/componentFeatures');
 
-var _Title = require('./Expand/Title.js');
+var _Title = require('./Expand/Title');
 
 var _Title2 = _interopRequireDefault(_Title);
 
-var _Content = require('./Expand/Content.js');
+var _Content = require('./Expand/Content');
 
 var _Content2 = _interopRequireDefault(_Content);
 
@@ -45,10 +45,9 @@ var Expand = function (_React$Component) {
     _createClass(Expand, [{
         key: 'toggleShow',
         value: function toggleShow() {
-            var _ref = this.state || {};
-
-            var _ref$show = _ref.show;
-            var show = _ref$show === undefined ? false : _ref$show;
+            var _ref = this.state || {},
+                _ref$show = _ref.show,
+                show = _ref$show === undefined ? false : _ref$show;
 
             this.setState({
                 show: !show
@@ -57,16 +56,14 @@ var Expand = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _props = this.props;
-            var title = _props.title;
-            var content = _props.content;
+            var _props = this.props,
+                title = _props.title,
+                content = _props.content,
+                props = _objectWithoutProperties(_props, ['title', 'content']);
 
-            var props = _objectWithoutProperties(_props, ['title', 'content']);
-
-            var _ref2 = this.state || {};
-
-            var _ref2$show = _ref2.show;
-            var show = _ref2$show === undefined ? false : _ref2$show;
+            var _ref2 = this.state || {},
+                _ref2$show = _ref2.show,
+                show = _ref2$show === undefined ? false : _ref2$show;
 
             return _react2.default.createElement(
                 'div',

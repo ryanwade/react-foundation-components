@@ -15,9 +15,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 var MenuText = function MenuText(_ref) {
-    var text = _ref.text;
-
-    var props = _objectWithoutProperties(_ref, ['text']);
+    var text = _ref.text,
+        props = _objectWithoutProperties(_ref, ['text']);
 
     return _react2.default.createElement(
         'li',

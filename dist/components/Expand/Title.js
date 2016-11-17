@@ -17,10 +17,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 var ExpandTitle = function ExpandTitle(_ref) {
-        var children = _ref.children;
-        var show = _ref.show;
-
-        var props = _objectWithoutProperties(_ref, ['children', 'show']);
+        var children = _ref.children,
+            show = _ref.show,
+            props = _objectWithoutProperties(_ref, ['children', 'show']);
 
         return _react2.default.createElement(
                 'div',

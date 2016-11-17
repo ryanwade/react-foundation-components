@@ -8,7 +8,7 @@ const ExpandTitle = ({children, show, ...props}) => (
             <div    className={featureSet.getInnerClassNames(props,"is-accordion-submenu-parent")}
                     aria-expanded={show}
                     style={{position: 'absolute', bottom: '15px', right: '0px'}}>
-                    <a></a>
+                    <a/>
             </div>
     </div>
 );

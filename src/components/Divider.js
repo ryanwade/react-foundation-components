@@ -5,15 +5,15 @@ const Divider = ({ height, line, ...props }) => {
     if(line) {
         return (
             <div className={featureSet.getClassNames(props)}>
-                <div style={{height: height + 'px'}}></div>
+                <div style={{height: height + 'px'}} />
                 <hr/>
-                <div style={{height: height + 'px'}}></div>
+                <div style={{height: height + 'px'}} />
             </div>
         );
     }
     return (
         <div className={featureSet.getClassNames(props)}>
-            <div style={{height: height + 'px'}}></div>
+            <div style={{height: height + 'px'}} />
         </div>
     );
 };

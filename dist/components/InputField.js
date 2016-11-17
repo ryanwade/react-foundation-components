@@ -34,10 +34,10 @@ var InputField = function (_React$Component) {
     _createClass(InputField, [{
         key: 'render',
         value: function render() {
-            var _props = this.props;
-            var input = _props.input;
-            var className = _props.className;
-            var children = _props.children;
+            var _props = this.props,
+                input = _props.input,
+                className = _props.className,
+                children = _props.children;
 
             if (input.label && input.isInline) {
                 //children.className="input-group-field" applied on Feature.InputField & props.isInline

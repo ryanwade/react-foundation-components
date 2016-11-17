@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Expand as featureSet } from '../utils/componentFeatures';
-import ExpandTitle from './Expand/Title.js';
-import ExpandContent from './Expand/Content.js';
+import ExpandTitle from './Expand/Title';
+import ExpandContent from './Expand/Content';
 
 class Expand extends React.Component {
     constructor(props) {
