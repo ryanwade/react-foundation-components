@@ -3,9 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Column = exports.Row = exports.Icon = exports.MenuText = exports.MenuItem = exports.Menu = exports.Expand = exports.ExpandTitle = exports.ExpandContent = exports.TextArea = exports.TextField = exports.NumberField = exports.Divider = exports.Title = exports.Button = undefined;
+exports.TabsContent = exports.TabsTitle = exports.Tabs = exports.Column = exports.Row = exports.Icon = exports.MenuText = exports.MenuItem = exports.Menu = exports.Expand = exports.ExpandTitle = exports.ExpandContent = exports.TextArea = exports.TextField = exports.NumberField = exports.Divider = exports.Title = exports.Button = undefined;
 
-var _ref, _ref2, _ref3, _ref4, _ref5, _ref6, _ref9, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15;
+var _ref, _ref2, _ref3, _ref4, _ref5, _ref6, _ref9, _ref10, _ref11, _ref12, _ref13, _ref14, _ref15, _ref16, _ref17, _ref18;
 
 var _react = require('react');
 
@@ -42,3 +42,8 @@ var Icon = exports.Icon = new _FeatureSet.FeatureSet((_ref13 = {}, _defineProper
 var Row = exports.Row = new _FeatureSet.FeatureSet((_ref14 = {}, _defineProperty(_ref14, _FeatureSet.Features.ClassNames, true), _defineProperty(_ref14, _FeatureSet.Features.Visibility, true), _defineProperty(_ref14, _FeatureSet.Features.RowStyle, true), _defineProperty(_ref14, _FeatureSet.Features.ContentExpand, true), _defineProperty(_ref14, _FeatureSet.Features.Gutters, true), _ref14));
 
 var Column = exports.Column = new _FeatureSet.FeatureSet((_ref15 = {}, _defineProperty(_ref15, _FeatureSet.Features.ClassNames, true), _defineProperty(_ref15, _FeatureSet.Features.Visibility, true), _defineProperty(_ref15, _FeatureSet.Features.ColumnStyle, true), _ref15));
+
+var Tabs = exports.Tabs = new _FeatureSet.FeatureSet((_ref16 = {}, _defineProperty(_ref16, _FeatureSet.Features.ClassNames, true), _defineProperty(_ref16, _FeatureSet.Features.Visibility, true), _defineProperty(_ref16, _FeatureSet.Features.Content, true), _defineProperty(_ref16, _FeatureSet.Features.Orientation, true), _ref16));
+
+var TabsTitle = exports.TabsTitle = new _FeatureSet.FeatureSet((_ref17 = {}, _defineProperty(_ref17, _FeatureSet.Features.ClassNames, true), _defineProperty(_ref17, _FeatureSet.Features.Visibility, true), _defineProperty(_ref17, _FeatureSet.Features.Label, true), _defineProperty(_ref17, _FeatureSet.Features.Active, true), _ref17));
+var TabsContent = exports.TabsContent = new _FeatureSet.FeatureSet((_ref18 = {}, _defineProperty(_ref18, _FeatureSet.Features.ClassNames, true), _defineProperty(_ref18, _FeatureSet.Features.Visibility, true), _defineProperty(_ref18, _FeatureSet.Features.TabContentStyle, true), _defineProperty(_ref18, _FeatureSet.Features.Content, true), _defineProperty(_ref18, _FeatureSet.Features.Orientation, true), _ref18));

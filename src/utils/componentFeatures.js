@@ -98,3 +98,24 @@ export const Column = new FeatureSet({
     [Features.Visibility]: true,
     [Features.ColumnStyle]: true
 });
+
+export const Tabs = new FeatureSet({
+    [Features.ClassNames]: true,
+    [Features.Visibility]: true,
+    [Features.Content] : true,
+    [Features.Orientation]: true,
+});
+
+export const TabsTitle = new FeatureSet({
+    [Features.ClassNames]: true,
+    [Features.Visibility]: true,
+    [Features.Label] : true,
+    [Features.Active]: true,
+});
+export const TabsContent = new FeatureSet({
+    [Features.ClassNames]: true,
+    [Features.Visibility]: true,
+    [Features.TabContentStyle]: true,
+    [Features.Content] : true,
+    [Features.Orientation]: true
+});

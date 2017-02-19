@@ -74,7 +74,9 @@ var Features = exports.Features = {
         ColumnStyle: "ColumnStyle",
         IconStyle: "IconStyle",
         Gutters: "Gutters",
-        Link: "Link"
+        Link: "Link",
+        Content: "Content",
+        Label: "Label"
 };
 function _isSimple(attr) {
         return !(0, _isUndefined3.default)(attr) && ((0, _isString3.default)(attr) || (0, _isNumber3.default)(attr));
@@ -299,6 +301,12 @@ var FeatureSet = exports.FeatureSet = function () {
                         });
                         if (this.set[Features.Link]) (0, _assign3.default)(propTypes, {
                                 link: _react.PropTypes.string
+                        });
+                        if (this.set[Features.Content]) (0, _assign3.default)(propTypes, {
+                                children: _react.PropTypes.node
+                        });
+                        if (this.set[Features.Label]) (0, _assign3.default)(propTypes, {
+                                label: _react.PropTypes.string
                         });
                         return propTypes;
                 }

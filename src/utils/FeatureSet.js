@@ -30,7 +30,9 @@ export const Features = {
     ColumnStyle:    "ColumnStyle",
     IconStyle:      "IconStyle",
     Gutters:        "Gutters",
-    Link:           "Link"
+    Link:           "Link",
+    Content:        "Content",
+    Label:          "Label"
 };
 function _isSimple(attr) {
     return !_isUndefined(attr) && (_isString(attr) || _isNumber(attr));
@@ -258,6 +260,12 @@ export class FeatureSet {
         });
         if(this.set[Features.Link]) _assign(propTypes, {
                 link            : PropTypes.string
+        });
+        if(this.set[Features.Content]) _assign(propTypes, {
+                children        : PropTypes.node
+        });
+        if(this.set[Features.Label]) _assign(propTypes, {
+                label           : PropTypes.string,
         });
         return propTypes;
     }
