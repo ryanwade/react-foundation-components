@@ -217,6 +217,9 @@ var FeatureSet = exports.FeatureSet = function () {
                         if (this.set[Features.InputField]) (0, _assign3.default)(attrs, {
                                 value: props.value
                         });
+                        if (this.set[Features.Active]) (0, _assign3.default)(attrs, {
+                                "aria-selected": props.isSelected
+                        });
                         return attrs;
                 }
         }, {

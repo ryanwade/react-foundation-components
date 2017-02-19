@@ -182,6 +182,9 @@ export class FeatureSet {
         if(this.set[Features.InputField]) _assign(attrs, {
                 value           : props.value
         });
+        if(this.set[Features.Active]) _assign(attrs, {
+                "aria-selected" : props.isSelected
+        });
         return attrs;
     }
     getPropTypes(propTypes = {}) {
