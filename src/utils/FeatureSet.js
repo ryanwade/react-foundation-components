@@ -93,7 +93,7 @@ export class FeatureSet {
                 ["align-"+props.alignment]                              : _isString(props.alignment)
         });
         if(this.set[Features.Active]) classes.push({
-                "active"                                                : props.isActive === true
+                [Features.Active]                                       : props.isActive === true
         });
         if(this.set[Features.Orientation]) classes.push({
                 "vertical"                                              : props.isVertical === true,

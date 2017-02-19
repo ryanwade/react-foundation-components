@@ -71,7 +71,7 @@ export const MenuItem = new FeatureSet({
     [Features.Visibility]: true,
     [Features.MouseEvents]: true,
     [Features.Link]: true,
-    [Features.Active]: true
+    [Features.Active]: "active"
 });
 
 export const MenuText = new FeatureSet({
@@ -111,7 +111,7 @@ export const TabsTitle = new FeatureSet({
     [Features.Visibility]: true,
     [Features.MouseEvents]: true,
     [Features.Label] : true,
-    [Features.Active]: true,
+    [Features.Active]: "is-active",
 });
 export const TabsContent = new FeatureSet({
     [Features.ClassNames]: true,
