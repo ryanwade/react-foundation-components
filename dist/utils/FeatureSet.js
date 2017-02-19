@@ -158,7 +158,7 @@ var FeatureSet = exports.FeatureSet = function () {
                         });
                         if (this.set[Features.Float]) classes.push(_defineProperty({}, "float-" + props.float, (0, _isString3.default)(props.float)));
                         if (this.set[Features.Alignment]) classes.push(_defineProperty({}, "align-" + props.alignment, (0, _isString3.default)(props.alignment)));
-                        if (this.set[Features.Active]) classes.push(_defineProperty({}, Features.Active, props.isActive === true));
+                        if (this.set[Features.Active]) classes.push(_defineProperty({}, this.set[Features.Active], props.isActive === true));
                         if (this.set[Features.Orientation]) classes.push((_classes$push5 = {
                                 "vertical": props.isVertical === true,
                                 "horizontal": props.isHorizontal === true
