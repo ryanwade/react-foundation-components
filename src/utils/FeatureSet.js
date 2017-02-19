@@ -183,7 +183,7 @@ export class FeatureSet {
                 value           : props.value
         });
         if(this.set[Features.Active]) _assign(attrs, {
-                "aria-selected" : props.isSelected
+                "aria-selected" : props.isActive
         });
         return attrs;
     }
