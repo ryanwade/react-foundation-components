@@ -109,6 +109,7 @@ export const Tabs = new FeatureSet({
 export const TabsTitle = new FeatureSet({
     [Features.ClassNames]: true,
     [Features.Visibility]: true,
+    [Features.MouseEvents]: true,
     [Features.Label] : true,
     [Features.Active]: true,
 });

@@ -5,7 +5,7 @@ import { TabsTitle as featureSet } from '../utils/componentFeatures';
 const TabsTitle = ({ label, ...props }) => {
     return (
         <li className={featureSet.getClassNames(props, "tabs-title")}>
-            {label}
+            <a {...featureSet.getAttrs(props)}>{label}</a>
         </li>
     );
 };

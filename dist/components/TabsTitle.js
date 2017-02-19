@@ -19,9 +19,13 @@ var TabsTitle = function TabsTitle(_ref) {
         props = _objectWithoutProperties(_ref, ['label']);
 
     return _react2.default.createElement(
-        'ul',
+        'li',
         { className: _componentFeatures.TabsTitle.getClassNames(props, "tabs-title") },
-        label
+        _react2.default.createElement(
+            'a',
+            _componentFeatures.TabsTitle.getAttrs(props),
+            label
+        )
     );
 };
 TabsTitle.propTypes = _componentFeatures.TabsTitle.getPropTypes();
