@@ -8,6 +8,9 @@ var MenuItem        = require('./dist/components/MenuItem.js').default;
 var MenuText        = require('./dist/components/MenuText.js').default;
 var NumberField     = require('./dist/components/NumberField.js').default;
 var Row             = require('./dist/components/Row.js').default;
+var Tabs            = require('./dist/components/Tabs.js').default;
+var TabsTitle       = require('./dist/components/TabsTitle.js').default;
+var TabsContent     = require('./dist/components/TabsContent.js').default;
 var TextArea        = require('./dist/components/TextArea.js').default;
 var TextField       = require('./dist/components/TextField.js').default;
 var Title           = require('./dist/components/Title.js').default;
@@ -24,6 +27,9 @@ module.exports = {
     MenuText: MenuText,
     NumberField: NumberField,
     Row: Row,
+    Tabs: Tabs,
+    TabsTitle: TabsTitle,
+    TabsContent: TabsContent,
     TextArea: TextArea,
     TextField: TextField,
     Title: Title,
