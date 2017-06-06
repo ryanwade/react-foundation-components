@@ -4,13 +4,21 @@
   "description": "A library of Foundation components for React",
   "main": "index.js",
   "scripts": {
-    "clean-dist": "npm run remove-dist && mkdir dist",
-    "remove-dist": "rimraf ./dist",
-    "prebuild": "npm run clean-dist && npm run lint",
+    "start": "npm-run-all --parallel lint:watch start:dev start:docs",
+    "start:docs": "cd ./docs_src && npm start",
+    "start:dev": "babel --loose es6.modules -d dist/ src/ --watch",
+    "clean:dist": "npm run remove:dist && mkdir dist",
+    "clean:docs": "rimraf ./docs",
+    "remove:dist": "rimraf ./dist",
+    "prebuild": "npm run clean:dist && npm run lint",
     "build": "babel --loose es6.modules -d dist/ src/",
+    "build:docs": "cd ./docs_src && npm run build",
+    "build:all": "npm run build && npm run build:docs && npm run deploy:docs",
+    "deploy:docs": "npm run clean:docs && ncp ./docs_src/dist ./docs",
+    "lint:watch": "esw src --watch",
     "lint": "eslint src",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build:all"
   },
   "repository": {
     "type": "git",
@@ -38,7 +46,10 @@
     "eslint": "^3.10.2",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-react": "^6.7.1",
+    "eslint-watch": "^3.1.0",
     "foundation-sites": "^6.2.4",
+    "ncp": "^2.0.0",
+    "npm-run-all": "^4.0.2",
     "react": "^15.4.0",
     "react-addons-test-utils": "^15.4.0",
     "react-dom": "^15.4.0"
