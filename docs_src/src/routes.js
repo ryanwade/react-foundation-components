@@ -7,9 +7,12 @@ import AboutPage from './components/AboutPage';
 import NotFoundPage from './components/NotFoundPage';
 
 export default (
-  <Route path="/react-foundation-components/" component={App}>
-    <IndexRoute component={HomePage}/>
-    <Route path="about" component={AboutPage}/>
+  <Route path="/" component={App}>
+    <IndexRoute component={NotFoundPage}/>
+    <Route path="/react-foundation-components/">
+      <IndexRoute component={HomePage}/>
+      <Route path="about" component={AboutPage}/>
+    </Route>
     <Route path="*" component={NotFoundPage}/>
   </Route>
 );

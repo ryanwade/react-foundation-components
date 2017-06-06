@@ -12,8 +12,8 @@ class App extends React.Component {
     return (
       <div>
         <Menu alignRight>
-          <MenuItem link="/" label="Home"/>
-          <MenuItem link="/about" label="About"/>
+          <MenuItem link="/react-foundation-components/" label="Home"/>
+          <MenuItem link="/react-foundation-components/about" label="About"/>
         </Menu>
         {this.props.children}
       </div>
